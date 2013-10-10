@@ -1,17 +1,16 @@
 #include <QtGui>
+#include "mainwindow.h"
 
- #include "mainwindow.h"
+MainWindow::MainWindow()
+{
+ 	QWidget *widget = new QWidget;
+    setCentralWidget(widget);
 
- MainWindow::MainWindow()
- {
-     QWidget *widget = new QWidget;
-     setCentralWidget(widget);
+    QWidget *topFiller = new QWidget;
+    topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-     QWidget *topFiller = new QWidget;
-     topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-     QWidget *bottomFiller = new QWidget;
-     bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QWidget *bottomFiller = new QWidget;
+    bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 	QTabWidget  *tabWidget = new QTabWidget;
 	tabWidget->addTab(new QTabWidget(), "Input");
@@ -19,23 +18,23 @@
 	tabWidget->addTab(new QTabWidget(), "Palette");
 	tabWidget->addTab(new QTabWidget(), "Info");
 
-     QVBoxLayout *layout = new QVBoxLayout;
-     layout->setMargin(5);
-	 layout->addWidget(tabWidget);
-     //layout->addWidget(topFiller);
-     //layout->addWidget(bottomFiller);
-     widget->setLayout(layout);
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->setMargin(5);
+	layout->addWidget(tabWidget);
 
-     createActions();
-     createMenus();
-	 createToolBars();
+    widget->setLayout(layout);
 
-     setWindowTitle(tr("Menus"));
-     setMinimumSize(160, 160);
-     resize(480, 320);
- }
+    createActions();
+    createMenus();
+	createToolBars();
 
- void MainWindow::contextMenuEvent(QContextMenuEvent *event)
+    setWindowTitle(tr("Menus"));
+    setMinimumSize(160, 160);
+    resize(480, 320);
+}
+
+void 
+MainWindow::contextMenuEvent(QContextMenuEvent *event)
  {
      QMenu menu(this);
      menu.addAction(cutAct);
@@ -143,18 +142,18 @@
  }
 
  void MainWindow::createActions()
- {
-     newAct = new QAction(tr("&New"), this);
+ {	
+     newAct = new QAction(QIcon("file-new.png"),tr("&New"), this);
      newAct->setShortcuts(QKeySequence::New);
      newAct->setStatusTip(tr("Create a new file"));
      connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-     openAct = new QAction(tr("&Open..."), this);
+     openAct = new QAction(QIcon("file-load.png"),tr("&Open..."), this);
      openAct->setShortcuts(QKeySequence::Open);
      openAct->setStatusTip(tr("Open an existing file"));
      connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
 
-     saveAct = new QAction(tr("&Save"), this);
+     saveAct = new QAction(QIcon("file-save.png"),tr("&Save"), this);
      saveAct->setShortcuts(QKeySequence::Save);
      saveAct->setStatusTip(tr("Save the document to disk"));
      connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
@@ -179,13 +178,13 @@
      redoAct->setStatusTip(tr("Redo the last operation"));
      connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
-     cutAct = new QAction(tr("Cu&t"), this);
+     cutAct = new QAction(QIcon("view-zoomin.png"),tr("Cu&t"), this);
      cutAct->setShortcuts(QKeySequence::Cut);
      cutAct->setStatusTip(tr("Cut the current selection's contents to the "
                              "clipboard"));
      connect(cutAct, SIGNAL(triggered()), this, SLOT(cut()));
 
-     copyAct = new QAction(tr("&Copy"), this);
+     copyAct = new QAction(QIcon("view-zoomout.png"),tr("&Copy"), this);
      copyAct->setShortcuts(QKeySequence::Copy);
      copyAct->setStatusTip(tr("Copy the current selection's contents to the "
                               "clipboard"));
@@ -314,5 +313,4 @@
      editToolBar = addToolBar(tr("Edit"));
      editToolBar->addAction(cutAct);
      editToolBar->addAction(copyAct);
-     editToolBar->addAction(pasteAct);
  }
