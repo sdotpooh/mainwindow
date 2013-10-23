@@ -21,15 +21,49 @@ MainWindow::MainWindow()
 
 
        QTreeWidget *treeWidget = new QTreeWidget;
+	   treeWidget->header()->hide();
+
        QTreeWidgetItem *tree_Item_One = new QTreeWidgetItem(treeWidget);
        tree_Item_One->setText(0, tr("Input Settings"));
-       
+
+	   QTreeWidgetItem *item_one = new QTreeWidgetItem(tree_Item_One);
+	   item_one->setText(0,"Settings Go Here");
+	   treeWidget->insertTopLevelItem(0,item_one);
+
 //	   QTreeWidgetItem *tree_Item_One_Widget = new QTreeWidgetItem(tree_Item_One);
 //	   tree_Item_One_Widget->setText(0, tr("Input Settings Widget Inside"));
 
 
 	   QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
-       tree_Item_Two->setText(0, tr("Mosaic Size"));
+       tree_Item_Two->setText(0, tr("Mosaic Rendering"));
+
+	   QTreeWidgetItem *item_two = new QTreeWidgetItem(tree_Item_Two);
+	   item_two->setText(0,"Mosaic Rendering Go Here");
+	   treeWidget->insertTopLevelItem(0,item_two);
+
+
+       QTreeWidgetItem *tree_Item_Three = new QTreeWidgetItem(treeWidget);
+       tree_Item_Three->setText(0, tr("Mosaic Size"));
+
+	   QTreeWidgetItem *item_three = new QTreeWidgetItem(tree_Item_Three);
+	   item_three->setText(0,"Mosaic Size Go Here");
+	   treeWidget->insertTopLevelItem(0,item_three);
+
+
+	   QTreeWidgetItem *tree_Item_Four = new QTreeWidgetItem(treeWidget);
+       tree_Item_Four->setText(0, tr("Title Palette"));
+	   
+	   QTreeWidgetItem *item_four = new QTreeWidgetItem(tree_Item_Four);
+	   item_four->setText(0,"Title Palette Go Here");
+	   treeWidget->insertTopLevelItem(0,item_four);
+
+
+	   QTreeWidgetItem *tree_Item_Five = new QTreeWidgetItem(treeWidget);
+       tree_Item_Five->setText(0, tr("Grout"));
+
+	   QTreeWidgetItem *item_five = new QTreeWidgetItem(tree_Item_Five);
+	   item_five->setText(0,"Grout Go Here");
+	   treeWidget->insertTopLevelItem(0,item_five);
 
 //	   QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(tree_Item_Two);
 //	   tree_Item_Two->setText(0, tr("Input Setting s2"));
