@@ -141,42 +141,42 @@ MainWindow::contextMenuEvent(QContextMenuEvent *event)
      infoLabel->setText(tr("Invoked <b>Help|About Qt</b>"));
  }
 
- void MainWindow::createActions()
- {	
-     newAct = new QAction(QIcon("file-new.png"),tr("&New"), this);
-     newAct->setShortcuts(QKeySequence::New);
-     newAct->setStatusTip(tr("Create a new file"));
-     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
+void MainWindow::createActions()
+{
+    newAct = new QAction(QIcon("file-new.png"),tr("&New"), this);
+    newAct->setShortcuts(QKeySequence::New);
+    newAct->setStatusTip(tr("Create a new file"));
+    connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-     openAct = new QAction(QIcon("file-load.png"),tr("&Open..."), this);
-     openAct->setShortcuts(QKeySequence::Open);
-     openAct->setStatusTip(tr("Open an existing file"));
-     connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
+    openAct = new QAction(QIcon("file-load.png"),tr("&Open..."), this);
+    openAct->setShortcuts(QKeySequence::Open);
+    openAct->setStatusTip(tr("Open an existing file"));
+    connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
 
-     saveAct = new QAction(QIcon("file-save.png"),tr("&Save"), this);
-     saveAct->setShortcuts(QKeySequence::Save);
-     saveAct->setStatusTip(tr("Save the document to disk"));
-     connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
+    saveAct = new QAction(QIcon("file-save.png"),tr("&Save"), this);
+    saveAct->setShortcuts(QKeySequence::Save);
+    saveAct->setStatusTip(tr("Save the document to disk"));
+    connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
 
-     printAct = new QAction(tr("&Print..."), this);
-     printAct->setShortcuts(QKeySequence::Print);
-     printAct->setStatusTip(tr("Print the document"));
-     connect(printAct, SIGNAL(triggered()), this, SLOT(print()));
+    printAct = new QAction(tr("&Print..."), this);
+    printAct->setShortcuts(QKeySequence::Print);
+    printAct->setStatusTip(tr("Print the document"));
+    connect(printAct, SIGNAL(triggered()), this, SLOT(print()));
 
-     exitAct = new QAction(tr("E&xit"), this);
-     exitAct->setShortcuts(QKeySequence::Quit);
-     exitAct->setStatusTip(tr("Exit the application"));
-     connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
+    exitAct = new QAction(tr("E&xit"), this);
+    exitAct->setShortcuts(QKeySequence::Quit);
+    exitAct->setStatusTip(tr("Exit the application"));
+    connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
 
-     undoAct = new QAction(tr("&Undo"), this);
-     undoAct->setShortcuts(QKeySequence::Undo);
-     undoAct->setStatusTip(tr("Undo the last operation"));
-     connect(undoAct, SIGNAL(triggered()), this, SLOT(undo()));
+    undoAct = new QAction(tr("&Undo"), this);
+    undoAct->setShortcuts(QKeySequence::Undo);
+    undoAct->setStatusTip(tr("Undo the last operation"));
+    connect(undoAct, SIGNAL(triggered()), this, SLOT(undo()));
 
-     redoAct = new QAction(tr("&Redo"), this);
-     redoAct->setShortcuts(QKeySequence::Redo);
-     redoAct->setStatusTip(tr("Redo the last operation"));
-     connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
+    redoAct = new QAction(tr("&Redo"), this);
+    redoAct->setShortcuts(QKeySequence::Redo);
+    redoAct->setStatusTip(tr("Redo the last operation"));
+    connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
      cutAct = new QAction(QIcon("view-zoomin.png"),tr("Cu&t"), this);
      cutAct->setShortcuts(QKeySequence::Cut);
