@@ -39,6 +39,7 @@
      void about();
      void aboutQt();
 
+
  private:
      void createActions();
      void createMenus();

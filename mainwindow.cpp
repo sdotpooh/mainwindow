@@ -12,19 +12,34 @@ MainWindow::MainWindow()
     QWidget *bottomFiller = new QWidget;
     bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
+
 	QTabWidget  *tabWidget = new QTabWidget;
 	tabWidget->addTab(new QTabWidget(), "Input");
 	tabWidget->addTab(new QTabWidget(), "Output");
 	tabWidget->addTab(new QTabWidget(), "Palette");
 	tabWidget->addTab(new QTabWidget(), "Info");
 
-    QVBoxLayout *layout = new QVBoxLayout;
+ 
+
+       QTreeWidget *treeWidget = new QTreeWidget;
+       QTreeWidgetItem *settings = new QTreeWidgetItem(treeWidget);
+       settings->setText(0, tr("Settings"));
+       QTreeWidgetItem *set_a = new QTreeWidgetItem(settings);
+       set_a->setText(0, tr("Oslo"));
+
+
+// layout
+
+	QHBoxLayout *layout = new QHBoxLayout;
     layout->setMargin(5);
 	layout->addWidget(tabWidget);
+	layout->addWidget(treeWidget);
+
 
     widget->setLayout(layout);
 
-    createActions();
+	
+	createActions();
     createMenus();
 	createToolBars();
 
@@ -314,3 +329,7 @@ MainWindow::contextMenuEvent(QContextMenuEvent *event)
      editToolBar->addAction(cutAct);
      editToolBar->addAction(copyAct);
  }
+
+
+
+
