@@ -19,13 +19,24 @@ MainWindow::MainWindow()
 	tabWidget->addTab(new QTabWidget(), "Palette");
 	tabWidget->addTab(new QTabWidget(), "Info");
 
- 
 
        QTreeWidget *treeWidget = new QTreeWidget;
-       QTreeWidgetItem *settings = new QTreeWidgetItem(treeWidget);
-       settings->setText(0, tr("Settings"));
-       QTreeWidgetItem *set_a = new QTreeWidgetItem(settings);
-       set_a->setText(0, tr("Oslo"));
+       QTreeWidgetItem *tree_Item_One = new QTreeWidgetItem(treeWidget);
+       tree_Item_One->setText(0, tr("Input Settings"));
+       
+//	   QTreeWidgetItem *tree_Item_One_Widget = new QTreeWidgetItem(tree_Item_One);
+//	   tree_Item_One_Widget->setText(0, tr("Input Settings Widget Inside"));
+
+
+	   QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
+       tree_Item_Two->setText(0, tr("Mosaic Size"));
+
+//	   QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(tree_Item_Two);
+//	   tree_Item_Two->setText(0, tr("Input Setting s2"));
+	  
+      
+    //   set_a->setText(0, tr("Input Settings"));
+	 //  set_b->setText(0, tr("Input Settings2"));
 
 
 // layout
@@ -45,7 +56,7 @@ MainWindow::MainWindow()
 
     setWindowTitle(tr("Menus"));
     setMinimumSize(160, 160);
-    resize(480, 320);
+    resize(980, 620);
 }
 
 void 
