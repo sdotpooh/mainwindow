@@ -28,6 +28,8 @@
      void cut();
      void copy();
      void paste();
+	 //Sean: Can delete
+	 //----------------------------------
      void bold();
      void italic();
      void leftAlign();
@@ -38,7 +40,8 @@
      void setParagraphSpacing();
      void about();
      void aboutQt();
-
+	//Sean: End of what needs to be deleted
+	//-------------------------------------
 
  private:
      void createActions();
@@ -57,8 +60,10 @@
      QAction *exitAct;
      QAction *undoAct;
      QAction *redoAct;
-     QAction *cutAct;
-     QAction *copyAct;
+     QAction *zoominAct;
+     QAction *zoomoutAct;
+	 //Sean: Can delete these:
+	 //----------------------------
      QAction *pasteAct;
      QAction *boldAct;
      QAction *italicAct;
@@ -70,7 +75,8 @@
      QAction *setParagraphSpacingAct;
      QAction *aboutAct;
      QAction *aboutQtAct;
-     QLabel *infoLabel;
+	 //------------------------------
+     QLabel  *infoLabel;
 	 QToolBar *fileToolBar;
      QToolBar *editToolBar;
  };

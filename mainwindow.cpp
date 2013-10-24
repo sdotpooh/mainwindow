@@ -20,75 +20,68 @@ MainWindow::MainWindow()
 	tabWidget->addTab(new QTabWidget(), "Info");
 
 
-       QTreeWidget *treeWidget = new QTreeWidget;
-	   treeWidget->header()->hide();
+    QTreeWidget *treeWidget = new QTreeWidget;
+	treeWidget->header()->hide();
 
-       QTreeWidgetItem *tree_Item_One = new QTreeWidgetItem(treeWidget);
-       tree_Item_One->setText(0, tr("Input Settings"));
+    QTreeWidgetItem *tree_Item_One = new QTreeWidgetItem(treeWidget);
+    tree_Item_One->setText(0, tr("Input Settings"));
 
-	   QTreeWidgetItem *item_one = new QTreeWidgetItem(tree_Item_One);
-	   item_one->setText(0,"Settings Go Here");
-	   treeWidget->insertTopLevelItem(0,item_one);
+	QTreeWidgetItem *item_one = new QTreeWidgetItem(tree_Item_One);
+	item_one->setText(0,"Settings Go Here");
+	treeWidget->insertTopLevelItem(0,item_one);
 
-//	   QTreeWidgetItem *tree_Item_One_Widget = new QTreeWidgetItem(tree_Item_One);
-//	   tree_Item_One_Widget->setText(0, tr("Input Settings Widget Inside"));
+	//QTreeWidgetItem *tree_Item_One_Widget = new QTreeWidgetItem(tree_Item_One);
+	//tree_Item_One_Widget->setText(0, tr("Input Settings Widget Inside"));
 
+	QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
+    tree_Item_Two->setText(0, tr("Mosaic Rendering"));
 
-	   QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
-       tree_Item_Two->setText(0, tr("Mosaic Rendering"));
+	QTreeWidgetItem *item_two = new QTreeWidgetItem(tree_Item_Two);
+	item_two->setText(0,"Mosaic Rendering Go Here");
+	treeWidget->insertTopLevelItem(0,item_two);
 
-	   QTreeWidgetItem *item_two = new QTreeWidgetItem(tree_Item_Two);
-	   item_two->setText(0,"Mosaic Rendering Go Here");
-	   treeWidget->insertTopLevelItem(0,item_two);
+    QTreeWidgetItem *tree_Item_Three = new QTreeWidgetItem(treeWidget);
+    tree_Item_Three->setText(0, tr("Mosaic Size"));
 
+	QTreeWidgetItem *item_three = new QTreeWidgetItem(tree_Item_Three);
+	item_three->setText(0,"Mosaic Size Go Here");
+	treeWidget->insertTopLevelItem(0,item_three);
 
-       QTreeWidgetItem *tree_Item_Three = new QTreeWidgetItem(treeWidget);
-       tree_Item_Three->setText(0, tr("Mosaic Size"));
-
-	   QTreeWidgetItem *item_three = new QTreeWidgetItem(tree_Item_Three);
-	   item_three->setText(0,"Mosaic Size Go Here");
-	   treeWidget->insertTopLevelItem(0,item_three);
-
-
-	   QTreeWidgetItem *tree_Item_Four = new QTreeWidgetItem(treeWidget);
-       tree_Item_Four->setText(0, tr("Title Palette"));
+	QTreeWidgetItem *tree_Item_Four = new QTreeWidgetItem(treeWidget);
+    tree_Item_Four->setText(0, tr("Title Palette"));
 	   
-	   QTreeWidgetItem *item_four = new QTreeWidgetItem(tree_Item_Four);
-	   item_four->setText(0,"Title Palette Go Here");
-	   treeWidget->insertTopLevelItem(0,item_four);
+	QTreeWidgetItem *item_four = new QTreeWidgetItem(tree_Item_Four);
+	item_four->setText(0,"Title Palette Go Here");
+	treeWidget->insertTopLevelItem(0,item_four);
 
 
-	   QTreeWidgetItem *tree_Item_Five = new QTreeWidgetItem(treeWidget);
-       tree_Item_Five->setText(0, tr("Grout"));
+	QTreeWidgetItem *tree_Item_Five = new QTreeWidgetItem(treeWidget);
+    tree_Item_Five->setText(0, tr("Grout"));
 
-	   QTreeWidgetItem *item_five = new QTreeWidgetItem(tree_Item_Five);
-	   item_five->setText(0,"Grout Go Here");
-	   treeWidget->insertTopLevelItem(0,item_five);
+	QTreeWidgetItem *item_five = new QTreeWidgetItem(tree_Item_Five);
+	item_five->setText(0,"Grout Go Here");
+	treeWidget->insertTopLevelItem(0,item_five);
 
-//	   QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(tree_Item_Two);
-//	   tree_Item_Two->setText(0, tr("Input Setting s2"));
-	  
-      
-    //   set_a->setText(0, tr("Input Settings"));
-	 //  set_b->setText(0, tr("Input Settings2"));
-
-
-// layout
+	//QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(tree_Item_Two);
+	//tree_Item_Two->setText(0, tr("Input Setting s2"));
+	    
+    //set_a->setText(0, tr("Input Settings"));
+	//set_b->setText(0, tr("Input Settings2"));
+	// layout
 
 	QHBoxLayout *layout = new QHBoxLayout;
     layout->setMargin(5);
 	layout->addWidget(tabWidget);
 	layout->addWidget(treeWidget);
 
-
-    widget->setLayout(layout);
+	widget->setLayout(layout);
 
 	
 	createActions();
     createMenus();
 	createToolBars();
 
-    setWindowTitle(tr("Menus"));
+    setWindowTitle(tr("Tessera Grid V1.0"));
     setMinimumSize(160, 160);
     resize(980, 620);
 }
@@ -97,8 +90,8 @@ void
 MainWindow::contextMenuEvent(QContextMenuEvent *event)
  {
      QMenu menu(this);
-     menu.addAction(cutAct);
-     menu.addAction(copyAct);
+     menu.addAction(zoominAct);
+     menu.addAction(zoomoutAct);
      menu.addAction(pasteAct);
      menu.exec(event->globalPos());
  }
@@ -203,17 +196,17 @@ MainWindow::contextMenuEvent(QContextMenuEvent *event)
 
 void MainWindow::createActions()
 {
-    newAct = new QAction(QIcon("file-new.png"),tr("&New"), this);
+    newAct = new QAction(QIcon("icons/file-new.png"),tr("&New"), this);
     newAct->setShortcuts(QKeySequence::New);
     newAct->setStatusTip(tr("Create a new file"));
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    openAct = new QAction(QIcon("file-load.png"),tr("&Open..."), this);
+    openAct = new QAction(QIcon("icons/file-load.png"),tr("&Open..."), this);
     openAct->setShortcuts(QKeySequence::Open);
     openAct->setStatusTip(tr("Open an existing file"));
     connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
 
-    saveAct = new QAction(QIcon("file-save.png"),tr("&Save"), this);
+    saveAct = new QAction(QIcon("icons/file-save.png"),tr("&Save"), this);
     saveAct->setShortcuts(QKeySequence::Save);
     saveAct->setStatusTip(tr("Save the document to disk"));
     connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
@@ -238,94 +231,108 @@ void MainWindow::createActions()
     redoAct->setStatusTip(tr("Redo the last operation"));
     connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
-     cutAct = new QAction(QIcon("view-zoomin.png"),tr("Cu&t"), this);
-     cutAct->setShortcuts(QKeySequence::Cut);
-     cutAct->setStatusTip(tr("Cut the current selection's contents to the "
+    zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("Cu&t"), this);
+    zoominAct->setShortcuts(QKeySequence::Cut);
+    zoominAct->setStatusTip(tr("Cut the current selection's contents to the "
                              "clipboard"));
-     connect(cutAct, SIGNAL(triggered()), this, SLOT(cut()));
+    connect(zoominAct, SIGNAL(triggered()), this, SLOT(cut()));
 
-     copyAct = new QAction(QIcon("view-zoomout.png"),tr("&Copy"), this);
-     copyAct->setShortcuts(QKeySequence::Copy);
-     copyAct->setStatusTip(tr("Copy the current selection's contents to the "
+    zoomoutAct = new QAction(QIcon("icons/view-zoomout.png"),tr("&Copy"), this);
+    zoomoutAct->setShortcuts(QKeySequence::Copy);
+    zoomoutAct->setStatusTip(tr("Copy the current selection's contents to the "
                               "clipboard"));
-     connect(copyAct, SIGNAL(triggered()), this, SLOT(copy()));
+    connect(zoomoutAct, SIGNAL(triggered()), this, SLOT(copy()));
 
-     pasteAct = new QAction(tr("&Paste"), this);
-     pasteAct->setShortcuts(QKeySequence::Paste);
-     pasteAct->setStatusTip(tr("Paste the clipboard's contents into the current "
+    pasteAct = new QAction(tr("&Paste"), this);
+    pasteAct->setShortcuts(QKeySequence::Paste);
+    pasteAct->setStatusTip(tr("Paste the clipboard's contents into the current "
                                "selection"));
-     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
+    connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
+	
+	// Sean: We can delete these!
+	// -------------------------------------------------------
+	// *******************************************************
+    boldAct = new QAction(tr("&Bold"), this);
+    boldAct->setCheckable(true);
+    boldAct->setShortcut(QKeySequence::Bold);
+    boldAct->setStatusTip(tr("Make the text bold"));
+    connect(boldAct, SIGNAL(triggered()), this, SLOT(bold()));
 
-     boldAct = new QAction(tr("&Bold"), this);
-     boldAct->setCheckable(true);
-     boldAct->setShortcut(QKeySequence::Bold);
-     boldAct->setStatusTip(tr("Make the text bold"));
-     connect(boldAct, SIGNAL(triggered()), this, SLOT(bold()));
+    QFont boldFont = boldAct->font();
+    boldFont.setBold(true);
+    boldAct->setFont(boldFont);
 
-     QFont boldFont = boldAct->font();
-     boldFont.setBold(true);
-     boldAct->setFont(boldFont);
+    italicAct = new QAction(tr("&Italic"), this);
+ 	italicAct->setCheckable(true);
+    italicAct->setShortcut(QKeySequence::Italic);
+    italicAct->setStatusTip(tr("Make the text italic"));
+    connect(italicAct, SIGNAL(triggered()), this, SLOT(italic()));
 
-     italicAct = new QAction(tr("&Italic"), this);
-     italicAct->setCheckable(true);
-     italicAct->setShortcut(QKeySequence::Italic);
-     italicAct->setStatusTip(tr("Make the text italic"));
-     connect(italicAct, SIGNAL(triggered()), this, SLOT(italic()));
+    QFont italicFont = italicAct->font();
+    italicFont.setItalic(true);
+    italicAct->setFont(italicFont);
 
-     QFont italicFont = italicAct->font();
-     italicFont.setItalic(true);
-     italicAct->setFont(italicFont);
-
-     setLineSpacingAct = new QAction(tr("Set &Line Spacing..."), this);
-     setLineSpacingAct->setStatusTip(tr("Change the gap between the lines of a "
+    setLineSpacingAct = new QAction(tr("Set &Line Spacing..."), this);
+    setLineSpacingAct->setStatusTip(tr("Change the gap between the lines of a "
                                         "paragraph"));
-     connect(setLineSpacingAct, SIGNAL(triggered()), this, SLOT(setLineSpacing()));
+    connect(setLineSpacingAct, SIGNAL(triggered()), this, SLOT(setLineSpacing()));
 
-     setParagraphSpacingAct = new QAction(tr("Set &Paragraph Spacing..."), this);
-     setLineSpacingAct->setStatusTip(tr("Change the gap between paragraphs"));
-     connect(setParagraphSpacingAct, SIGNAL(triggered()),
+    setParagraphSpacingAct = new QAction(tr("Set &Paragraph Spacing..."), this);
+    setLineSpacingAct->setStatusTip(tr("Change the gap between paragraphs"));
+    connect(setParagraphSpacingAct, SIGNAL(triggered()),
              this, SLOT(setParagraphSpacing()));
 
-     aboutAct = new QAction(tr("&About"), this);
-     aboutAct->setStatusTip(tr("Show the application's About box"));
-     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
+    aboutAct = new QAction(tr("&About"), this);
+    aboutAct->setStatusTip(tr("Show the application's About box"));
+    connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
-     aboutQtAct = new QAction(tr("About &Qt"), this);
-     aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
-     connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
-     connect(aboutQtAct, SIGNAL(triggered()), this, SLOT(aboutQt()));
+    aboutQtAct = new QAction(tr("About &Qt"), this);
+    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
+    connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(aboutQtAct, SIGNAL(triggered()), this, SLOT(aboutQt()));
 
-     leftAlignAct = new QAction(tr("&Left Align"), this);
-     leftAlignAct->setCheckable(true);
-     leftAlignAct->setShortcut(tr("Ctrl+L"));
-     leftAlignAct->setStatusTip(tr("Left align the selected text"));
-     connect(leftAlignAct, SIGNAL(triggered()), this, SLOT(leftAlign()));
+    leftAlignAct = new QAction(tr("&Left Align"), this);
+    leftAlignAct->setCheckable(true);
+    leftAlignAct->setShortcut(tr("Ctrl+L"));
+    leftAlignAct->setStatusTip(tr("Left align the selected text"));
+    connect(leftAlignAct, SIGNAL(triggered()), this, SLOT(leftAlign()));
 
-     rightAlignAct = new QAction(tr("&Right Align"), this);
-     rightAlignAct->setCheckable(true);
-     rightAlignAct->setShortcut(tr("Ctrl+R"));
-     rightAlignAct->setStatusTip(tr("Right align the selected text"));
-     connect(rightAlignAct, SIGNAL(triggered()), this, SLOT(rightAlign()));
+    rightAlignAct = new QAction(tr("&Right Align"), this);
+    rightAlignAct->setCheckable(true);
+    rightAlignAct->setShortcut(tr("Ctrl+R"));
+    rightAlignAct->setStatusTip(tr("Right align the selected text"));
+    connect(rightAlignAct, SIGNAL(triggered()), this, SLOT(rightAlign()));
 
-     justifyAct = new QAction(tr("&Justify"), this);
-     justifyAct->setCheckable(true);
-     justifyAct->setShortcut(tr("Ctrl+J"));
-     justifyAct->setStatusTip(tr("Justify the selected text"));
-     connect(justifyAct, SIGNAL(triggered()), this, SLOT(justify()));
+    justifyAct = new QAction(tr("&Justify"), this);
+    justifyAct->setCheckable(true);
+    justifyAct->setShortcut(tr("Ctrl+J"));
+    justifyAct->setStatusTip(tr("Justify the selected text"));
+    connect(justifyAct, SIGNAL(triggered()), this, SLOT(justify()));
 
-     centerAct = new QAction(tr("&Center"), this);
-     centerAct->setCheckable(true);
-     centerAct->setShortcut(tr("Ctrl+E"));
-     centerAct->setStatusTip(tr("Center the selected text"));
-     connect(centerAct, SIGNAL(triggered()), this, SLOT(center()));
+    centerAct = new QAction(tr("&Center"), this);
+    centerAct->setCheckable(true);
+    centerAct->setShortcut(tr("Ctrl+E"));
+    centerAct->setStatusTip(tr("Center the selected text"));     
+	connect(centerAct, SIGNAL(triggered()), this, SLOT(center()));
 
-     alignmentGroup = new QActionGroup(this);
-     alignmentGroup->addAction(leftAlignAct);
-     alignmentGroup->addAction(rightAlignAct);
-     alignmentGroup->addAction(justifyAct);
-     alignmentGroup->addAction(centerAct);
-     leftAlignAct->setChecked(true);
- }
+    alignmentGroup = new QActionGroup(this);
+    alignmentGroup->addAction(leftAlignAct);
+    alignmentGroup->addAction(rightAlignAct);
+ 	alignmentGroup->addAction(justifyAct);
+    alignmentGroup->addAction(centerAct);
+    leftAlignAct->setChecked(true);
+	// Sean: End of what can be deleted: 
+	// -------------------------------------------------------
+	// *******************************************************
+
+
+	//Sean added the other icons here:
+	//--------------------------------
+	//layerAct = new QAction(QIcon("icons/view-layer-manager.png"),tr("&Layer"), this);
+    //layerAct->setShortcuts(QKeySequence::Layer);
+    //layerAct->setStatusTip(tr("View Layer Manager"));
+    //connect(layerAct, SIGNAL(triggered()), this, SLOT(layer()));
+}
 
  void MainWindow::createMenus()
  {
@@ -341,9 +348,10 @@ void MainWindow::createActions()
      editMenu->addAction(undoAct);
      editMenu->addAction(redoAct);
      editMenu->addSeparator();
-     editMenu->addAction(cutAct);
-     editMenu->addAction(copyAct);
+     editMenu->addAction(zoominAct);
+     editMenu->addAction(zoomoutAct);
      editMenu->addAction(pasteAct);
+	 //editMenu->addAction(layerAct);
      editMenu->addSeparator();
 
      helpMenu = menuBar()->addMenu(tr("&Help"));
@@ -371,8 +379,8 @@ void MainWindow::createActions()
      fileToolBar->addAction(saveAct);
 
      editToolBar = addToolBar(tr("Edit"));
-     editToolBar->addAction(cutAct);
-     editToolBar->addAction(copyAct);
+     editToolBar->addAction(zoominAct);
+     editToolBar->addAction(zoomoutAct);
  }
 
 
