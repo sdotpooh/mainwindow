@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Thu Oct 24 16:42:48 2013
+** Created: Thu Oct 24 21:55:43 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -40,16 +40,6 @@ static const uint qt_meta_data_MainWindow[] = {
       58,   11,   11,   11, 0x08,
       64,   11,   11,   11, 0x08,
       71,   11,   11,   11, 0x08,
-      79,   11,   11,   11, 0x08,
-      86,   11,   11,   11, 0x08,
-      95,   11,   11,   11, 0x08,
-     107,   11,   11,   11, 0x08,
-     120,   11,   11,   11, 0x08,
-     130,   11,   11,   11, 0x08,
-     139,   11,   11,   11, 0x08,
-     156,   11,   11,   11, 0x08,
-     178,   11,   11,   11, 0x08,
-     186,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -57,10 +47,7 @@ static const uint qt_meta_data_MainWindow[] = {
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0newFile()\0open()\0save()\0"
     "print()\0undo()\0redo()\0cut()\0copy()\0"
-    "paste()\0bold()\0italic()\0leftAlign()\0"
-    "rightAlign()\0justify()\0center()\0"
-    "setLineSpacing()\0setParagraphSpacing()\0"
-    "about()\0aboutQt()\0"
+    "paste()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -78,16 +65,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->cut(); break;
         case 7: _t->copy(); break;
         case 8: _t->paste(); break;
-        case 9: _t->bold(); break;
-        case 10: _t->italic(); break;
-        case 11: _t->leftAlign(); break;
-        case 12: _t->rightAlign(); break;
-        case 13: _t->justify(); break;
-        case 14: _t->center(); break;
-        case 15: _t->setLineSpacing(); break;
-        case 16: _t->setParagraphSpacing(); break;
-        case 17: _t->about(); break;
-        case 18: _t->aboutQt(); break;
         default: ;
         }
     }
@@ -126,9 +103,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 9;
     }
     return _id;
 }

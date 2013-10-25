@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+ #ifndef  MAINWINDOW_H 
  #define MAINWINDOW_H
 
  #include <QMainWindow>
@@ -28,20 +28,7 @@
      void cut();
      void copy();
      void paste();
-	 //Sean: Can delete
-	 //----------------------------------
-     void bold();
-     void italic();
-     void leftAlign();
-     void rightAlign();
-     void justify();
-     void center();
-     void setLineSpacing();
-     void setParagraphSpacing();
-     void about();
-     void aboutQt();
-	//Sean: End of what needs to be deleted
-	//-------------------------------------
+	 
 
  private:
      void createActions();
@@ -62,21 +49,9 @@
      QAction *redoAct;
      QAction *zoominAct;
      QAction *zoomoutAct;
-	 //Sean: Can delete these:
-	 //----------------------------
-     QAction *pasteAct;
-     QAction *boldAct;
-     QAction *italicAct;
-     QAction *leftAlignAct;
-     QAction *rightAlignAct;
-     QAction *justifyAct;
-     QAction *centerAct;
-     QAction *setLineSpacingAct;
-     QAction *setParagraphSpacingAct;
-     QAction *aboutAct;
-     QAction *aboutQtAct;
-	 //------------------------------
-     QLabel  *infoLabel;
+	 QAction *pasteAct;
+	 //QAction *layerAct;
+	 QLabel  *infoLabel;
 	 QToolBar *fileToolBar;
      QToolBar *editToolBar;
  };
