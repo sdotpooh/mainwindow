@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Thu Oct 24 16:42:48 2013
+** Created: Sat Oct 26 00:37:01 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      30,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,32 +35,46 @@ static const uint qt_meta_data_MainWindow[] = {
       22,   11,   11,   11, 0x08,
       29,   11,   11,   11, 0x08,
       36,   11,   11,   11, 0x08,
-      44,   11,   11,   11, 0x08,
-      51,   11,   11,   11, 0x08,
-      58,   11,   11,   11, 0x08,
-      64,   11,   11,   11, 0x08,
-      71,   11,   11,   11, 0x08,
-      79,   11,   11,   11, 0x08,
-      86,   11,   11,   11, 0x08,
-      95,   11,   11,   11, 0x08,
-     107,   11,   11,   11, 0x08,
-     120,   11,   11,   11, 0x08,
-     130,   11,   11,   11, 0x08,
-     139,   11,   11,   11, 0x08,
-     156,   11,   11,   11, 0x08,
-     178,   11,   11,   11, 0x08,
-     186,   11,   11,   11, 0x08,
+      43,   11,   11,   11, 0x08,
+      52,   11,   11,   11, 0x08,
+      66,   11,   11,   11, 0x08,
+      80,   11,   11,   11, 0x08,
+      94,   11,   11,   11, 0x08,
+     102,   11,   11,   11, 0x08,
+     109,   11,   11,   11, 0x08,
+     116,   11,   11,   11, 0x08,
+     122,   11,   11,   11, 0x08,
+     129,   11,   11,   11, 0x08,
+     137,   11,   11,   11, 0x08,
+     144,   11,   11,   11, 0x08,
+     152,   11,   11,   11, 0x08,
+     164,   11,   11,   11, 0x08,
+     175,   11,   11,   11, 0x08,
+     187,   11,   11,   11, 0x08,
+     200,   11,   11,   11, 0x08,
+     209,   11,   11,   11, 0x08,
+     219,   11,   11,   11, 0x08,
+     231,   11,   11,   11, 0x08,
+     244,   11,   11,   11, 0x08,
+     261,   11,   11,   11, 0x08,
+     280,   11,   11,   11, 0x08,
+     288,   11,   11,   11, 0x08,
+     297,   11,   11,   11, 0x08,
+     307,   11,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0newFile()\0open()\0save()\0"
-    "print()\0undo()\0redo()\0cut()\0copy()\0"
-    "paste()\0bold()\0italic()\0leftAlign()\0"
-    "rightAlign()\0justify()\0center()\0"
-    "setLineSpacing()\0setParagraphSpacing()\0"
-    "about()\0aboutQt()\0"
+    "MainWindow\0\0newFile()\0open()\0load()\0"
+    "save()\0saveAs()\0savePalette()\0"
+    "loadPalette()\0exportImage()\0close()\0"
+    "undo()\0redo()\0cut()\0copy()\0paste()\0"
+    "fill()\0blend()\0copylayer()\0resetall()\0"
+    "cropinput()\0cropoutput()\0zoomin()\0"
+    "zoomout()\0fitwindow()\0fullscreen()\0"
+    "togglesections()\0showlayermanager()\0"
+    "input()\0output()\0palette()\0info()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -71,23 +85,34 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->newFile(); break;
         case 1: _t->open(); break;
-        case 2: _t->save(); break;
-        case 3: _t->print(); break;
-        case 4: _t->undo(); break;
-        case 5: _t->redo(); break;
-        case 6: _t->cut(); break;
-        case 7: _t->copy(); break;
-        case 8: _t->paste(); break;
-        case 9: _t->bold(); break;
-        case 10: _t->italic(); break;
-        case 11: _t->leftAlign(); break;
-        case 12: _t->rightAlign(); break;
-        case 13: _t->justify(); break;
-        case 14: _t->center(); break;
-        case 15: _t->setLineSpacing(); break;
-        case 16: _t->setParagraphSpacing(); break;
-        case 17: _t->about(); break;
-        case 18: _t->aboutQt(); break;
+        case 2: _t->load(); break;
+        case 3: _t->save(); break;
+        case 4: _t->saveAs(); break;
+        case 5: _t->savePalette(); break;
+        case 6: _t->loadPalette(); break;
+        case 7: _t->exportImage(); break;
+        case 8: _t->close(); break;
+        case 9: _t->undo(); break;
+        case 10: _t->redo(); break;
+        case 11: _t->cut(); break;
+        case 12: _t->copy(); break;
+        case 13: _t->paste(); break;
+        case 14: _t->fill(); break;
+        case 15: _t->blend(); break;
+        case 16: _t->copylayer(); break;
+        case 17: _t->resetall(); break;
+        case 18: _t->cropinput(); break;
+        case 19: _t->cropoutput(); break;
+        case 20: _t->zoomin(); break;
+        case 21: _t->zoomout(); break;
+        case 22: _t->fitwindow(); break;
+        case 23: _t->fullscreen(); break;
+        case 24: _t->togglesections(); break;
+        case 25: _t->showlayermanager(); break;
+        case 26: _t->input(); break;
+        case 27: _t->output(); break;
+        case 28: _t->palette(); break;
+        case 29: _t->info(); break;
         default: ;
         }
     }
@@ -126,9 +151,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 30;
     }
     return _id;
 }

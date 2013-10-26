@@ -88,250 +88,349 @@ MainWindow::MainWindow()
 
 void 
 MainWindow::contextMenuEvent(QContextMenuEvent *event)
- {
-     QMenu menu(this);
-     menu.addAction(zoominAct);
-     menu.addAction(zoomoutAct);
-     menu.addAction(pasteAct);
-     menu.exec(event->globalPos());
- }
+{
+    QMenu menu(this);
+    menu.addAction(zoominAct);
+    menu.addAction(zoomoutAct);
+    //menu.addAction(pasteAct);
+    menu.exec(event->globalPos());
+}
 
- void MainWindow::newFile()
- {
-     infoLabel->setText(tr("Invoked <b>File|New</b>"));
- }
+void 
+MainWindow::newFile()
+{
+    infoLabel->setText(tr("Invoked <b>File|New</b>"));
+}
 
- void MainWindow::open()
- {
-     infoLabel->setText(tr("Invoked <b>File|Open</b>"));
- }
+void 
+MainWindow::open()
+{
+    infoLabel->setText(tr("Invoked <b>File|Open</b>"));
+}
 
- void MainWindow::save()
- {
-     infoLabel->setText(tr("Invoked <b>File|Save</b>"));
- }
+void 
+MainWindow::load()
+{
+    infoLabel->setText(tr("Invoked <b>File|Load</b>"));
+}
 
- void MainWindow::print()
- {
-     infoLabel->setText(tr("Invoked <b>File|Print</b>"));
- }
+void 
+MainWindow::save()
+{
+    infoLabel->setText(tr("Invoked <b>File|Save</b>"));
+}
 
- void MainWindow::undo()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Undo</b>"));
- }
+void 
+MainWindow::saveAs()
+{
+    infoLabel->setText(tr("Invoked <b>File|Save As</b>"));
+}
 
- void MainWindow::redo()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Redo</b>"));
- }
+void 
+MainWindow::savePalette()
+{
+   infoLabel->setText(tr("Invoked <b>File|Save Palette</b>"));
+}
 
- void MainWindow::cut()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
- }
+void 
+MainWindow::loadPalette()
+{
+   infoLabel->setText(tr("Invoked <b>File|Load Palette</b>"));
+}
 
- void MainWindow::copy()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));
- }
+void 
+MainWindow::exportImage()
+{
+    infoLabel->setText(tr("Invoked <b>File|Export Image</b>"));
+}
 
- void MainWindow::paste()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
- }
+void 
+MainWindow::close()
+{
+ 	infoLabel->setText(tr("Invoked <b>File|Close</b>"));     
+}
 
- void MainWindow::bold()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Bold</b>"));
- }
+void 
+MainWindow::undo()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Undo</b>"));     
+}
 
- void MainWindow::italic()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Italic</b>"));
- }
+void 
+MainWindow::redo()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Redo</b>"));     
+}
 
- void MainWindow::leftAlign()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Left Align</b>"));
- }
+void 
+MainWindow::cut()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));     
+}
 
- void MainWindow::rightAlign()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Right Align</b>"));
- }
+void 
+MainWindow::copy()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));     
+}
 
- void MainWindow::justify()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Justify</b>"));
- }
+void 
+MainWindow::paste()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));     
+}
 
- void MainWindow::center()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Center</b>"));
- }
+void 
+MainWindow::fill()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Fill</b>"));     
+}
 
- void MainWindow::setLineSpacing()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Set Line Spacing</b>"));
- }
+void 
+MainWindow::blend()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Blend</b>"));     
+}
 
- void MainWindow::setParagraphSpacing()
- {
-     infoLabel->setText(tr("Invoked <b>Edit|Format|Set Paragraph Spacing</b>"));
- }
+void 
+MainWindow::copylayer()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Copy Layer</b>"));     
+}
 
- void MainWindow::about()
- {
-     infoLabel->setText(tr("Invoked <b>Help|About</b>"));
-     QMessageBox::about(this, tr("About Menu"),
-             tr("The <b>Menu</b> example shows how to create "
-                "menu-bar menus and context menus."));
- }
+void 
+MainWindow::resetall()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Reset All</b>"));     
+}
 
- void MainWindow::aboutQt()
- {
-     infoLabel->setText(tr("Invoked <b>Help|About Qt</b>"));
- }
+void 
+MainWindow::cropinput()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Crop Input</b>"));     
+}
 
+void 
+MainWindow::cropoutput()
+{
+ 	infoLabel->setText(tr("Invoked <b>Edit|Crop Output</b>"));     
+}
+
+void 
+MainWindow::zoomin()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Zoom In</b>"));     
+}
+
+void 
+MainWindow::zoomout()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Zoom Out</b>"));     
+}
+
+void 
+MainWindow::fitwindow()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Fit Window</b>"));     
+}
+
+void 
+MainWindow::fullscreen()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Full Screen</b>"));     
+}
+
+void 
+MainWindow::togglesections()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Toggle Sections</b>"));     
+}
+
+void 
+MainWindow::showlayermanager()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Show Layer Manager</b>"));     
+}
+
+void 
+MainWindow::input()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Input</b>"));     
+}
+
+void 
+MainWindow::output()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Output</b>"));     
+}
+
+void 
+MainWindow::palette()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Palette</b>"));     
+}
+
+void 
+MainWindow::info()
+{
+ 	infoLabel->setText(tr("Invoked <b>View|Info</b>"));     
+}
 void MainWindow::createActions()
 {
+	//File Actions
     newAct = new QAction(QIcon("icons/file-new.png"),tr("&New"), this);
-    newAct->setShortcuts(QKeySequence::New);
+    newAct->setShortcut(QKeySequence(tr("Ctrl+N")));
     newAct->setStatusTip(tr("Create a new file"));
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
     openAct = new QAction(QIcon("icons/file-load.png"),tr("&Open..."), this);
-    openAct->setShortcuts(QKeySequence::Open);
+    openAct->setShortcut(QKeySequence(tr("Ctrl+O")));
     openAct->setStatusTip(tr("Open an existing file"));
     connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
 
+	loadAct = new QAction(tr("&Load..."), this);
+    loadAct->setShortcut(QKeySequence(tr("Ctrl+L")));
+    loadAct->setStatusTip(tr("Load image"));
+    connect(loadAct, SIGNAL(triggered()), this, SLOT(load()));
+
     saveAct = new QAction(QIcon("icons/file-save.png"),tr("&Save"), this);
-    saveAct->setShortcuts(QKeySequence::Save);
-    saveAct->setStatusTip(tr("Save the document to disk"));
+    saveAct->setShortcut(QKeySequence(tr("Ctrl+S")));
+    saveAct->setStatusTip(tr("Save the image"));
     connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
 
-    printAct = new QAction(tr("&Print..."), this);
-    printAct->setShortcuts(QKeySequence::Print);
-    printAct->setStatusTip(tr("Print the document"));
-    connect(printAct, SIGNAL(triggered()), this, SLOT(print()));
+    saveasAct = new QAction(tr("&Save As..."), this);
+    saveasAct->setShortcut(QKeySequence(tr("Ctrl+Shift+S")));
+    saveasAct->setStatusTip(tr("Save As the image"));
+    connect(saveasAct, SIGNAL(triggered()), this, SLOT(saveAs()));
+
+	savepaletteAct = new QAction(tr("&Save palette..."), this);
+    savepaletteAct->setShortcut(QKeySequence(tr("Ctrl+P")));
+    savepaletteAct->setStatusTip(tr("Save the palette"));
+    connect(savepaletteAct, SIGNAL(triggered()), this, SLOT(savePalette()));
+
+	loadpaletteAct = new QAction(tr("&Load palette..."), this);
+    loadpaletteAct->setShortcut(QKeySequence(tr("Ctrl+G")));
+    loadpaletteAct->setStatusTip(tr("Load the palette"));
+    connect(loadpaletteAct, SIGNAL(triggered()), this, SLOT(loadPalette()));
+
+	exportAct = new QAction(tr("&Export..."), this);
+    exportAct->setShortcut(QKeySequence(tr("Ctrl+E")));
+    exportAct->setStatusTip(tr("Export"));
+    connect(exportAct, SIGNAL(triggered()), this, SLOT(exportImage()));
 
     exitAct = new QAction(tr("E&xit"), this);
-    exitAct->setShortcuts(QKeySequence::Quit);
+    exitAct->setShortcut(QKeySequence(tr("Ctrl+Q")));
     exitAct->setStatusTip(tr("Exit the application"));
     connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
 
+	//Edit Actions
     undoAct = new QAction(tr("&Undo"), this);
-    undoAct->setShortcuts(QKeySequence::Undo);
+    undoAct->setShortcut(QKeySequence(tr("Ctrl+Z")));
     undoAct->setStatusTip(tr("Undo the last operation"));
     connect(undoAct, SIGNAL(triggered()), this, SLOT(undo()));
 
     redoAct = new QAction(tr("&Redo"), this);
-    redoAct->setShortcuts(QKeySequence::Redo);
+    redoAct->setShortcut(QKeySequence(tr("Ctrl+Y")));
     redoAct->setStatusTip(tr("Redo the last operation"));
     connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
-    zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("Cu&t"), this);
-    zoominAct->setShortcuts(QKeySequence::Cut);
-    zoominAct->setStatusTip(tr("Cut the current selection's contents to the "
-                             "clipboard"));
-    connect(zoominAct, SIGNAL(triggered()), this, SLOT(cut()));
+	cutAct = new QAction(tr("&Cut"), this);
+    cutAct->setShortcut(QKeySequence(tr("Ctrl+X")));
+    cutAct->setStatusTip(tr("Cut"));
+    connect(cutAct, SIGNAL(triggered()), this, SLOT(cut()));
 
-    zoomoutAct = new QAction(QIcon("icons/view-zoomout.png"),tr("&Copy"), this);
-    zoomoutAct->setShortcuts(QKeySequence::Copy);
-    zoomoutAct->setStatusTip(tr("Copy the current selection's contents to the "
-                              "clipboard"));
-    connect(zoomoutAct, SIGNAL(triggered()), this, SLOT(copy()));
+	copyAct = new QAction(tr("&Copy"), this);
+    copyAct->setShortcut(QKeySequence(tr("Ctrl+C")));
+    copyAct->setStatusTip(tr("Copy"));
+    connect(copyAct, SIGNAL(triggered()), this, SLOT(copy()));
 
-    pasteAct = new QAction(tr("&Paste"), this);
-    pasteAct->setShortcuts(QKeySequence::Paste);
-    pasteAct->setStatusTip(tr("Paste the clipboard's contents into the current "
-                               "selection"));
+	pasteAct = new QAction(tr("&Paste"), this);
+    pasteAct->setShortcut(QKeySequence(tr("Ctrl+V")));
+    pasteAct->setStatusTip(tr("Paste"));
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
-	
-	// Sean: We can delete these!
-	// -------------------------------------------------------
-	// *******************************************************
-    boldAct = new QAction(tr("&Bold"), this);
-    boldAct->setCheckable(true);
-    boldAct->setShortcut(QKeySequence::Bold);
-    boldAct->setStatusTip(tr("Make the text bold"));
-    connect(boldAct, SIGNAL(triggered()), this, SLOT(bold()));
 
-    QFont boldFont = boldAct->font();
-    boldFont.setBold(true);
-    boldAct->setFont(boldFont);
+	fillselectionAct = new QAction(QIcon("icons/tool-bucket-fill-22.png"),
+								   tr("&Fill"), this);
+    fillselectionAct->setShortcut(QKeySequence(tr("Ctrl+I")));
+    fillselectionAct->setStatusTip(tr("Fill selection"));
+    connect(fillselectionAct, SIGNAL(triggered()), this, SLOT(fill()));
 
-    italicAct = new QAction(tr("&Italic"), this);
- 	italicAct->setCheckable(true);
-    italicAct->setShortcut(QKeySequence::Italic);
-    italicAct->setStatusTip(tr("Make the text italic"));
-    connect(italicAct, SIGNAL(triggered()), this, SLOT(italic()));
+	blendtoolAct = new QAction(tr("&Blend"), this);
+    blendtoolAct->setShortcut(QKeySequence(tr("Ctrl+D")));
+    blendtoolAct->setStatusTip(tr("Blend tool"));
+    connect(blendtoolAct, SIGNAL(triggered()), this, SLOT(blend()));
 
-    QFont italicFont = italicAct->font();
-    italicFont.setItalic(true);
-    italicAct->setFont(italicFont);
+	copycurrlayerAct = new QAction(tr("&Copy Layer"), this);
+    copycurrlayerAct->setShortcut(QKeySequence(tr("Ctrl+Shift+C")));
+    copycurrlayerAct->setStatusTip(tr("Copy Current Layer"));
+    connect(copycurrlayerAct, SIGNAL(triggered()), this, SLOT(copylayer()));
 
-    setLineSpacingAct = new QAction(tr("Set &Line Spacing..."), this);
-    setLineSpacingAct->setStatusTip(tr("Change the gap between the lines of a "
-                                        "paragraph"));
-    connect(setLineSpacingAct, SIGNAL(triggered()), this, SLOT(setLineSpacing()));
+	resetallAct = new QAction(tr("&Reset All"), this);
+    resetallAct->setShortcut(QKeySequence(tr("Ctrl+A")));
+    resetallAct->setStatusTip(tr("Reset All"));
+    connect(resetallAct, SIGNAL(triggered()), this, SLOT(resetall()));
 
-    setParagraphSpacingAct = new QAction(tr("Set &Paragraph Spacing..."), this);
-    setLineSpacingAct->setStatusTip(tr("Change the gap between paragraphs"));
-    connect(setParagraphSpacingAct, SIGNAL(triggered()),
-             this, SLOT(setParagraphSpacing()));
+	cropinputAct = new QAction(tr("&Crop Input"), this);
+    cropinputAct->setShortcut(QKeySequence(tr("Ctrl+R")));
+    cropinputAct->setStatusTip(tr("Crop Input"));
+    connect(cropinputAct, SIGNAL(triggered()), this, SLOT(cropinput()));
 
-    aboutAct = new QAction(tr("&About"), this);
-    aboutAct->setStatusTip(tr("Show the application's About box"));
-    connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
+	cropoutputAct = new QAction(tr("&Crop Output"), this);
+    cropoutputAct->setShortcut(QKeySequence(tr("Ctrl+T")));
+    cropoutputAct->setStatusTip(tr("Crop Output"));
+    connect(cropoutputAct, SIGNAL(triggered()), this, SLOT(cropoutput()));
 
-    aboutQtAct = new QAction(tr("About &Qt"), this);
-    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
-    connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
-    connect(aboutQtAct, SIGNAL(triggered()), this, SLOT(aboutQt()));
+	//View Actions
+    zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("&Zoom In"), this);
+    zoominAct->setShortcut(QKeySequence(tr("Ctrl+Shift+V")));
+    zoominAct->setStatusTip(tr("Zoom in"));
+    connect(zoominAct, SIGNAL(triggered()), this, SLOT(zoomin()));
 
-    leftAlignAct = new QAction(tr("&Left Align"), this);
-    leftAlignAct->setCheckable(true);
-    leftAlignAct->setShortcut(tr("Ctrl+L"));
-    leftAlignAct->setStatusTip(tr("Left align the selected text"));
-    connect(leftAlignAct, SIGNAL(triggered()), this, SLOT(leftAlign()));
+    zoomoutAct = new QAction(QIcon("icons/view-zoomout.png"),tr("&Zoom Out"), this);
+    zoomoutAct->setShortcut(QKeySequence(tr("Ctrl+Shift+U")));
+    zoomoutAct->setStatusTip(tr("Zoom out"));
+    connect(zoomoutAct, SIGNAL(triggered()), this, SLOT(zoomout()));
 
-    rightAlignAct = new QAction(tr("&Right Align"), this);
-    rightAlignAct->setCheckable(true);
-    rightAlignAct->setShortcut(tr("Ctrl+R"));
-    rightAlignAct->setStatusTip(tr("Right align the selected text"));
-    connect(rightAlignAct, SIGNAL(triggered()), this, SLOT(rightAlign()));
+	fitwindowAct = new QAction(tr("&Fit Window"), this);
+    fitwindowAct->setShortcut(QKeySequence(tr("Ctrl+W")));
+    fitwindowAct->setStatusTip(tr("Fit window"));
+    connect(fitwindowAct, SIGNAL(triggered()), this, SLOT(fitwindow()));
 
-    justifyAct = new QAction(tr("&Justify"), this);
-    justifyAct->setCheckable(true);
-    justifyAct->setShortcut(tr("Ctrl+J"));
-    justifyAct->setStatusTip(tr("Justify the selected text"));
-    connect(justifyAct, SIGNAL(triggered()), this, SLOT(justify()));
+	fullscreenAct = new QAction(tr("&Full Screen"), this);
+    fullscreenAct->setShortcut(QKeySequence(tr("Ctrl+F")));
+    fullscreenAct->setStatusTip(tr("Full screen"));
+    connect(fullscreenAct, SIGNAL(triggered()), this, SLOT(fullscreen()));
 
-    centerAct = new QAction(tr("&Center"), this);
-    centerAct->setCheckable(true);
-    centerAct->setShortcut(tr("Ctrl+E"));
-    centerAct->setStatusTip(tr("Center the selected text"));     
-	connect(centerAct, SIGNAL(triggered()), this, SLOT(center()));
+	togglesectionsAct = new QAction(tr("&Toggle Sections"), this);
+    togglesectionsAct->setShortcut(QKeySequence(tr("Ctrl+B")));
+    togglesectionsAct->setStatusTip(tr("Toggle sections"));
+    connect(togglesectionsAct, SIGNAL(triggered()), this, SLOT(togglesections()));
 
-    alignmentGroup = new QActionGroup(this);
-    alignmentGroup->addAction(leftAlignAct);
-    alignmentGroup->addAction(rightAlignAct);
- 	alignmentGroup->addAction(justifyAct);
-    alignmentGroup->addAction(centerAct);
-    leftAlignAct->setChecked(true);
-	// Sean: End of what can be deleted: 
-	// -------------------------------------------------------
-	// *******************************************************
+	showlayermanagerAct = new QAction(QIcon("icons/view-layer-manager.png"),
+									  tr("&Show Layer Manager"), this);
+    showlayermanagerAct->setShortcut(QKeySequence(tr("Ctrl+M")));
+    showlayermanagerAct->setStatusTip(tr("Show layer manager"));
+    connect(showlayermanagerAct, SIGNAL(triggered()), this, SLOT(showlayermanager()));
 
+	inputAct = new QAction(tr("&Input"), this);
+    inputAct->setShortcut(QKeySequence(tr("1")));
+    inputAct->setStatusTip(tr("Input"));
+    connect(inputAct, SIGNAL(triggered()), this, SLOT(input()));
 
-	//Sean added the other icons here:
-	//--------------------------------
-	//layerAct = new QAction(QIcon("icons/view-layer-manager.png"),tr("&Layer"), this);
-    //layerAct->setShortcuts(QKeySequence::Layer);
-    //layerAct->setStatusTip(tr("View Layer Manager"));
-    //connect(layerAct, SIGNAL(triggered()), this, SLOT(layer()));
+	outputAct = new QAction(tr("&Output"), this);
+    outputAct->setShortcut(QKeySequence(tr("2")));
+    outputAct->setStatusTip(tr("Output"));
+    connect(outputAct, SIGNAL(triggered()), this, SLOT(output()));
+
+	paletteAct = new QAction(tr("&Palette"), this);
+    paletteAct->setShortcut(QKeySequence(tr("3")));
+    paletteAct->setStatusTip(tr("Palette"));
+    connect(paletteAct, SIGNAL(triggered()), this, SLOT(palette()));
+
+	infoAct = new QAction(tr("&Info"), this);
+    infoAct->setShortcut(QKeySequence(tr("4")));
+    infoAct->setStatusTip(tr("Info"));
+    connect(infoAct, SIGNAL(triggered()), this, SLOT(info()));
 }
 
  void MainWindow::createMenus()
@@ -339,36 +438,47 @@ void MainWindow::createActions()
      fileMenu = menuBar()->addMenu(tr("&File"));
      fileMenu->addAction(newAct);
      fileMenu->addAction(openAct);
+	 fileMenu->addAction(loadAct);
+	 fileMenu->addSeparator();
      fileMenu->addAction(saveAct);
-     fileMenu->addAction(printAct);
+	 fileMenu->addAction(saveasAct);
      fileMenu->addSeparator();
+	 fileMenu->addAction(savepaletteAct);
+	 fileMenu->addAction(loadpaletteAct);
+	 fileMenu->addSeparator();
+	 fileMenu->addAction(exportAct);
+	 fileMenu->addSeparator();
      fileMenu->addAction(exitAct);
 
      editMenu = menuBar()->addMenu(tr("&Edit"));
      editMenu->addAction(undoAct);
      editMenu->addAction(redoAct);
      editMenu->addSeparator();
-     editMenu->addAction(zoominAct);
-     editMenu->addAction(zoomoutAct);
-     editMenu->addAction(pasteAct);
-	 //editMenu->addAction(layerAct);
-     editMenu->addSeparator();
+     editMenu->addAction(cutAct);
+     editMenu->addAction(copyAct);
+	 editMenu->addAction(pasteAct);
+	 editMenu->addAction(fillselectionAct);
+	 editMenu->addAction(blendtoolAct);
+	 editMenu->addAction(copycurrlayerAct);
+	 editMenu->addSeparator();
+	 editMenu->addAction(resetallAct);
+	 editMenu->addSeparator();
+	 editMenu->addAction(cropinputAct);
+	 editMenu->addAction(cropoutputAct);
 
-     helpMenu = menuBar()->addMenu(tr("&Help"));
-     helpMenu->addAction(aboutAct);
-     helpMenu->addAction(aboutQtAct);
-
-     formatMenu = editMenu->addMenu(tr("&Format"));
-     formatMenu->addAction(boldAct);
-     formatMenu->addAction(italicAct);
-     formatMenu->addSeparator()->setText(tr("Alignment"));
-     formatMenu->addAction(leftAlignAct);
-     formatMenu->addAction(rightAlignAct);
-     formatMenu->addAction(justifyAct);
-     formatMenu->addAction(centerAct);
-     formatMenu->addSeparator();
-     formatMenu->addAction(setLineSpacingAct);
-     formatMenu->addAction(setParagraphSpacingAct);
+	 viewMenu = menuBar()->addMenu(tr("&View"));
+	 viewMenu->addAction(zoominAct);
+	 viewMenu->addAction(zoomoutAct);
+	 viewMenu->addAction(fitwindowAct);
+	 viewMenu->addAction(fullscreenAct);
+	 viewMenu->addSeparator();
+	 viewMenu->addAction(togglesectionsAct);
+	 viewMenu->addAction(showlayermanagerAct);
+	 viewMenu->addSeparator();
+	 viewMenu->addAction(inputAct);
+	 viewMenu->addAction(outputAct);
+	 viewMenu->addAction(paletteAct);
+	 viewMenu->addAction(infoAct);
  }
  void 
  MainWindow::createToolBars()
@@ -378,9 +488,16 @@ void MainWindow::createActions()
      fileToolBar->addAction(openAct);
      fileToolBar->addAction(saveAct);
 
-     editToolBar = addToolBar(tr("Edit"));
-     editToolBar->addAction(zoominAct);
-     editToolBar->addAction(zoomoutAct);
+	 viewToolBar = addToolBar(tr("View"));
+	 viewToolBar->addAction(zoominAct);
+	 viewToolBar->addAction(zoomoutAct);
+	 viewToolBar->addAction(showlayermanagerAct);
+
+     //editToolBar = addToolBar(tr("Edit"));
+     //editToolBar->addAction(
+     //editToolBar->addAction(
+
+	 
  }
 
 

@@ -19,65 +19,91 @@
      void contextMenuEvent(QContextMenuEvent *event);
 
  private slots:
+	 //File Slots
      void newFile();
      void open();
+     void load();
      void save();
-     void print();
-     void undo();
-     void redo();
-     void cut();
-     void copy();
-     void paste();
-	 //Sean: Can delete
-	 //----------------------------------
-     void bold();
-     void italic();
-     void leftAlign();
-     void rightAlign();
-     void justify();
-     void center();
-     void setLineSpacing();
-     void setParagraphSpacing();
-     void about();
-     void aboutQt();
-	//Sean: End of what needs to be deleted
-	//-------------------------------------
-
+	 void saveAs();
+	 void savePalette();
+	 void loadPalette();
+	 void exportImage();
+	 void close();
+	 //Edit Slots
+	 void undo();
+	 void redo();
+	 void cut();
+	 void copy();
+	 void paste();
+	 void fill();
+	 void blend();
+	 void copylayer();
+	 void resetall();
+	 void cropinput();
+	 void cropoutput();
+	 //View Slots
+	 void zoomin();
+	 void zoomout();
+	 void fitwindow();
+	 void fullscreen();
+	 void togglesections();
+	 void showlayermanager();
+	 void input();
+	 void output();
+	 void palette();
+	 void info();
+	 
  private:
      void createActions();
      void createMenus();
 	 void createToolBars();
 
+	 QActionGroup *alignmentGroup;
+
      QMenu *fileMenu;
      QMenu *editMenu;
-     QMenu *formatMenu;
-     QMenu *helpMenu;
-     QActionGroup *alignmentGroup;
+     QMenu *viewMenu;
+
+	 //File Actions
      QAction *newAct;
      QAction *openAct;
+	 QAction *loadAct;
      QAction *saveAct;
-     QAction *printAct;
+	 QAction *saveasAct;
+	 QAction *printAct;
+	 QAction *savepaletteAct;
+	 QAction *loadpaletteAct;
+	 QAction *exportAct;
      QAction *exitAct;
+
+	 //Edit Actions
      QAction *undoAct;
      QAction *redoAct;
+	 QAction *cutAct;
+	 QAction *copyAct;
+	 QAction *pasteAct;
+	 QAction *fillselectionAct;
+	 QAction *blendtoolAct;
+	 QAction *copycurrlayerAct;
+	 QAction *resetallAct;
+	 QAction *cropinputAct;
+	 QAction *cropoutputAct;
+
+	 //View Actions
      QAction *zoominAct;
      QAction *zoomoutAct;
-	 //Sean: Can delete these:
-	 //----------------------------
-     QAction *pasteAct;
-     QAction *boldAct;
-     QAction *italicAct;
-     QAction *leftAlignAct;
-     QAction *rightAlignAct;
-     QAction *justifyAct;
-     QAction *centerAct;
-     QAction *setLineSpacingAct;
-     QAction *setParagraphSpacingAct;
-     QAction *aboutAct;
-     QAction *aboutQtAct;
-	 //------------------------------
+	 QAction *fitwindowAct;
+	 QAction *fullscreenAct;
+	 QAction *togglesectionsAct;
+	 QAction *showlayermanagerAct;
+	 QAction *inputAct;
+	 QAction *outputAct;
+	 QAction *paletteAct;
+	 QAction *infoAct;
+
      QLabel  *infoLabel;
 	 QToolBar *fileToolBar;
+	 QToolBar *viewToolBar;
      QToolBar *editToolBar;
  };
 
