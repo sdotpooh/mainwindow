@@ -1,4 +1,4 @@
-#ifndef MAINWINDOW_H
+ #ifndef  MAINWINDOW_H 
  #define MAINWINDOW_H
 
  #include <QMainWindow>
@@ -24,6 +24,7 @@
      void open();
      void load();
      void save();
+<<<<<<< HEAD
 	 void saveAs();
 	 void savePalette();
 	 void loadPalette();
@@ -53,6 +54,16 @@
 	 void palette();
 	 void info();
 	 
+=======
+     void print();
+     void undo();
+     void redo();
+     void cut();
+     void copy();
+     void paste();
+	 
+
+>>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
  private:
      void createActions();
      void createMenus();
@@ -92,6 +103,7 @@
 	 //View Actions
      QAction *zoominAct;
      QAction *zoomoutAct;
+<<<<<<< HEAD
 	 QAction *fitwindowAct;
 	 QAction *fullscreenAct;
 	 QAction *togglesectionsAct;
@@ -102,6 +114,11 @@
 	 QAction *infoAct;
 
      QLabel  *infoLabel;
+=======
+	 QAction *pasteAct;
+	 //QAction *layerAct;
+	 QLabel  *infoLabel;
+>>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
 	 QToolBar *fileToolBar;
 	 QToolBar *viewToolBar;
      QToolBar *editToolBar;

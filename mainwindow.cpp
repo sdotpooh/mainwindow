@@ -12,8 +12,19 @@ MainWindow::MainWindow()
     QWidget *bottomFiller = new QWidget;
     bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-
+	//new part
 	QTabWidget  *tabWidget = new QTabWidget;
+	QVBoxLayout *lay = new QVBoxLayout;
+	QHBoxLayout *hlay = new QHBoxLayout;
+	hlay->addStretch();
+	hlay-> addWidget(new QPushButton("Full Screen"));
+	hlay-> addWidget(new QPushButton("Fit Window"));
+	lay -> addStretch();
+	lay -> addLayout(hlay);
+	QTabWidget *blah = new QTabWidget;
+	blah->setLayout(lay);
+
+	tabWidget->addTab(blah, "hello");
 	tabWidget->addTab(new QTabWidget(), "Input");
 	tabWidget->addTab(new QTabWidget(), "Output");
 	tabWidget->addTab(new QTabWidget(), "Palette");
@@ -132,6 +143,7 @@ MainWindow::savePalette()
    infoLabel->setText(tr("Invoked <b>File|Save Palette</b>"));
 }
 
+<<<<<<< HEAD
 void 
 MainWindow::loadPalette()
 {
@@ -143,6 +155,17 @@ MainWindow::exportImage()
 {
     infoLabel->setText(tr("Invoked <b>File|Export Image</b>"));
 }
+=======
+ void MainWindow::cut()
+ {
+     
+ }
+
+ void MainWindow::copy()
+ {
+	
+ }
+>>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
 
 void 
 MainWindow::close()
@@ -150,6 +173,7 @@ MainWindow::close()
  	infoLabel->setText(tr("Invoked <b>File|Close</b>"));     
 }
 
+<<<<<<< HEAD
 void 
 MainWindow::undo()
 {
@@ -221,6 +245,9 @@ MainWindow::zoomin()
 {
  	infoLabel->setText(tr("Invoked <b>View|Zoom In</b>"));     
 }
+=======
+ 
+>>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
 
 void 
 MainWindow::zoomout()
@@ -334,6 +361,7 @@ void MainWindow::createActions()
     redoAct->setStatusTip(tr("Redo the last operation"));
     connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
+<<<<<<< HEAD
 	cutAct = new QAction(tr("&Cut"), this);
     cutAct->setShortcut(QKeySequence(tr("Ctrl+X")));
     cutAct->setStatusTip(tr("Cut"));
@@ -431,6 +459,30 @@ void MainWindow::createActions()
     infoAct->setShortcut(QKeySequence(tr("4")));
     infoAct->setStatusTip(tr("Info"));
     connect(infoAct, SIGNAL(triggered()), this, SLOT(info()));
+=======
+    zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("Zoom&Out"), this);
+    zoominAct->setShortcuts(QKeySequence::Cut);
+    zoominAct->setStatusTip(tr("Cut the current selection's contents to the "
+                             "clipboard"));
+    connect(zoominAct, SIGNAL(triggered()), this, SLOT(cut()));
+
+    zoomoutAct = new QAction(QIcon("icons/view-zoomout.png"),tr("Zoom&In"), this);
+    zoomoutAct->setShortcuts(QKeySequence::Copy);
+    zoomoutAct->setStatusTip(tr("Copy the current selection's contents to the "
+                              "clipboard"));
+    connect(zoomoutAct, SIGNAL(triggered()), this, SLOT(copy()));
+
+    pasteAct = new QAction(tr("&Paste"), this);
+    pasteAct->setShortcuts(QKeySequence::Paste);
+    pasteAct->setStatusTip(tr("Paste the clipboard's contents into the current "
+                               "selection"));
+    connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
+
+	/*layerAct = new QAction(QIcon("icons/view-layer-manager.png"),tr("&Layer"), this);
+    layerAct->setShortcuts(QKeySequence::Layer);
+    layerAct->setStatusTip(tr("View Layer Manager"));
+    connect(layerAct, SIGNAL(triggered()), this, SLOT(layer()));*/
+>>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
 }
 
  void MainWindow::createMenus()
@@ -454,6 +506,7 @@ void MainWindow::createActions()
      editMenu->addAction(undoAct);
      editMenu->addAction(redoAct);
      editMenu->addSeparator();
+<<<<<<< HEAD
      editMenu->addAction(cutAct);
      editMenu->addAction(copyAct);
 	 editMenu->addAction(pasteAct);
@@ -479,6 +532,14 @@ void MainWindow::createActions()
 	 viewMenu->addAction(outputAct);
 	 viewMenu->addAction(paletteAct);
 	 viewMenu->addAction(infoAct);
+=======
+     editMenu->addAction(zoominAct);
+     editMenu->addAction(zoomoutAct);
+     editMenu->addAction(pasteAct);
+	 //editMenu->addAction(layerAct);
+     editMenu->addSeparator();
+
+>>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
  }
  void 
  MainWindow::createToolBars()
@@ -499,7 +560,6 @@ void MainWindow::createActions()
 
 	 
  }
-
 
 
 
