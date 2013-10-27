@@ -1,11 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-<<<<<<< HEAD
-** Created: Sat Oct 26 00:37:01 2013
-=======
-** Created: Thu Oct 24 21:55:43 2013
->>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
+** Created: Sun Oct 27 14:00:54 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -27,11 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-<<<<<<< HEAD
       30,   14, // methods
-=======
-       9,   14, // methods
->>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -43,7 +35,6 @@ static const uint qt_meta_data_MainWindow[] = {
       22,   11,   11,   11, 0x08,
       29,   11,   11,   11, 0x08,
       36,   11,   11,   11, 0x08,
-<<<<<<< HEAD
       43,   11,   11,   11, 0x08,
       52,   11,   11,   11, 0x08,
       66,   11,   11,   11, 0x08,
@@ -70,19 +61,11 @@ static const uint qt_meta_data_MainWindow[] = {
      288,   11,   11,   11, 0x08,
      297,   11,   11,   11, 0x08,
      307,   11,   11,   11, 0x08,
-=======
-      44,   11,   11,   11, 0x08,
-      51,   11,   11,   11, 0x08,
-      58,   11,   11,   11, 0x08,
-      64,   11,   11,   11, 0x08,
-      71,   11,   11,   11, 0x08,
->>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-<<<<<<< HEAD
     "MainWindow\0\0newFile()\0open()\0load()\0"
     "save()\0saveAs()\0savePalette()\0"
     "loadPalette()\0exportImage()\0close()\0"
@@ -92,11 +75,6 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "zoomout()\0fitwindow()\0fullscreen()\0"
     "togglesections()\0showlayermanager()\0"
     "input()\0output()\0palette()\0info()\0"
-=======
-    "MainWindow\0\0newFile()\0open()\0save()\0"
-    "print()\0undo()\0redo()\0cut()\0copy()\0"
-    "paste()\0"
->>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -107,7 +85,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->newFile(); break;
         case 1: _t->open(); break;
-<<<<<<< HEAD
         case 2: _t->load(); break;
         case 3: _t->save(); break;
         case 4: _t->saveAs(); break;
@@ -136,15 +113,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 27: _t->output(); break;
         case 28: _t->palette(); break;
         case 29: _t->info(); break;
-=======
-        case 2: _t->save(); break;
-        case 3: _t->print(); break;
-        case 4: _t->undo(); break;
-        case 5: _t->redo(); break;
-        case 6: _t->cut(); break;
-        case 7: _t->copy(); break;
-        case 8: _t->paste(); break;
->>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
         default: ;
         }
     }
@@ -183,15 +151,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-<<<<<<< HEAD
         if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
         _id -= 30;
-=======
-        if (_id < 9)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
->>>>>>> 8ac407f79f0f5f4c2189ac8119662efa7d6c931d
     }
     return _id;
 }
