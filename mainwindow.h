@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow
 	Q_OBJECT
 	public:
     	MainWindow();
+		~MainWindow();
 
  	protected:
      	void contextMenuEvent(QContextMenuEvent *event);
@@ -96,6 +97,15 @@ class MainWindow : public QMainWindow
     	QAction *outputAct;
     	QAction *paletteAct;
     	QAction *infoAct;
+		//Toolbar actions
+		QAction *pencilAct;
+		QAction *eraserAct;
+		QAction *fuzzyselectAct;
+		QAction *colorselectAct;
+		QAction *bucketfillAct;
+		QAction *colorpickerAct;
+		QAction *rectselectAct;
+		QAction *noneAct;
 
     	QLabel *infoLabel;
     	QToolBar *fileToolBar;

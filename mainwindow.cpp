@@ -1,3 +1,5 @@
+// Sean Vinas, Enmanuel Almanzar, and Daniel Sodkiewicz Mosaic software 
+
 #include <QtGui>
 #include "mainwindow.h"
 
@@ -17,17 +19,17 @@ MainWindow::MainWindow()
     QVBoxLayout *lay = new QVBoxLayout;
 	QHBoxLayout *hlay = new QHBoxLayout;
 	hlay->addStretch();
-	hlay-> addWidget(new QPushButton("Full Screen"));
-	hlay-> addWidget(new QPushButton("Fit Window"));
+	hlay->addWidget(new QPushButton("Full Screen"));
+	hlay->addWidget(new QPushButton("Fit Window"));
 
 	
 	hlay->addWidget(new QSlider(Qt::Horizontal));
-	lay -> addStretch();
-	lay -> addLayout(hlay);
+	lay ->addStretch();
+	lay ->addLayout(hlay);
 	QTabWidget *blah = new QTabWidget;
 	blah->setLayout(lay);
 
-	tabWidget->addTab(blah, "hello");
+
     tabWidget->addTab(new QTabWidget(), "Input");
     tabWidget->addTab(new QTabWidget(), "Output");
     tabWidget->addTab(new QTabWidget(), "Palette");
@@ -44,8 +46,8 @@ MainWindow::MainWindow()
     item_one->setText(0,"Settings Go Here");
     treeWidget->insertTopLevelItem(0,item_one);
 
-        //QTreeWidgetItem *tree_Item_One_Widget = new QTreeWidgetItem(tree_Item_One);
-        //tree_Item_One_Widget->setText(0, tr("Input Settings Widget Inside"));
+    //QTreeWidgetItem *tree_Item_One_Widget = new QTreeWidgetItem(tree_Item_One);
+    //tree_Item_One_Widget->setText(0, tr("Input Settings Widget Inside"));
 
     QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
     tree_Item_Two->setText(0, tr("Mosaic Rendering"));
@@ -76,12 +78,12 @@ MainWindow::MainWindow()
     item_five->setText(0,"Grout Go Here");
     treeWidget->insertTopLevelItem(0,item_five);
 
-        //QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(tree_Item_Two);
-        //tree_Item_Two->setText(0, tr("Input Setting s2"));
+    //QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(tree_Item_Two);
+    //tree_Item_Two->setText(0, tr("Input Setting s2"));
         
     //set_a->setText(0, tr("Input Settings"));
-        //set_b->setText(0, tr("Input Settings2"));
-        // layout
+	//set_b->setText(0, tr("Input Settings2"));
+    // layout
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->setMargin(5);
@@ -97,6 +99,11 @@ MainWindow::MainWindow()
     setWindowTitle(tr("Tessera Grid V1.0"));
     setMinimumSize(160, 160);
     resize(980, 620);
+}
+
+MainWindow::~MainWindow()
+{
+	//save setting and image output
 }
 
 void
@@ -160,137 +167,137 @@ MainWindow::exportImage()
 void
 MainWindow::close()
 {
-         infoLabel->setText(tr("Invoked <b>File|Close</b>"));
+    infoLabel->setText(tr("Invoked <b>File|Close</b>"));
 }
 
 void
 MainWindow::undo()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Undo</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Undo</b>"));
 }
 
 void
 MainWindow::redo()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Redo</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Redo</b>"));
 }
 
 void
 MainWindow::cut()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
 }
 
 void
 MainWindow::copy()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));
 }
 
 void
 MainWindow::paste()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
 }
 
 void
 MainWindow::fill()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Fill</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Fill</b>"));
 }
 
 void
 MainWindow::blend()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Blend</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Blend</b>"));
 }
 
 void
 MainWindow::copylayer()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Copy Layer</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Copy Layer</b>"));
 }
 
 void
 MainWindow::resetall()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Reset All</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Reset All</b>"));
 }
 
 void
 MainWindow::cropinput()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Crop Input</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Crop Input</b>"));
 }
 
 void
 MainWindow::cropoutput()
 {
-         infoLabel->setText(tr("Invoked <b>Edit|Crop Output</b>"));
+    infoLabel->setText(tr("Invoked <b>Edit|Crop Output</b>"));
 }
 
 void
 MainWindow::zoomin()
 {
-         infoLabel->setText(tr("Invoked <b>View|Zoom In</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Zoom In</b>"));
 }
 
 void
 MainWindow::zoomout()
 {
-         infoLabel->setText(tr("Invoked <b>View|Zoom Out</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Zoom Out</b>"));
 }
 
 void
 MainWindow::fitwindow()
 {
-         infoLabel->setText(tr("Invoked <b>View|Fit Window</b>"));
+	infoLabel->setText(tr("Invoked <b>View|Fit Window</b>"));
 }
 
 void
 MainWindow::fullscreen()
 {
-         infoLabel->setText(tr("Invoked <b>View|Full Screen</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Full Screen</b>"));
 }
 
 void
 MainWindow::togglesections()
 {
-         infoLabel->setText(tr("Invoked <b>View|Toggle Sections</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Toggle Sections</b>"));
 }
 
 void
 MainWindow::showlayermanager()
 {
-         infoLabel->setText(tr("Invoked <b>View|Show Layer Manager</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Show Layer Manager</b>"));
 }
 
 void
 MainWindow::input()
 {
-         infoLabel->setText(tr("Invoked <b>View|Input</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Input</b>"));
 }
 
 void
 MainWindow::output()
 {
-         infoLabel->setText(tr("Invoked <b>View|Output</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Output</b>"));
 }
 
 void
 MainWindow::palette()
 {
-         infoLabel->setText(tr("Invoked <b>View|Palette</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Palette</b>"));
 }
 
 void
 MainWindow::info()
 {
-         infoLabel->setText(tr("Invoked <b>View|Info</b>"));
+    infoLabel->setText(tr("Invoked <b>View|Info</b>"));
 }
 void MainWindow::createActions()
 {
-        //File Actions
+    //File Actions
     newAct = new QAction(QIcon("icons/file-new.png"),tr("&New"), this);
     newAct->setShortcut(QKeySequence(tr("Ctrl+N")));
     newAct->setStatusTip(tr("Create a new file"));
@@ -301,7 +308,7 @@ void MainWindow::createActions()
     openAct->setStatusTip(tr("Open an existing file"));
     connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
 
-        loadAct = new QAction(tr("&Load..."), this);
+    loadAct = new QAction(tr("&Load..."), this);
     loadAct->setShortcut(QKeySequence(tr("Ctrl+L")));
     loadAct->setStatusTip(tr("Load image"));
     connect(loadAct, SIGNAL(triggered()), this, SLOT(load()));
@@ -316,17 +323,17 @@ void MainWindow::createActions()
     saveasAct->setStatusTip(tr("Save As the image"));
     connect(saveasAct, SIGNAL(triggered()), this, SLOT(saveAs()));
 
-        savepaletteAct = new QAction(tr("&Save palette..."), this);
+    savepaletteAct = new QAction(tr("&Save palette..."), this);
     savepaletteAct->setShortcut(QKeySequence(tr("Ctrl+P")));
     savepaletteAct->setStatusTip(tr("Save the palette"));
     connect(savepaletteAct, SIGNAL(triggered()), this, SLOT(savePalette()));
 
-        loadpaletteAct = new QAction(tr("&Load palette..."), this);
+    loadpaletteAct = new QAction(tr("&Load palette..."), this);
     loadpaletteAct->setShortcut(QKeySequence(tr("Ctrl+G")));
     loadpaletteAct->setStatusTip(tr("Load the palette"));
     connect(loadpaletteAct, SIGNAL(triggered()), this, SLOT(loadPalette()));
 
-        exportAct = new QAction(tr("&Export..."), this);
+    exportAct = new QAction(tr("&Export..."), this);
     exportAct->setShortcut(QKeySequence(tr("Ctrl+E")));
     exportAct->setStatusTip(tr("Export"));
     connect(exportAct, SIGNAL(triggered()), this, SLOT(exportImage()));
@@ -336,7 +343,7 @@ void MainWindow::createActions()
     exitAct->setStatusTip(tr("Exit the application"));
     connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
 
-        //Edit Actions
+    //Edit Actions
     undoAct = new QAction(tr("&Undo"), this);
     undoAct->setShortcut(QKeySequence(tr("Ctrl+Z")));
     undoAct->setStatusTip(tr("Undo the last operation"));
@@ -347,53 +354,53 @@ void MainWindow::createActions()
     redoAct->setStatusTip(tr("Redo the last operation"));
     connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
-        cutAct = new QAction(tr("&Cut"), this);
+    cutAct = new QAction(tr("&Cut"), this);
     cutAct->setShortcut(QKeySequence(tr("Ctrl+X")));
     cutAct->setStatusTip(tr("Cut"));
     connect(cutAct, SIGNAL(triggered()), this, SLOT(cut()));
 
-        copyAct = new QAction(tr("&Copy"), this);
+    copyAct = new QAction(tr("&Copy"), this);
     copyAct->setShortcut(QKeySequence(tr("Ctrl+C")));
     copyAct->setStatusTip(tr("Copy"));
     connect(copyAct, SIGNAL(triggered()), this, SLOT(copy()));
 
-        pasteAct = new QAction(tr("&Paste"), this);
+    pasteAct = new QAction(tr("&Paste"), this);
     pasteAct->setShortcut(QKeySequence(tr("Ctrl+V")));
     pasteAct->setStatusTip(tr("Paste"));
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
-        fillselectionAct = new QAction(QIcon("icons/tool-bucket-fill-22.png"),
-                                                                 tr("&Fill"), this);
+    fillselectionAct = new QAction(QIcon("icons/tool-bucket-fill-22.png"),
+                                   tr("&Fill"), this);
     fillselectionAct->setShortcut(QKeySequence(tr("Ctrl+I")));
     fillselectionAct->setStatusTip(tr("Fill selection"));
     connect(fillselectionAct, SIGNAL(triggered()), this, SLOT(fill()));
 
-        blendtoolAct = new QAction(tr("&Blend"), this);
+    blendtoolAct = new QAction(tr("&Blend"), this);
     blendtoolAct->setShortcut(QKeySequence(tr("Ctrl+D")));
     blendtoolAct->setStatusTip(tr("Blend tool"));
     connect(blendtoolAct, SIGNAL(triggered()), this, SLOT(blend()));
 
-        copycurrlayerAct = new QAction(tr("&Copy Layer"), this);
+    copycurrlayerAct = new QAction(tr("&Copy Layer"), this);
     copycurrlayerAct->setShortcut(QKeySequence(tr("Ctrl+Shift+C")));
     copycurrlayerAct->setStatusTip(tr("Copy Current Layer"));
     connect(copycurrlayerAct, SIGNAL(triggered()), this, SLOT(copylayer()));
 
-        resetallAct = new QAction(tr("&Reset All"), this);
+    resetallAct = new QAction(tr("&Reset All"), this);
     resetallAct->setShortcut(QKeySequence(tr("Ctrl+A")));
     resetallAct->setStatusTip(tr("Reset All"));
     connect(resetallAct, SIGNAL(triggered()), this, SLOT(resetall()));
 
-        cropinputAct = new QAction(tr("&Crop Input"), this);
+    cropinputAct = new QAction(tr("&Crop Input"), this);
     cropinputAct->setShortcut(QKeySequence(tr("Ctrl+R")));
     cropinputAct->setStatusTip(tr("Crop Input"));
     connect(cropinputAct, SIGNAL(triggered()), this, SLOT(cropinput()));
 
-        cropoutputAct = new QAction(tr("&Crop Output"), this);
+    cropoutputAct = new QAction(tr("&Crop Output"), this);
     cropoutputAct->setShortcut(QKeySequence(tr("Ctrl+T")));
     cropoutputAct->setStatusTip(tr("Crop Output"));
     connect(cropoutputAct, SIGNAL(triggered()), this, SLOT(cropoutput()));
 
-        //View Actions
+    //View Actions
     zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("&Zoom In"), this);
     zoominAct->setShortcut(QKeySequence(tr("Ctrl+Shift+V")));
     zoominAct->setStatusTip(tr("Zoom in"));
@@ -404,111 +411,149 @@ void MainWindow::createActions()
     zoomoutAct->setStatusTip(tr("Zoom out"));
     connect(zoomoutAct, SIGNAL(triggered()), this, SLOT(zoomout()));
 
-        fitwindowAct = new QAction(tr("&Fit Window"), this);
+    fitwindowAct = new QAction(tr("&Fit Window"), this);
     fitwindowAct->setShortcut(QKeySequence(tr("Ctrl+W")));
     fitwindowAct->setStatusTip(tr("Fit window"));
     connect(fitwindowAct, SIGNAL(triggered()), this, SLOT(fitwindow()));
 
-        fullscreenAct = new QAction(tr("&Full Screen"), this);
+    fullscreenAct = new QAction(tr("&Full Screen"), this);
     fullscreenAct->setShortcut(QKeySequence(tr("Ctrl+F")));
     fullscreenAct->setStatusTip(tr("Full screen"));
     connect(fullscreenAct, SIGNAL(triggered()), this, SLOT(fullscreen()));
 
-        togglesectionsAct = new QAction(tr("&Toggle Sections"), this);
+    togglesectionsAct = new QAction(tr("&Toggle Sections"), this);
     togglesectionsAct->setShortcut(QKeySequence(tr("Ctrl+B")));
     togglesectionsAct->setStatusTip(tr("Toggle sections"));
     connect(togglesectionsAct, SIGNAL(triggered()), this, SLOT(togglesections()));
 
-        showlayermanagerAct = new QAction(QIcon("icons/view-layer-manager.png"),
-                                                                         tr("&Show Layer Manager"), this);
+    showlayermanagerAct = new QAction(QIcon("icons/view-layer-manager.png"),
+                                      tr("&Show Layer Manager"), this);
     showlayermanagerAct->setShortcut(QKeySequence(tr("Ctrl+M")));
     showlayermanagerAct->setStatusTip(tr("Show layer manager"));
     connect(showlayermanagerAct, SIGNAL(triggered()), this, SLOT(showlayermanager()));
 
-        inputAct = new QAction(tr("&Input"), this);
+    showlayermanagerAct = new QAction(QIcon("icons/view-layer-manager.png"),
+                                      tr("&Show Layer Manager"), this);
+    showlayermanagerAct->setShortcut(QKeySequence(tr("Ctrl+M")));
+    showlayermanagerAct->setStatusTip(tr("Show layer manager"));
+    connect(showlayermanagerAct, SIGNAL(triggered()), this, SLOT(showlayermanager()));
+	
+	pencilAct = new QAction(QIcon("icons/tool-pencil-22.png"),
+                                      tr("&Pencil Tool"), this);
+
+	eraserAct = new QAction(QIcon("icons/tool-eraser-22.png"),
+                                      tr("&Eraser Tool"), this);
+	
+	fuzzyselectAct = new QAction(QIcon("icons/tool-fuzzy-select-22.png"),
+                                      tr("&Fuzzy Tool"), this);
+	
+	colorselectAct = new QAction(QIcon("icons/tool-by-color-select-22.png"),
+                                      tr("&By Color Select"), this);
+
+	bucketfillAct = new QAction(QIcon("icons/tool-bucket-fill-22.png"),
+                                      tr("&Bucket Fill"), this);
+
+	colorpickerAct = new QAction(QIcon("icons/tool-color-picker-22.png"),
+                                      tr("&Color Picker"), this);
+
+	rectselectAct = new QAction(QIcon("icons/tool-rect-select-22.png"),
+                                      tr("&Rectangular Select"), this);
+
+	noneAct = new QAction(QIcon("icons/tool-none-icon.png"),
+                                      tr("&None"), this);
+
+	inputAct = new QAction(tr("&Input"), this);
     inputAct->setShortcut(QKeySequence(tr("1")));
     inputAct->setStatusTip(tr("Input"));
     connect(inputAct, SIGNAL(triggered()), this, SLOT(input()));
 
-        outputAct = new QAction(tr("&Output"), this);
+    outputAct = new QAction(tr("&Output"), this);
     outputAct->setShortcut(QKeySequence(tr("2")));
     outputAct->setStatusTip(tr("Output"));
     connect(outputAct, SIGNAL(triggered()), this, SLOT(output()));
 
-        paletteAct = new QAction(tr("&Palette"), this);
+    paletteAct = new QAction(tr("&Palette"), this);
     paletteAct->setShortcut(QKeySequence(tr("3")));
     paletteAct->setStatusTip(tr("Palette"));
     connect(paletteAct, SIGNAL(triggered()), this, SLOT(palette()));
 
-        infoAct = new QAction(tr("&Info"), this);
+    infoAct = new QAction(tr("&Info"), this);
     infoAct->setShortcut(QKeySequence(tr("4")));
     infoAct->setStatusTip(tr("Info"));
     connect(infoAct, SIGNAL(triggered()), this, SLOT(info()));
+
 }
 
- void MainWindow::createMenus()
- {
-     fileMenu = menuBar()->addMenu(tr("&File"));
-     fileMenu->addAction(newAct);
-     fileMenu->addAction(openAct);
-         fileMenu->addAction(loadAct);
-         fileMenu->addSeparator();
-     fileMenu->addAction(saveAct);
-         fileMenu->addAction(saveasAct);
-     fileMenu->addSeparator();
-         fileMenu->addAction(savepaletteAct);
-         fileMenu->addAction(loadpaletteAct);
-         fileMenu->addSeparator();
-         fileMenu->addAction(exportAct);
-         fileMenu->addSeparator();
-     fileMenu->addAction(exitAct);
+void MainWindow::createMenus()
+{
+	fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(newAct);
+    fileMenu->addAction(openAct);
+    fileMenu->addAction(loadAct);
+    fileMenu->addSeparator();
+    fileMenu->addAction(saveAct);
+    fileMenu->addAction(saveasAct);
+    fileMenu->addSeparator();
+    fileMenu->addAction(savepaletteAct);
+    fileMenu->addAction(loadpaletteAct);
+    fileMenu->addSeparator();
+    fileMenu->addAction(exportAct);
+    fileMenu->addSeparator();
+    fileMenu->addAction(exitAct);
 
-     editMenu = menuBar()->addMenu(tr("&Edit"));
-     editMenu->addAction(undoAct);
-     editMenu->addAction(redoAct);
-     editMenu->addSeparator();
-     editMenu->addAction(cutAct);
-     editMenu->addAction(copyAct);
-         editMenu->addAction(pasteAct);
-         editMenu->addAction(fillselectionAct);
-         editMenu->addAction(blendtoolAct);
-         editMenu->addAction(copycurrlayerAct);
-         editMenu->addSeparator();
-         editMenu->addAction(resetallAct);
-         editMenu->addSeparator();
-         editMenu->addAction(cropinputAct);
-         editMenu->addAction(cropoutputAct);
+    editMenu = menuBar()->addMenu(tr("&Edit"));
+    editMenu->addAction(undoAct);
+    editMenu->addAction(redoAct);
+    editMenu->addSeparator();
+    editMenu->addAction(cutAct);
+    editMenu->addAction(copyAct);
+    editMenu->addAction(pasteAct);
+    editMenu->addAction(fillselectionAct);
+    editMenu->addAction(blendtoolAct);
+    editMenu->addAction(copycurrlayerAct);
+    editMenu->addSeparator();
+    editMenu->addAction(resetallAct);
+    editMenu->addSeparator();
+    editMenu->addAction(cropinputAct);
+    editMenu->addAction(cropoutputAct);
 
-         viewMenu = menuBar()->addMenu(tr("&View"));
-         viewMenu->addAction(zoominAct);
-         viewMenu->addAction(zoomoutAct);
-         viewMenu->addAction(fitwindowAct);
-         viewMenu->addAction(fullscreenAct);
-         viewMenu->addSeparator();
-         viewMenu->addAction(togglesectionsAct);
-         viewMenu->addAction(showlayermanagerAct);
-         viewMenu->addSeparator();
-         viewMenu->addAction(inputAct);
-         viewMenu->addAction(outputAct);
-         viewMenu->addAction(paletteAct);
-         viewMenu->addAction(infoAct);
- }
- void
- MainWindow::createToolBars()
- {
-     fileToolBar = addToolBar(tr("File"));
-     fileToolBar->addAction(newAct);
-     fileToolBar->addAction(openAct);
-     fileToolBar->addAction(saveAct);
+	viewMenu = menuBar()->addMenu(tr("&View"));
+    viewMenu->addAction(zoominAct);
+    viewMenu->addAction(zoomoutAct);
+    viewMenu->addAction(fitwindowAct);
+    viewMenu->addAction(fullscreenAct);
+    viewMenu->addSeparator();
+    viewMenu->addAction(togglesectionsAct);
+    viewMenu->addAction(showlayermanagerAct);
+    viewMenu->addSeparator();
+    viewMenu->addAction(inputAct);
+    viewMenu->addAction(outputAct);
+    viewMenu->addAction(paletteAct);
+    viewMenu->addAction(infoAct);
+}
 
-         viewToolBar = addToolBar(tr("View"));
-         viewToolBar->addAction(zoominAct);
-         viewToolBar->addAction(zoomoutAct);
-         viewToolBar->addAction(showlayermanagerAct);
+void
+MainWindow::createToolBars()
+{
+	fileToolBar = addToolBar(tr("File"));
+    fileToolBar->addAction(newAct);
+    fileToolBar->addAction(openAct);
+    fileToolBar->addAction(saveAct);
 
-     //editToolBar = addToolBar(tr("Edit"));
-     //editToolBar->addAction(
-     //editToolBar->addAction(
+    viewToolBar = addToolBar(tr("View"));
+    viewToolBar->addAction(zoominAct);
+    viewToolBar->addAction(zoomoutAct);
+    viewToolBar->addAction(showlayermanagerAct);
 
+    editToolBar = addToolBar(tr("Edit"));
+    editToolBar->addAction(pencilAct);
+    editToolBar->addAction(eraserAct);
+	editToolBar->addAction(fuzzyselectAct);
+	editToolBar->addAction(colorselectAct);
+	editToolBar->addAction(bucketfillAct);
+	editToolBar->addAction(colorpickerAct);
+	editToolBar->addAction(rectselectAct);
+	editToolBar->addSeparator();
+	editToolBar->addAction(noneAct);
         
- }
+}
