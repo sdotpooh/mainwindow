@@ -13,29 +13,14 @@ MainWindow::MainWindow()
 
     QWidget *bottomFiller = new QWidget;
     bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-		
-	QTabWidget *tabWidget = new QTabWidget;
-    QVBoxLayout *lay = new QVBoxLayout;
-	QHBoxLayout *hlay = new QHBoxLayout;
-	hlay->addStretch();
-	hlay->addWidget(new QPushButton("Full Screen"));
-	hlay->addWidget(new QPushButton("Fit Window"));
-
 	
-	hlay->addWidget(new QSlider(Qt::Horizontal));
-	lay ->addStretch();
-	lay ->addLayout(hlay);
-	QTabWidget *blah = new QTabWidget;
-	blah->setLayout(lay);
-
-
+	QTabWidget *tabWidget = new QTabWidget;
     tabWidget->addTab(new QTabWidget(), "Input");
     tabWidget->addTab(new QTabWidget(), "Output");
     tabWidget->addTab(new QTabWidget(), "Palette");
     tabWidget->addTab(new QTabWidget(), "Info");
-
-
+	
+	//Begin Tree Widgets
     QTreeWidget *treeWidget = new QTreeWidget;
     treeWidget->header()->hide();
 
@@ -85,9 +70,17 @@ MainWindow::MainWindow()
 	//set_b->setText(0, tr("Input Settings2"));
     // layout
 
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->setMargin(5);
-    layout->addWidget(tabWidget);
+    QHBoxLayout *layout 		  = new QHBoxLayout;
+	QVBoxLayout *tabLayout 		  = new QVBoxLayout;
+	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
+	
+	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
+	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
+	tabButtonslayout->addWidget(new QSlider(Qt::Horizontal));
+	
+    tabLayout->addWidget(tabWidget);
+	tabLayout->addLayout(tabButtonslayout);
+	layout->addLayout(tabLayout);
     layout->addWidget(treeWidget);
 
     widget->setLayout(layout);
@@ -303,7 +296,7 @@ void MainWindow::createActions()
     newAct->setStatusTip(tr("Create a new file"));
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    openAct = new QAction(QIcon("icons/file-load.png"),tr("&Open..."), this);
+    openAct = new QAction(QIcon("icons/file-load.png"),tr("&Open"), this);
     openAct->setShortcut(QKeySequence(tr("Ctrl+O")));
     openAct->setStatusTip(tr("Open an existing file"));
     connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
