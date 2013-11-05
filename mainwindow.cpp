@@ -1,6 +1,10 @@
 // Sean Vinas, Enmanuel Almanzar, and Daniel Sodkiewicz Mosaic software 
 
 #include <QtGui>
+#include<QString>
+#include<QFile>
+#include<QImage>
+#include<QPixmap>
 #include "mainwindow.h"
 
 MainWindow::MainWindow()
@@ -125,8 +129,21 @@ MainWindow::newFile()
 void
 MainWindow::open()
 {
-    infoLabel->setText(tr("Invoked <b>File|Open</b>"));
+    //infoLabel->setText(tr("Invoked <b>File|Open</b>"));
+	QString fileName = QFileDialog::getOpenFileName(this,
+			tr("Open File"),QDir::currentPath());
+	if(!fileName.isEmpty())
+	 {
+		QImage image(fileName);
+		if(image.isNull())
+		{
+             QMessageBox::information(this, tr("Image Viewer"),
+                                      tr("Cannot load %1.").arg(fileName));
+             return;
+        }
+	 }
 }
+
 
 void
 MainWindow::load()
