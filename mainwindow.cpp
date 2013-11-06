@@ -101,6 +101,7 @@ MainWindow::MainWindow()
 MainWindow::~MainWindow()
 {
 	//save setting and image output
+	//This is the destructor, add this functionality when appropriate
 }
 
 void
