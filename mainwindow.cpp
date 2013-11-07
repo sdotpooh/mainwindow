@@ -74,15 +74,22 @@ MainWindow::MainWindow()
 	//set_b->setText(0, tr("Input Settings2"));
     // layout
 
+
+	image = QPixmap("starrynight.png");
+	QLabel *imageLabel = new QLabel();
+	imageLabel->setPixmap(image);
+
     QHBoxLayout *layout 		  = new QHBoxLayout;
 	QVBoxLayout *tabLayout 		  = new QVBoxLayout;
 	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
+	//QVBoxLayout *imageLayout 	  = new QVBoxLayout;
 	
 	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
 	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
 	tabButtonslayout->addWidget(new QSlider(Qt::Horizontal));
 	
     tabLayout->addWidget(tabWidget);
+	tabLayout->addWidget(imageLabel);
 	tabLayout->addLayout(tabButtonslayout);
 	layout->addLayout(tabLayout);
     layout->addWidget(treeWidget);

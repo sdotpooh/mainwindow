@@ -111,6 +111,8 @@ class MainWindow : public QMainWindow
     	QToolBar *fileToolBar;
     	QToolBar *viewToolBar;
     	QToolBar *editToolBar;
+		QPixmap image;
+		QLabel *imageLabel;
 };
 
 #endif
