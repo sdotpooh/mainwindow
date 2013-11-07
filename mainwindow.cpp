@@ -18,12 +18,6 @@ MainWindow::MainWindow()
     QWidget *bottomFiller = new QWidget;
     bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	
-	QTabWidget *tabWidget = new QTabWidget;
-    tabWidget->addTab(new QTabWidget(), "Input");
-    tabWidget->addTab(new QTabWidget(), "Output");
-    tabWidget->addTab(new QTabWidget(), "Palette");
-    tabWidget->addTab(new QTabWidget(), "Info");
-	
 	//Begin Tree Widgets
     QTreeWidget *treeWidget = new QTreeWidget;
     treeWidget->header()->hide();
@@ -73,23 +67,31 @@ MainWindow::MainWindow()
     //set_a->setText(0, tr("Input Settings"));
 	//set_b->setText(0, tr("Input Settings2"));
     // layout
-
-
+	QTabWidget *tabWidget = new QTabWidget;  
+	QTabWidget *inputTabWidget = new QTabWidget;
+	QVBoxLayout *imageLayout = new QVBoxLayout;
 	image = QPixmap("starrynight.png");
 	QLabel *imageLabel = new QLabel();
 	imageLabel->setPixmap(image);
+	imageLayout->addWidget(imageLabel);
+	inputTabWidget->setLayout(imageLayout);
+
+	tabWidget->addTab(inputTabWidget, "Input");
+    tabWidget->addTab(new QTabWidget(), "Output");
+    tabWidget->addTab(new QTabWidget(), "Palette");
+    tabWidget->addTab(new QTabWidget(), "Info");
 
     QHBoxLayout *layout 		  = new QHBoxLayout;
 	QVBoxLayout *tabLayout 		  = new QVBoxLayout;
 	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
-	//QVBoxLayout *imageLayout 	  = new QVBoxLayout;
+	
 	
 	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
 	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
 	tabButtonslayout->addWidget(new QSlider(Qt::Horizontal));
 	
     tabLayout->addWidget(tabWidget);
-	tabLayout->addWidget(imageLabel);
+	//tabLayout->addWidget(imageLabel);
 	tabLayout->addLayout(tabButtonslayout);
 	layout->addLayout(tabLayout);
     layout->addWidget(treeWidget);
