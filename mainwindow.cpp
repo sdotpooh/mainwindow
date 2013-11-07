@@ -28,10 +28,7 @@ MainWindow::MainWindow()
     QTreeWidgetItem *item_one = new QTreeWidgetItem(tree_Item_One);
     item_one->setText(0,"Settings Go Here");
     treeWidget->insertTopLevelItem(0,item_one);
-
-    //QTreeWidgetItem *tree_Item_One_Widget = new QTreeWidgetItem(tree_Item_One);
-    //tree_Item_One_Widget->setText(0, tr("Input Settings Widget Inside"));
-
+    
     QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
     tree_Item_Two->setText(0, tr("Mosaic Rendering"));
 
@@ -61,20 +58,25 @@ MainWindow::MainWindow()
     item_five->setText(0,"Grout Go Here");
     treeWidget->insertTopLevelItem(0,item_five);
 
-    //QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(tree_Item_Two);
-    //tree_Item_Two->setText(0, tr("Input Setting s2"));
-        
-    //set_a->setText(0, tr("Input Settings"));
-	//set_b->setText(0, tr("Input Settings2"));
-    // layout
+   
 	QTabWidget *tabWidget = new QTabWidget;  
 	QTabWidget *inputTabWidget = new QTabWidget;
+
 	QVBoxLayout *imageLayout = new QVBoxLayout;
 	image = QPixmap("starrynight.png");
 	QLabel *imageLabel = new QLabel();
 	imageLabel->setPixmap(image);
 	imageLayout->addWidget(imageLabel);
-	inputTabWidget->setLayout(imageLayout);
+	
+	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
+	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
+	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
+	tabButtonslayout->addWidget(new QSlider(Qt::Horizontal));
+	
+	QVBoxLayout *inTabLayout = new QVBoxLayout;
+	inTabLayout->addLayout(imageLayout);
+	inTabLayout->addLayout(tabButtonslayout);	
+	inputTabWidget->setLayout(inTabLayout);
 
 	tabWidget->addTab(inputTabWidget, "Input");
     tabWidget->addTab(new QTabWidget(), "Output");
@@ -83,16 +85,8 @@ MainWindow::MainWindow()
 
     QHBoxLayout *layout 		  = new QHBoxLayout;
 	QVBoxLayout *tabLayout 		  = new QVBoxLayout;
-	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
-	
-	
-	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
-	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
-	tabButtonslayout->addWidget(new QSlider(Qt::Horizontal));
 	
     tabLayout->addWidget(tabWidget);
-	//tabLayout->addWidget(imageLabel);
-	tabLayout->addLayout(tabButtonslayout);
 	layout->addLayout(tabLayout);
     layout->addWidget(treeWidget);
 
