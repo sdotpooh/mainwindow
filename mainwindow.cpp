@@ -1,13 +1,21 @@
 // Sean Vinas, Enmanuel Almanzar, and Daniel Sodkiewicz Mosaic software 
 
 #include <QtGui>
-#include<QString>
-#include<QFile>
-#include<QImage>
-#include<QPixmap>
+#include <QString>
+#include <QFile>
+#include <QImage>
+#include <QPixmap>
 #include "mainwindow.h"
 
-MainWindow::MainWindow()
+#include <QPushButton>
+#include <QComboBox>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QWidget>
+
+
+
+MainWindow::MainWindow() 
 {
     QWidget *widget = new QWidget;
     setCentralWidget(widget);
@@ -32,16 +40,42 @@ MainWindow::MainWindow()
     QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
     tree_Item_Two->setText(0, tr("Mosaic Rendering"));
 
+
  	QTreeWidgetItem *item_two = new QTreeWidgetItem(tree_Item_Two);
-    item_two->setText(0,"Mosaic Rendering Go Here");
+  //  item_two->setText(0,"Mosaic Rendering Go Here");
+  //  treeWidget->insertTopLevelItem(0,item_two);
+
+
+	QWidget *widget_mosaic_rend =new QWidget;
+	QGridLayout *layout_tree_item_two = new QGridLayout;
+	QComboBox *combo_tree_item_two = new QComboBox();
+	QLabel *label_style = new QLabel("Style");
+	combo_tree_item_two->addItem("Standard");
+	combo_tree_item_two->addItem("Standard 2");
+	combo_tree_item_two->addItem("Standard 3");
+	QObject::connect(combo_tree_item_two, SIGNAL(activated(int)),label_style, SLOT(open()));
+	layout_tree_item_two->addWidget(label_style,0,0);
+	layout_tree_item_two->addWidget(combo_tree_item_two,0,1);
+
+ 	widget_mosaic_rend->setLayout(layout_tree_item_two); 
+
+    treeWidget->setItemWidget(item_two,0,widget_mosaic_rend);
     treeWidget->insertTopLevelItem(0,item_two);
+
+
+
+
+
+
 
     QTreeWidgetItem *tree_Item_Three = new QTreeWidgetItem(treeWidget);
     tree_Item_Three->setText(0, tr("Mosaic Size"));
 
-    QTreeWidgetItem *item_three = new QTreeWidgetItem(tree_Item_Three);
+   QTreeWidgetItem *item_three = new QTreeWidgetItem(tree_Item_Three);
     item_three->setText(0,"Mosaic Size Go Here");
     treeWidget->insertTopLevelItem(0,item_three);
+
+	
 
     QTreeWidgetItem *tree_Item_Four = new QTreeWidgetItem(treeWidget);
     tree_Item_Four->setText(0, tr("Title Palette"));
