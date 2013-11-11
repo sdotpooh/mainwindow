@@ -7,6 +7,8 @@ class QAction;
 class QActionGroup;
 class QLabel;
 class QMenu;
+class QSlider;
+class QTreeWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -57,6 +59,8 @@ class MainWindow : public QMainWindow
     	void createActions();
     	void createMenus();
 		void createToolBars();
+		void createTrees(QTreeWidget *treeWidget);
+		void updateActions();
 
     	QActionGroup *alignmentGroup;
 
@@ -113,6 +117,8 @@ class MainWindow : public QMainWindow
     	QToolBar *editToolBar;
 		QPixmap image;
 		QLabel *imageLabel;
+		QSlider *slider;
+		//QTreeWidget *treeWidget;
 };
 
 #endif

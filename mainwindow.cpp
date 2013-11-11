@@ -25,158 +25,36 @@ MainWindow::MainWindow()
 
     QWidget *bottomFiller = new QWidget;
     bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	
-	//Begin Tree Widgets
-    QTreeWidget *treeWidget = new QTreeWidget;
-    treeWidget->header()->hide();
-
-    QTreeWidgetItem *tree_Item_One = new QTreeWidgetItem(treeWidget);
-    tree_Item_One->setText(0, tr("Input Settings"));
-
-
-    QTreeWidgetItem *item_one = new QTreeWidgetItem(tree_Item_One);
- //   item_one->setText(0,"Settings Go Here");
- //   treeWidget->insertTopLevelItem(0,item_one);
-    
-
-	QWidget *widget_setting_buttons =new QWidget;
-	QGridLayout *layout_tree_item_one = new QGridLayout;
-//	QButtonGroup *settings_buttons = new QButtonGroup(this);
-//	settings_buttons->addButton(ui->radioButton);
-//	ui->radioButton->setChecked(true);
-
-	QRadioButton* button1 = new QRadioButton("Brightness-Con");
-	QRadioButton* button2 = new QRadioButton("Hue-Saturation");
-//	button1->setCheckable(true);
-
-	layout_tree_item_one->addWidget(button1,0,0);
-	layout_tree_item_one->addWidget(button2,0,1);
- 
-
-	QSlider *slider1 = new QSlider(Qt::Horizontal, this);
-//	connect(slider1, SIGNAL(valueChanged(int)), this, SLOT(value(int)));
-
-	QSlider *slider2 = new QSlider(Qt::Horizontal, this);
-//	connect(slider2, SIGNAL(valueChanged(int)), this, SLOT(value(int)));
-//
-	layout_tree_item_one->addWidget(slider1,1,1);
-	layout_tree_item_one->addWidget(slider2,2,1);
-
-	QLabel *label1 = new QLabel("Brightness");
-	layout_tree_item_one->addWidget(label1,1,0);
-	QLabel *label2 = new QLabel("Contrast");
-	layout_tree_item_one->addWidget(label2,2,0);
-
-
-
-	QLabel *label_value_1 = new QLabel("0");
-	layout_tree_item_one->addWidget(label_value_1,1,2);
-	QLabel *label_value_2 = new QLabel("0");
-	layout_tree_item_one->addWidget(label_value_2,2,2);
-
-
-	QPushButton* button_brightness_reset = new QPushButton("Reset");
-	QPushButton* button_contrast_reset = new QPushButton("Reset");
-	QPushButton* button_revert_input_settings = new QPushButton("Revert to original");
-
-	layout_tree_item_one->addWidget(button_brightness_reset,1,3);
-	layout_tree_item_one->addWidget(button_contrast_reset,2,3);
-	layout_tree_item_one->addWidget(button_revert_input_settings,3,0);
-
-	widget_setting_buttons->setLayout(layout_tree_item_one); 
-    treeWidget->setItemWidget(item_one,0,widget_setting_buttons);
-    treeWidget->insertTopLevelItem(0,item_one);
-
-
-
-
-    QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
-    tree_Item_Two->setText(0, tr("Mosaic Rendering"));
-
-
- 	QTreeWidgetItem *item_two = new QTreeWidgetItem(tree_Item_Two);
-  //  item_two->setText(0,"Mosaic Rendering Go Here");
-  //  treeWidget->insertTopLevelItem(0,item_two);
-
-
-	QWidget *widget_mosaic_rend =new QWidget;
-	QGridLayout *layout_tree_item_two = new QGridLayout;
-	QComboBox *combo_tree_item_two = new QComboBox();
-	QLabel *label_style = new QLabel("Style");
-	combo_tree_item_two->addItem("Standard");
-	combo_tree_item_two->addItem("Standard 2");
-	combo_tree_item_two->addItem("Standard 3");
-//	QObject::connect(combo_tree_item_two, SIGNAL(activated(int)),label_style, SLOT(open()));
-	layout_tree_item_two->addWidget(label_style,0,0);
-	layout_tree_item_two->addWidget(combo_tree_item_two,0,1);
-
-
-	QLabel *label_dither_title = new QLabel("Dither");
-	layout_tree_item_two->addWidget(label_dither_title,1,0);
-
-	QLabel *label_dither_value = new QLabel("0%");
-	layout_tree_item_two->addWidget(label_dither_value,1,2);
-
-	QSlider *slider_dither = new QSlider(Qt::Horizontal, this);
-//	connect(slider_dither, SIGNAL(valueChanged(int)), this, SLOT(value(int)));
-    layout_tree_item_two->addWidget(slider_dither,1,1);
-
- 	widget_mosaic_rend->setLayout(layout_tree_item_two); 
-
-    treeWidget->setItemWidget(item_two,0,widget_mosaic_rend);
-    treeWidget->insertTopLevelItem(0,item_two);
-
-
-
-
-
-
-
-    QTreeWidgetItem *tree_Item_Three = new QTreeWidgetItem(treeWidget);
-    tree_Item_Three->setText(0, tr("Mosaic Size"));
-
-   QTreeWidgetItem *item_three = new QTreeWidgetItem(tree_Item_Three);
-    item_three->setText(0,"Mosaic Size Go Here");
-    treeWidget->insertTopLevelItem(0,item_three);
-
-	
-
-    QTreeWidgetItem *tree_Item_Four = new QTreeWidgetItem(treeWidget);
-    tree_Item_Four->setText(0, tr("Title Palette"));
-        
-    QTreeWidgetItem *item_four = new QTreeWidgetItem(tree_Item_Four);
-    item_four->setText(0,"Title Palette Go Here");
-    treeWidget->insertTopLevelItem(0,item_four);
-
-
-    QTreeWidgetItem *tree_Item_Five = new QTreeWidgetItem(treeWidget);
-    tree_Item_Five->setText(0, tr("Grout"));
-
-    QTreeWidgetItem *item_five = new QTreeWidgetItem(tree_Item_Five);
-    item_five->setText(0,"Grout Go Here");
-    treeWidget->insertTopLevelItem(0,item_five);
-
    
-	QTabWidget *tabWidget = new QTabWidget;  
+	QTabWidget *tabWidget      = new QTabWidget;  
 	QTabWidget *inputTabWidget = new QTabWidget;
 
 	QVBoxLayout *imageLayout = new QVBoxLayout;
-	image = QPixmap("starrynight.png");
+	//imageFile = fileName;
+	//image = QPixmap("starrynight.png");
 	QLabel *imageLabel = new QLabel();
-	imageLabel->setPixmap(image);
+	//imageLabel->setPixmap(image);
 	imageLayout->addWidget(imageLabel);
 	
 	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
 	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
 	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
-	tabButtonslayout->addWidget(new QSlider(Qt::Horizontal));
+
+	slider = new QSlider(Qt::Horizontal);
+    //slider->setFocusPolicy(Qt::StrongFocus);
+    slider->setTickPosition(QSlider::TicksBelow);
+    slider->setTickInterval(5);
+    slider->setSingleStep(1);
+	tabButtonslayout->addWidget(slider);
+	QLabel *sliderLabel = new QLabel("100%");
+	tabButtonslayout->addWidget(sliderLabel);
 	
 	QVBoxLayout *inTabLayout = new QVBoxLayout;
 	inTabLayout->addLayout(imageLayout);
 	inTabLayout->addLayout(tabButtonslayout);	
 	inputTabWidget->setLayout(inTabLayout);
 
-	tabWidget->addTab(inputTabWidget, "Input");
+	tabWidget->addTab(inputTabWidget,   "Input");
     tabWidget->addTab(new QTabWidget(), "Output");
     tabWidget->addTab(new QTabWidget(), "Palette");
     tabWidget->addTab(new QTabWidget(), "Info");
@@ -186,6 +64,9 @@ MainWindow::MainWindow()
 	
     tabLayout->addWidget(tabWidget);
 	layout->addLayout(tabLayout);
+
+	QTreeWidget *treeWidget = new QTreeWidget;
+	createTrees(treeWidget);
     layout->addWidget(treeWidget);
 
     widget->setLayout(layout);
@@ -224,7 +105,6 @@ MainWindow::newFile()
 void
 MainWindow::open()
 {
-    //infoLabel->setText(tr("Invoked <b>File|Open</b>"));
 	QString fileName = QFileDialog::getOpenFileName(this,
 			tr("Open File"),QDir::currentPath());
 	if(!fileName.isEmpty())
@@ -236,6 +116,17 @@ MainWindow::open()
                                       tr("Cannot load %1.").arg(fileName));
              return;
         }
+		//imageLabel->setPixmap(image);
+		imageLabel->setPixmap(QPixmap::fromImage(image));
+        
+		//scaleFactor = 1.0;
+
+        //printAct->setEnabled(true);
+        //fitToWindowAct->setEnabled(true);
+        //updateActions();
+
+        //if (!fitToWindowAct->isChecked())
+        //    imageLabel->adjustSize();
 	 }
 }
 
@@ -243,169 +134,174 @@ MainWindow::open()
 void
 MainWindow::load()
 {
-    infoLabel->setText(tr("Invoked <b>File|Load</b>"));
+    
 }
 
 void
 MainWindow::save()
 {
-    infoLabel->setText(tr("Invoked <b>File|Save</b>"));
+    
 }
 
 void
 MainWindow::saveAs()
 {
-    infoLabel->setText(tr("Invoked <b>File|Save As</b>"));
+    
 }
 
 void
 MainWindow::savePalette()
 {
-   infoLabel->setText(tr("Invoked <b>File|Save Palette</b>"));
+   
 }
 
 void
 MainWindow::loadPalette()
 {
-   infoLabel->setText(tr("Invoked <b>File|Load Palette</b>"));
+   
 }
 
 void
 MainWindow::exportImage()
 {
-    infoLabel->setText(tr("Invoked <b>File|Export Image</b>"));
+    
 }
 
 void
 MainWindow::close()
 {
-    infoLabel->setText(tr("Invoked <b>File|Close</b>"));
+    
 }
 
 void
 MainWindow::undo()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Undo</b>"));
+    
 }
 
 void
 MainWindow::redo()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Redo</b>"));
+   
 }
 
 void
 MainWindow::cut()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+    
 }
 
 void
 MainWindow::copy()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));
+    
 }
 
 void
 MainWindow::paste()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
+    
 }
 
 void
 MainWindow::fill()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Fill</b>"));
+    
 }
 
 void
 MainWindow::blend()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Blend</b>"));
+    
 }
 
 void
 MainWindow::copylayer()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Copy Layer</b>"));
+    
 }
 
 void
 MainWindow::resetall()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Reset All</b>"));
+    
 }
 
 void
 MainWindow::cropinput()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Crop Input</b>"));
+    
 }
 
 void
 MainWindow::cropoutput()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Crop Output</b>"));
+    
 }
 
 void
 MainWindow::zoomin()
 {
-    infoLabel->setText(tr("Invoked <b>View|Zoom In</b>"));
+    
 }
 
 void
 MainWindow::zoomout()
 {
-    infoLabel->setText(tr("Invoked <b>View|Zoom Out</b>"));
+    
 }
 
 void
 MainWindow::fitwindow()
 {
-	infoLabel->setText(tr("Invoked <b>View|Fit Window</b>"));
+	bool fitwindow = fitwindowAct->isChecked();
+     //scrollArea->setWidgetResizable(fitwindow);
+     if (!fitwindow) {
+         fullscreen();
+     }
+     updateActions();
 }
 
 void
 MainWindow::fullscreen()
 {
-    infoLabel->setText(tr("Invoked <b>View|Full Screen</b>"));
+    
 }
 
 void
 MainWindow::togglesections()
 {
-    infoLabel->setText(tr("Invoked <b>View|Toggle Sections</b>"));
+    
 }
 
 void
 MainWindow::showlayermanager()
 {
-    infoLabel->setText(tr("Invoked <b>View|Show Layer Manager</b>"));
+    
 }
 
 void
 MainWindow::input()
 {
-    infoLabel->setText(tr("Invoked <b>View|Input</b>"));
+    
 }
 
 void
 MainWindow::output()
 {
-    infoLabel->setText(tr("Invoked <b>View|Output</b>"));
+    
 }
 
 void
 MainWindow::palette()
 {
-    infoLabel->setText(tr("Invoked <b>View|Palette</b>"));
+    
 }
 
 void
 MainWindow::info()
 {
-    infoLabel->setText(tr("Invoked <b>View|Info</b>"));
+    
 }
 void MainWindow::createActions()
 {
@@ -516,33 +412,31 @@ void MainWindow::createActions()
     zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("&Zoom In"), this);
     zoominAct->setShortcut(QKeySequence(tr("Ctrl+Shift+V")));
     zoominAct->setStatusTip(tr("Zoom in"));
+	zoominAct->setEnabled(false);
     connect(zoominAct, SIGNAL(triggered()), this, SLOT(zoomin()));
 
     zoomoutAct = new QAction(QIcon("icons/view-zoomout.png"),tr("&Zoom Out"), this);
     zoomoutAct->setShortcut(QKeySequence(tr("Ctrl+Shift+U")));
     zoomoutAct->setStatusTip(tr("Zoom out"));
+	zoomoutAct->setEnabled(false);
     connect(zoomoutAct, SIGNAL(triggered()), this, SLOT(zoomout()));
 
     fitwindowAct = new QAction(tr("&Fit Window"), this);
     fitwindowAct->setShortcut(QKeySequence(tr("Ctrl+W")));
     fitwindowAct->setStatusTip(tr("Fit window"));
+	fitwindowAct->setEnabled(false);
     connect(fitwindowAct, SIGNAL(triggered()), this, SLOT(fitwindow()));
 
     fullscreenAct = new QAction(tr("&Full Screen"), this);
     fullscreenAct->setShortcut(QKeySequence(tr("Ctrl+F")));
     fullscreenAct->setStatusTip(tr("Full screen"));
+	fullscreenAct->setEnabled(false);
     connect(fullscreenAct, SIGNAL(triggered()), this, SLOT(fullscreen()));
 
     togglesectionsAct = new QAction(tr("&Toggle Sections"), this);
     togglesectionsAct->setShortcut(QKeySequence(tr("Ctrl+B")));
     togglesectionsAct->setStatusTip(tr("Toggle sections"));
     connect(togglesectionsAct, SIGNAL(triggered()), this, SLOT(togglesections()));
-
-    showlayermanagerAct = new QAction(QIcon("icons/view-layer-manager.png"),
-                                      tr("&Show Layer Manager"), this);
-    showlayermanagerAct->setShortcut(QKeySequence(tr("Ctrl+M")));
-    showlayermanagerAct->setStatusTip(tr("Show layer manager"));
-    connect(showlayermanagerAct, SIGNAL(triggered()), this, SLOT(showlayermanager()));
 
     showlayermanagerAct = new QAction(QIcon("icons/view-layer-manager.png"),
                                       tr("&Show Layer Manager"), this);
@@ -668,4 +562,121 @@ MainWindow::createToolBars()
 	editToolBar->addSeparator();
 	editToolBar->addAction(noneAct);
         
+}
+
+void
+MainWindow::createTrees(QTreeWidget *treeWidget)
+{
+    treeWidget->header()->hide();
+
+    QTreeWidgetItem *tree_Item_One = new QTreeWidgetItem(treeWidget);
+    tree_Item_One->setText(0, tr("Input Settings"));
+
+    QTreeWidgetItem *item_one = new QTreeWidgetItem(tree_Item_One);
+ 	//item_one->setText(0,"Settings Go Here");
+ 	//treeWidget->insertTopLevelItem(0,item_one);
+    
+	QWidget *widget_setting_buttons =new QWidget;
+	QGridLayout *layout_tree_item_one = new QGridLayout;
+	//QButtonGroup *settings_buttons = new QButtonGroup(this);
+	//settings_buttons->addButton(ui->radioButton);
+	//ui->radioButton->setChecked(true);
+
+	QRadioButton* button1 = new QRadioButton("Brightness-Con");
+	QRadioButton* button2 = new QRadioButton("Hue-Saturation");
+	//button1->setCheckable(true);
+
+	layout_tree_item_one->addWidget(button1,0,0);
+	layout_tree_item_one->addWidget(button2,0,1);
+ 
+	QSlider *slider1 = new QSlider(Qt::Horizontal, this);
+	//connect(slider1, SIGNAL(valueChanged(int)), this, SLOT(value(int)));
+
+	QSlider *slider2 = new QSlider(Qt::Horizontal, this);
+	//connect(slider2, SIGNAL(valueChanged(int)), this, SLOT(value(int)));
+
+	layout_tree_item_one->addWidget(slider1,1,1);
+	layout_tree_item_one->addWidget(slider2,2,1);
+
+	QLabel *label1 = new QLabel("Brightness");
+	layout_tree_item_one->addWidget(label1,1,0);
+	QLabel *label2 = new QLabel("Contrast");
+	layout_tree_item_one->addWidget(label2,2,0);
+
+	QLabel *label_value_1 = new QLabel("0");
+	layout_tree_item_one->addWidget(label_value_1,1,2);
+	QLabel *label_value_2 = new QLabel("0");
+	layout_tree_item_one->addWidget(label_value_2,2,2);
+
+	QPushButton* button_brightness_reset = new QPushButton("Reset");
+	QPushButton* button_contrast_reset = new QPushButton("Reset");
+	QPushButton* button_revert_input_settings = new QPushButton("Revert to original");
+
+	layout_tree_item_one->addWidget(button_brightness_reset,1,3);
+	layout_tree_item_one->addWidget(button_contrast_reset,2,3);
+	layout_tree_item_one->addWidget(button_revert_input_settings,3,0);
+
+	widget_setting_buttons->setLayout(layout_tree_item_one); 
+    treeWidget->setItemWidget(item_one,0,widget_setting_buttons);
+    treeWidget->insertTopLevelItem(0,item_one);
+
+    QTreeWidgetItem *tree_Item_Two = new QTreeWidgetItem(treeWidget);
+    tree_Item_Two->setText(0, tr("Mosaic Rendering"));
+
+ 	QTreeWidgetItem *item_two = new QTreeWidgetItem(tree_Item_Two);
+    //item_two->setText(0,"Mosaic Rendering Go Here");
+    //treeWidget->insertTopLevelItem(0,item_two);
+
+	QWidget *widget_mosaic_rend =new QWidget;
+	QGridLayout *layout_tree_item_two = new QGridLayout;
+	QComboBox *combo_tree_item_two = new QComboBox();
+	QLabel *label_style = new QLabel("Style");
+	combo_tree_item_two->addItem("Standard");
+	combo_tree_item_two->addItem("Standard 2");
+	combo_tree_item_two->addItem("Standard 3");
+	//QObject::connect(combo_tree_item_two, SIGNAL(activated(int)),label_style, SLOT(open()));
+	layout_tree_item_two->addWidget(label_style,0,0);
+	layout_tree_item_two->addWidget(combo_tree_item_two,0,1);
+
+	QLabel *label_dither_title = new QLabel("Dither");
+	layout_tree_item_two->addWidget(label_dither_title,1,0);
+
+	QLabel *label_dither_value = new QLabel("0%");
+	layout_tree_item_two->addWidget(label_dither_value,1,2);
+
+	QSlider *slider_dither = new QSlider(Qt::Horizontal, this);
+	//connect(slider_dither, SIGNAL(valueChanged(int)), this, SLOT(value(int)));
+    layout_tree_item_two->addWidget(slider_dither,1,1);
+
+ 	widget_mosaic_rend->setLayout(layout_tree_item_two); 
+
+    treeWidget->setItemWidget(item_two,0,widget_mosaic_rend);
+    treeWidget->insertTopLevelItem(0,item_two);
+
+    QTreeWidgetItem *tree_Item_Three = new QTreeWidgetItem(treeWidget);
+    tree_Item_Three->setText(0, tr("Mosaic Size"));
+
+    QTreeWidgetItem *item_three = new QTreeWidgetItem(tree_Item_Three);
+    item_three->setText(0,"Mosaic Size Go Here");
+    treeWidget->insertTopLevelItem(0,item_three);
+
+    QTreeWidgetItem *tree_Item_Four = new QTreeWidgetItem(treeWidget);
+    tree_Item_Four->setText(0, tr("Title Palette"));
+        
+    QTreeWidgetItem *item_four = new QTreeWidgetItem(tree_Item_Four);
+    item_four->setText(0,"Title Palette Go Here");
+    treeWidget->insertTopLevelItem(0,item_four);
+
+    QTreeWidgetItem *tree_Item_Five = new QTreeWidgetItem(treeWidget);
+    tree_Item_Five->setText(0, tr("Grout"));
+
+    QTreeWidgetItem *item_five = new QTreeWidgetItem(tree_Item_Five);
+    item_five->setText(0,"Grout Go Here");
+    treeWidget->insertTopLevelItem(0,item_five);
+}
+void MainWindow::updateActions()
+{
+     zoominAct    ->setEnabled(!fitwindowAct->isChecked());
+     zoomoutAct   ->setEnabled(!fitwindowAct->isChecked());
+     fullscreenAct->setEnabled(!fitwindowAct->isChecked());
 }
