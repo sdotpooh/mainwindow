@@ -519,87 +519,87 @@ MainWindow::createTrees(QTreeWidget *treeWidget)
 {
     treeWidget->header()->hide();
 
-    QTreeWidgetItem *tree_Item_One 	 = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *item_one 		 = new QTreeWidgetItem(tree_Item_One);
-	QTreeWidgetItem *tree_Item_Two 	 = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *item_two 		 = new QTreeWidgetItem(tree_Item_Two);
-	QTreeWidgetItem *tree_Item_Three = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *item_three 	 = new QTreeWidgetItem(tree_Item_Three);
-	QTreeWidgetItem *tree_Item_Four  = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *item_four 		 = new QTreeWidgetItem(tree_Item_Four);
-	QTreeWidgetItem *tree_Item_Five  = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *item_five 		 = new QTreeWidgetItem(tree_Item_Five);
+    QTreeWidgetItem *treeItemOne   = new QTreeWidgetItem(treeWidget);
+	QTreeWidgetItem *itemOne 	   = new QTreeWidgetItem(treeItemOne);
+	QTreeWidgetItem *treeItemTwo   = new QTreeWidgetItem(treeWidget);
+	QTreeWidgetItem *itemTwo 	   = new QTreeWidgetItem(treeItemTwo);
+	QTreeWidgetItem *treeItemThree = new QTreeWidgetItem(treeWidget);
+	QTreeWidgetItem *itemThree 	   = new QTreeWidgetItem(treeItemThree);
+	QTreeWidgetItem *treeItemFour  = new QTreeWidgetItem(treeWidget);
+	QTreeWidgetItem *itemFour 	   = new QTreeWidgetItem(treeItemFour);
+	QTreeWidgetItem *treeItemFive  = new QTreeWidgetItem(treeWidget);
+	QTreeWidgetItem *itemFive 	   = new QTreeWidgetItem(treeItemFive);
 
-	QComboBox *combo_tree_item_two   = new QComboBox();
+	QComboBox *comboTreeItemTwo    = new QComboBox();
 	
-	QLabel *label1 				= new QLabel("Brightness");
-	QLabel *label2 				= new QLabel("Contrast");
-	QLabel *label_dither_title 	= new QLabel("Dither");
-	QLabel *label_style 		= new QLabel("Style");
-	QLabel *label_dither_value 	= new QLabel("0%");
-	QLabel *label_value_1 		= new QLabel("0");
-	QLabel *label_value_2 		= new QLabel("0");
+	QLabel *label1 			 = new QLabel("Brightness");
+	QLabel *label2 			 = new QLabel("Contrast");
+	QLabel *labelDitherTitle = new QLabel("Dither");
+	QLabel *labelStyle 		 = new QLabel("Style");
+	QLabel *labelDitherValue = new QLabel("0%");
+	QLabel *labelValue1 	 = new QLabel("0");
+	QLabel *labelValue2 	 = new QLabel("0");
 	
-	QSlider *slider_dither 		= new QSlider(Qt::Horizontal, this);
-    QSlider *slider1 			= new QSlider(Qt::Horizontal, this);
-	QSlider *slider2 			= new QSlider(Qt::Horizontal, this);
+	QSlider *sliderDither 	 = new QSlider(Qt::Horizontal, this);
+    QSlider *slider1 		 = new QSlider(Qt::Horizontal, this);
+	QSlider *slider2 		 = new QSlider(Qt::Horizontal, this);
 
 	QRadioButton* button1 = new QRadioButton("Brightness-Con");
 	QRadioButton* button2 = new QRadioButton("Hue-Saturation");
 
-	QPushButton* button_brightness_reset = new QPushButton("Reset");
-	QPushButton* button_contrast_reset   = new QPushButton("Reset");
-	QPushButton* button_revert_input_settings = new QPushButton("Revert to original");
+	QPushButton* buttonBrightReset     = new QPushButton("Reset");
+	QPushButton* buttonContrastReset   = new QPushButton("Reset");
+	QPushButton* buttonRevertInSetting = new QPushButton("Revert to original");
 
-	QWidget *widget_setting_buttons =new QWidget;
-	QWidget *widget_mosaic_rend 	=new QWidget;
+	QWidget *widgetSettingButtons =new QWidget;
+	QWidget *widgetMosaicRend 	  =new QWidget;
 
-	QGridLayout *layout_tree_item_one = new QGridLayout;
-	QGridLayout *layout_tree_item_two = new QGridLayout;
+	QGridLayout *layoutTreeItemOne = new QGridLayout;
+	QGridLayout *layoutTreeItemTwo = new QGridLayout;
 	
-	layout_tree_item_one->addWidget(button1,0,0);
-	layout_tree_item_one->addWidget(button2,0,1);
-	layout_tree_item_one->addWidget(slider1,1,1);
-	layout_tree_item_one->addWidget(slider2,2,1);
-	layout_tree_item_one->addWidget(label1,1,0);
-	layout_tree_item_one->addWidget(label2,2,0);
-	layout_tree_item_one->addWidget(label_value_1,1,2);
-	layout_tree_item_one->addWidget(label_value_2,2,2);
-	layout_tree_item_one->addWidget(button_brightness_reset,1,3);
-	layout_tree_item_one->addWidget(button_contrast_reset,2,3);
-	layout_tree_item_one->addWidget(button_revert_input_settings,3,0);
+	layoutTreeItemOne->addWidget(button1, 0, 0);
+	layoutTreeItemOne->addWidget(button2, 0, 1);
+	layoutTreeItemOne->addWidget(slider1, 1, 1);
+	layoutTreeItemOne->addWidget(slider2, 2, 1);
+	layoutTreeItemOne->addWidget(label1, 1, 0);
+	layoutTreeItemOne->addWidget(label2, 2, 0);
+	layoutTreeItemOne->addWidget(labelValue1, 1, 2);
+	layoutTreeItemOne->addWidget(labelValue2, 2, 2);
+	layoutTreeItemOne->addWidget(buttonBrightReset, 1, 3);
+	layoutTreeItemOne->addWidget(buttonContrastReset, 2, 3);
+	layoutTreeItemOne->addWidget(buttonRevertInSetting, 3, 0);
 
-	combo_tree_item_two->addItem("Standard");
-	combo_tree_item_two->addItem("Standard 2");
-	combo_tree_item_two->addItem("Standard 3");
+	comboTreeItemTwo->addItem("Standard"  );
+	comboTreeItemTwo->addItem("Standard 2");
+	comboTreeItemTwo->addItem("Standard 3");
 	
-	layout_tree_item_two->addWidget(label_style,0,0);
-	layout_tree_item_two->addWidget(combo_tree_item_two,0,1);
-	layout_tree_item_two->addWidget(label_dither_title,1,0);
-	layout_tree_item_two->addWidget(label_dither_value,1,2);
-    layout_tree_item_two->addWidget(slider_dither,1,1);
+	layoutTreeItemTwo->addWidget(labelStyle, 0, 0      );
+	layoutTreeItemTwo->addWidget(comboTreeItemTwo, 0, 1);
+	layoutTreeItemTwo->addWidget(labelDitherTitle, 1, 0);
+	layoutTreeItemTwo->addWidget(labelDitherValue, 1, 2);
+    layoutTreeItemTwo->addWidget(sliderDither, 1, 1   );
 
-	widget_setting_buttons->setLayout(layout_tree_item_one);
- 	widget_mosaic_rend->setLayout(layout_tree_item_two); 
+	widgetSettingButtons->setLayout(layoutTreeItemOne);
+ 	widgetMosaicRend    ->setLayout(layoutTreeItemTwo); 
 
-	treeWidget->setItemWidget(item_one,0,widget_setting_buttons);
-    treeWidget->setItemWidget(item_two,0,widget_mosaic_rend);
+	treeWidget->setItemWidget(itemOne, 0, widgetSettingButtons);
+    treeWidget->setItemWidget(itemTwo, 0, widgetMosaicRend    );
     
-	tree_Item_One->setText(0, tr("Input Settings"));
-    tree_Item_Two->setText(0, tr("Mosaic Rendering"));
-    tree_Item_Three->setText(0, tr("Mosaic Size"));
-    tree_Item_Four->setText(0, tr("Title Palette")); 
-	tree_Item_Five->setText(0, tr("Grout"));
+	treeItemOne  ->setText(0, tr("Input Settings"  ));
+    treeItemTwo  ->setText(0, tr("Mosaic Rendering"));
+    treeItemThree->setText(0, tr("Mosaic Size"     ));
+    treeItemFour ->setText(0, tr("Title Palette"   )); 
+	treeItemFive ->setText(0, tr("Grout"           ));
 
-	item_three->setText(0,"Mosaic Size Go Here");
-	item_four->setText(0,"Title Palette Go Here");
-	item_five->setText(0,"Grout Go Here");
+	itemThree->setText(0,"Mosaic Size Go Here"  );
+	itemFour ->setText(0,"Title Palette Go Here");
+	itemFive ->setText(0,"Grout Go Here"        );
 
-	treeWidget->insertTopLevelItem(0,item_one);
-	treeWidget->insertTopLevelItem(0,item_two);
-	treeWidget->insertTopLevelItem(0,item_three);
-    treeWidget->insertTopLevelItem(0,item_four);
-    treeWidget->insertTopLevelItem(0,item_five);
+	treeWidget->insertTopLevelItem(0, itemOne  );
+	treeWidget->insertTopLevelItem(0, itemTwo  );
+	treeWidget->insertTopLevelItem(0, itemThree);
+    treeWidget->insertTopLevelItem(0, itemFour );
+    treeWidget->insertTopLevelItem(0, itemFive );
 }
 
 void 
@@ -615,11 +615,7 @@ MainWindow::createLayout(QWidget *widget)
 	QTreeWidget *treeWidget  	  = new QTreeWidget;
 	QLabel 		*imageLabel 	  = new QLabel();
 	QLabel 		*sliderLabel  	  = new QLabel("100%");
-	//QWidget   	*topFiller 		  = new QWidget;
-	//QWidget 	*bottomFiller 	  = new QWidget;
 	
-	//topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    //bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	createTrees(treeWidget);
 
 	image  			= QPixmap("starrynight.png");
