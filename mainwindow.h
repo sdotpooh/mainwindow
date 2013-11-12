@@ -9,6 +9,7 @@ class QLabel;
 class QMenu;
 class QSlider;
 class QTreeWidget;
+class QWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -61,12 +62,13 @@ class MainWindow : public QMainWindow
 		void createToolBars();
 		void createTrees(QTreeWidget *treeWidget);
 		void updateActions();
+		void createLayout(QWidget *widget);
 
     	QActionGroup *alignmentGroup;
 
-    	QMenu *fileMenu;
-    	QMenu *editMenu;
-    	QMenu *viewMenu;
+    	QMenu   *fileMenu;
+    	QMenu   *editMenu;
+    	QMenu   *viewMenu;
     	//File Actions
     	QAction *newAct;
     	QAction *openAct;
@@ -111,14 +113,14 @@ class MainWindow : public QMainWindow
 		QAction *rectselectAct;
 		QAction *noneAct;
 
-    	QLabel *infoLabel;
+    	QLabel   *infoLabel;
     	QToolBar *fileToolBar;
     	QToolBar *viewToolBar;
     	QToolBar *editToolBar;
-		QPixmap image;
-		QLabel *imageLabel;
-		QSlider *slider;
-		//QTreeWidget *treeWidget;
+		QPixmap  image;
+		QLabel   *imageLabel;
+		QSlider  *slider;
+		
 };
 
 #endif

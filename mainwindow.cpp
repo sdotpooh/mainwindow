@@ -19,62 +19,10 @@ MainWindow::MainWindow()
 {
     QWidget *widget = new QWidget;
     setCentralWidget(widget);
-
-    QWidget *topFiller = new QWidget;
-    topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-    QWidget *bottomFiller = new QWidget;
-    bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-   
-	QTabWidget *tabWidget      = new QTabWidget;  
-	QTabWidget *inputTabWidget = new QTabWidget;
-
-	QVBoxLayout *imageLayout = new QVBoxLayout;
-	//imageFile = fileName;
-	//image = QPixmap("starrynight.png");
-	QLabel *imageLabel = new QLabel();
-	//imageLabel->setPixmap(image);
-	imageLayout->addWidget(imageLabel);
-	
-	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
-	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
-	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
-
-	slider = new QSlider(Qt::Horizontal);
-    //slider->setFocusPolicy(Qt::StrongFocus);
-    slider->setTickPosition(QSlider::TicksBelow);
-    slider->setTickInterval(5);
-    slider->setSingleStep(1);
-	tabButtonslayout->addWidget(slider);
-	QLabel *sliderLabel = new QLabel("100%");
-	tabButtonslayout->addWidget(sliderLabel);
-	
-	QVBoxLayout *inTabLayout = new QVBoxLayout;
-	inTabLayout->addLayout(imageLayout);
-	inTabLayout->addLayout(tabButtonslayout);	
-	inputTabWidget->setLayout(inTabLayout);
-
-	tabWidget->addTab(inputTabWidget,   "Input");
-    tabWidget->addTab(new QTabWidget(), "Output");
-    tabWidget->addTab(new QTabWidget(), "Palette");
-    tabWidget->addTab(new QTabWidget(), "Info");
-
-    QHBoxLayout *layout 		  = new QHBoxLayout;
-	QVBoxLayout *tabLayout 		  = new QVBoxLayout;
-	
-    tabLayout->addWidget(tabWidget);
-	layout->addLayout(tabLayout);
-
-	QTreeWidget *treeWidget = new QTreeWidget;
-	createTrees(treeWidget);
-    layout->addWidget(treeWidget);
-
-    widget->setLayout(layout);
-
     createActions();
-    createMenus();
+	createMenus();
     createToolBars();
-
+	createLayout(widget);
     setWindowTitle(tr("Tessera Grid V1.0"));
     setMinimumSize(160, 160);
     resize(980, 620);
@@ -673,6 +621,50 @@ MainWindow::createTrees(QTreeWidget *treeWidget)
     QTreeWidgetItem *item_five = new QTreeWidgetItem(tree_Item_Five);
     item_five->setText(0,"Grout Go Here");
     treeWidget->insertTopLevelItem(0,item_five);
+}
+
+void MainWindow::createLayout(QWidget *widget)
+{
+	QHBoxLayout *layout 		  = new QHBoxLayout;
+	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
+	QVBoxLayout *tabLayout 		  = new QVBoxLayout;
+	QVBoxLayout *imageLayout 	  = new QVBoxLayout;
+	QVBoxLayout *inTabLayout 	  = new QVBoxLayout;
+	QTabWidget  *tabWidget        = new QTabWidget;  
+	QTabWidget  *inputTabWidget   = new QTabWidget;
+	QTreeWidget *treeWidget  	  = new QTreeWidget;
+	QLabel 		*imageLabel 	  = new QLabel();
+	QLabel 		*sliderLabel  	  = new QLabel("100%");
+	QWidget   	*topFiller 		  = new QWidget;
+	QWidget 	*bottomFiller 	  = new QWidget;
+	
+	topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+	image = QPixmap("starrynight.png");
+	imageLabel->setPixmap(image);
+	imageLayout 	->addWidget(imageLabel);
+	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
+	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
+	slider  		= new QSlider(Qt::Horizontal);
+    slider 			->setTickPosition(QSlider::TicksBelow);
+    slider 			->setTickInterval(5);
+    slider 			->setSingleStep(1);
+	tabButtonslayout->addWidget(slider);	
+	tabButtonslayout->addWidget(sliderLabel);
+	inTabLayout   	->addLayout(imageLayout);
+	inTabLayout   	->addLayout(tabButtonslayout);
+	inputTabWidget 	->setLayout(inTabLayout);
+	tabWidget 		->addTab(inputTabWidget,   "Input");
+    tabWidget 		->addTab(new QTabWidget(), "Output");
+    tabWidget 		->addTab(new QTabWidget(), "Palette");
+    tabWidget 		->addTab(new QTabWidget(), "Info");
+    tabLayout 		->addWidget(tabWidget);
+	
+	createTrees(treeWidget);
+	layout->addLayout(tabLayout);
+    layout->addWidget(treeWidget);
+    widget->setLayout(layout);
 }
 void MainWindow::updateActions()
 {
