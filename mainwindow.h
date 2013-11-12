@@ -10,6 +10,7 @@ class QMenu;
 class QSlider;
 class QTreeWidget;
 class QWidget;
+class QVBoxLayout;
 
 class MainWindow : public QMainWindow
 {
@@ -118,9 +119,10 @@ class MainWindow : public QMainWindow
     	QToolBar*viewToolBar;
     	QToolBar*editToolBar;
 		QLabel  *imageLabel;
+		QVBoxLayout *imageLayout;
 		QSlider *slider;
 		QPixmap image;
-		
+		QWidget *widget;	
 };
 
 #endif

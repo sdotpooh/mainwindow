@@ -14,9 +14,22 @@
 #include <QWidget>
 #include <QRadioButton>
 #include <QSlider>
+using namespace std;
 
-MainWindow::MainWindow() 
+MainWindow	*g_mainWindow = NULL;
+
+MainWindow::MainWindow()
+	:  QMainWindow	 ()
+	   //m_frameInput	 (NULL),
+	   //m_frameOutput (NULL),
+	   //m_framePalette(NULL),
+	   //m_frameInfo	 (NULL),
+	   //m_controlPanel(NULL),
+	   //m_tabPreview	 (NULL)
 {
+	// set g_mainWindow
+	g_mainWindow = this;
+
     QWidget *widget = new QWidget;
     setCentralWidget(widget);
     createActions();
@@ -66,7 +79,7 @@ MainWindow::open()
         }
 		//imageLabel->setPixmap(image);
 		imageLabel->setPixmap(QPixmap::fromImage(image));
-        
+        widget->setLayout(imageLayout); 
 		//scaleFactor = 1.0;
 
         //printAct->setEnabled(true);
