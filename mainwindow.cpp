@@ -251,7 +251,8 @@ MainWindow::info()
 {
     
 }
-void MainWindow::createActions()
+void 
+MainWindow::createActions()
 {
     //File Actions
     newAct = new QAction(QIcon("icons/file-new.png"),tr("&New"), this);
@@ -438,7 +439,8 @@ void MainWindow::createActions()
 
 }
 
-void MainWindow::createMenus()
+void 
+MainWindow::createMenus()
 {
 	fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(newAct);
@@ -623,7 +625,8 @@ MainWindow::createTrees(QTreeWidget *treeWidget)
     treeWidget->insertTopLevelItem(0,item_five);
 }
 
-void MainWindow::createLayout(QWidget *widget)
+void 
+MainWindow::createLayout(QWidget *widget)
 {
 	QHBoxLayout *layout 		  = new QHBoxLayout;
 	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
@@ -635,14 +638,15 @@ void MainWindow::createLayout(QWidget *widget)
 	QTreeWidget *treeWidget  	  = new QTreeWidget;
 	QLabel 		*imageLabel 	  = new QLabel();
 	QLabel 		*sliderLabel  	  = new QLabel("100%");
-	QWidget   	*topFiller 		  = new QWidget;
-	QWidget 	*bottomFiller 	  = new QWidget;
+	//QWidget   	*topFiller 		  = new QWidget;
+	//QWidget 	*bottomFiller 	  = new QWidget;
 	
-	topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	//topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    //bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	createTrees(treeWidget);
 
-	image = QPixmap("starrynight.png");
-	imageLabel->setPixmap(image);
+	image  			= QPixmap("starrynight.png");
+	imageLabel 		->setPixmap(image);
 	imageLayout 	->addWidget(imageLabel);
 	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
 	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
@@ -660,13 +664,12 @@ void MainWindow::createLayout(QWidget *widget)
     tabWidget 		->addTab(new QTabWidget(), "Palette");
     tabWidget 		->addTab(new QTabWidget(), "Info");
     tabLayout 		->addWidget(tabWidget);
-	
-	createTrees(treeWidget);
-	layout->addLayout(tabLayout);
-    layout->addWidget(treeWidget);
-    widget->setLayout(layout);
+	layout  		->addLayout(tabLayout);
+    layout 			->addWidget(treeWidget);
+    widget 			->setLayout(layout);
 }
-void MainWindow::updateActions()
+void 
+MainWindow::updateActions()
 {
      zoominAct    ->setEnabled(!fitwindowAct->isChecked());
      zoomoutAct   ->setEnabled(!fitwindowAct->isChecked());
