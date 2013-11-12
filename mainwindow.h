@@ -113,13 +113,13 @@ class MainWindow : public QMainWindow
 		QAction *rectselectAct;
 		QAction *noneAct;
 
-    	QLabel   *infoLabel;
-    	QToolBar *fileToolBar;
-    	QToolBar *viewToolBar;
-    	QToolBar *editToolBar;
-		QPixmap  image;
-		QLabel   *imageLabel;
-		QSlider  *slider;
+    	QLabel  *infoLabel;
+    	QToolBar*fileToolBar;
+    	QToolBar*viewToolBar;
+    	QToolBar*editToolBar;
+		QLabel  *imageLabel;
+		QSlider *slider;
+		QPixmap image;
 		
 };
 
