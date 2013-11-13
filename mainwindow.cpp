@@ -79,7 +79,7 @@ MainWindow::open()
         }
 		//imageLabel->setPixmap(image);
 		imageLabel->setPixmap(QPixmap::fromImage(image));
-        widget->setLayout(imageLayout); 
+        //widget->setLayout(imageLayout); 
 		//scaleFactor = 1.0;
 
         //printAct->setEnabled(true);
@@ -90,7 +90,6 @@ MainWindow::open()
         //    imageLabel->adjustSize();
 	 }
 }
-
 
 void
 MainWindow::load()
@@ -631,8 +630,8 @@ MainWindow::createLayout(QWidget *widget)
 	
 	createTrees(treeWidget);
 
-	image  			= QPixmap("starrynight.png");
-	imageLabel 		->setPixmap(image);
+	//image  			= QPixmap("starrynight.png");
+	//imageLabel 		->setPixmap(image);
 	imageLayout 	->addWidget(imageLabel);
 	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
 	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
