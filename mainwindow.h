@@ -19,27 +19,32 @@ public:
 	~mainwindow();
 
 public slots:
-	void s_newProject		();
-	void s_loadProject		();
-	void s_saveProject		();
-	void s_saveAs 			();
-	void s_savePalette 		();
-	void s_loadPalette 		();
-	void s_exportImage 		();
-	void s_close 			();
-	void s_undo				();
-	void s_redo				();
-	void s_cut 				();
-	void s_copy 			();
-	void s_paste 			();
-	void s_fill 			();
 	void s_blend 			();
+	void s_close 			();
+	void s_copy 			();
 	void s_copylayer 		();
-	void s_resetall 		();
 	void s_cropinput 		();
 	void s_cropoutput 		();
+	void s_cut 				();
+	void s_exportImage 		();
+	void s_fill 			();
+	void s_fitwindow 		();
+	void s_fullscreen 		();
+	void s_loadPalette 		();
+	void s_loadProject		();
+	void s_newProject		();
+	void s_paste 			();
+	void s_redo				();
+	void s_resetall 		();
+	void s_saveAs 			();
+	void s_savePalette 		();
+	void s_saveProject		();
+	void s_showlayermanager ();
+	void s_togglesections   ();
+	void s_undo				();	
 	void s_zoomin			();
 	void s_zoomout			();
+
 	void s_showInputTab		();
 	void s_showOutputTab	();
 	void s_showPaletteTab	();
