@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Tue Nov 12 16:09:24 2013
+** Created: Mon Nov 18 13:44:44 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -17,13 +17,13 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_MainWindow[] = {
+static const uint qt_meta_data_mainwindow[] = {
 
  // content:
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      30,   14, // methods
+      25,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,129 +31,119 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      12,   11,   11,   11, 0x08,
-      22,   11,   11,   11, 0x08,
-      29,   11,   11,   11, 0x08,
-      36,   11,   11,   11, 0x08,
-      43,   11,   11,   11, 0x08,
-      52,   11,   11,   11, 0x08,
-      66,   11,   11,   11, 0x08,
-      80,   11,   11,   11, 0x08,
-      94,   11,   11,   11, 0x08,
-     102,   11,   11,   11, 0x08,
-     109,   11,   11,   11, 0x08,
-     116,   11,   11,   11, 0x08,
-     122,   11,   11,   11, 0x08,
-     129,   11,   11,   11, 0x08,
-     137,   11,   11,   11, 0x08,
-     144,   11,   11,   11, 0x08,
-     152,   11,   11,   11, 0x08,
-     164,   11,   11,   11, 0x08,
-     175,   11,   11,   11, 0x08,
-     187,   11,   11,   11, 0x08,
-     200,   11,   11,   11, 0x08,
-     209,   11,   11,   11, 0x08,
-     219,   11,   11,   11, 0x08,
-     231,   11,   11,   11, 0x08,
-     244,   11,   11,   11, 0x08,
-     261,   11,   11,   11, 0x08,
-     280,   11,   11,   11, 0x08,
-     288,   11,   11,   11, 0x08,
-     297,   11,   11,   11, 0x08,
-     307,   11,   11,   11, 0x08,
+      12,   11,   11,   11, 0x0a,
+      27,   11,   11,   11, 0x0a,
+      43,   11,   11,   11, 0x0a,
+      59,   11,   11,   11, 0x0a,
+      70,   11,   11,   11, 0x0a,
+      86,   11,   11,   11, 0x0a,
+     102,   11,   11,   11, 0x0a,
+     118,   11,   11,   11, 0x0a,
+     128,   11,   11,   11, 0x0a,
+     137,   11,   11,   11, 0x0a,
+     146,   11,   11,   11, 0x0a,
+     154,   11,   11,   11, 0x0a,
+     163,   11,   11,   11, 0x0a,
+     173,   11,   11,   11, 0x0a,
+     182,   11,   11,   11, 0x0a,
+     192,   11,   11,   11, 0x0a,
+     206,   11,   11,   11, 0x0a,
+     219,   11,   11,   11, 0x0a,
+     233,   11,   11,   11, 0x0a,
+     248,   11,   11,   11, 0x0a,
+     259,   11,   11,   11, 0x0a,
+     271,   11,   11,   11, 0x0a,
+     288,   11,   11,   11, 0x0a,
+     306,   11,   11,   11, 0x0a,
+     325,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
-static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0newFile()\0open()\0load()\0"
-    "save()\0saveAs()\0savePalette()\0"
-    "loadPalette()\0exportImage()\0close()\0"
-    "undo()\0redo()\0cut()\0copy()\0paste()\0"
-    "fill()\0blend()\0copylayer()\0resetall()\0"
-    "cropinput()\0cropoutput()\0zoomin()\0"
-    "zoomout()\0fitwindow()\0fullscreen()\0"
-    "togglesections()\0showlayermanager()\0"
-    "input()\0output()\0palette()\0info()\0"
+static const char qt_meta_stringdata_mainwindow[] = {
+    "mainwindow\0\0s_newProject()\0s_loadProject()\0"
+    "s_saveProject()\0s_saveAs()\0s_savePalette()\0"
+    "s_loadPalette()\0s_exportImage()\0"
+    "s_close()\0s_undo()\0s_redo()\0s_cut()\0"
+    "s_copy()\0s_paste()\0s_fill()\0s_blend()\0"
+    "s_copylayer()\0s_resetall()\0s_cropinput()\0"
+    "s_cropoutput()\0s_zoomin()\0s_zoomout()\0"
+    "s_showInputTab()\0s_showOutputTab()\0"
+    "s_showPaletteTab()\0s_showInfoTab()\0"
 };
 
-void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void mainwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Q_ASSERT(staticMetaObject.cast(_o));
-        MainWindow *_t = static_cast<MainWindow *>(_o);
+        mainwindow *_t = static_cast<mainwindow *>(_o);
         switch (_id) {
-        case 0: _t->newFile(); break;
-        case 1: _t->open(); break;
-        case 2: _t->load(); break;
-        case 3: _t->save(); break;
-        case 4: _t->saveAs(); break;
-        case 5: _t->savePalette(); break;
-        case 6: _t->loadPalette(); break;
-        case 7: _t->exportImage(); break;
-        case 8: _t->close(); break;
-        case 9: _t->undo(); break;
-        case 10: _t->redo(); break;
-        case 11: _t->cut(); break;
-        case 12: _t->copy(); break;
-        case 13: _t->paste(); break;
-        case 14: _t->fill(); break;
-        case 15: _t->blend(); break;
-        case 16: _t->copylayer(); break;
-        case 17: _t->resetall(); break;
-        case 18: _t->cropinput(); break;
-        case 19: _t->cropoutput(); break;
-        case 20: _t->zoomin(); break;
-        case 21: _t->zoomout(); break;
-        case 22: _t->fitwindow(); break;
-        case 23: _t->fullscreen(); break;
-        case 24: _t->togglesections(); break;
-        case 25: _t->showlayermanager(); break;
-        case 26: _t->input(); break;
-        case 27: _t->output(); break;
-        case 28: _t->palette(); break;
-        case 29: _t->info(); break;
+        case 0: _t->s_newProject(); break;
+        case 1: _t->s_loadProject(); break;
+        case 2: _t->s_saveProject(); break;
+        case 3: _t->s_saveAs(); break;
+        case 4: _t->s_savePalette(); break;
+        case 5: _t->s_loadPalette(); break;
+        case 6: _t->s_exportImage(); break;
+        case 7: _t->s_close(); break;
+        case 8: _t->s_undo(); break;
+        case 9: _t->s_redo(); break;
+        case 10: _t->s_cut(); break;
+        case 11: _t->s_copy(); break;
+        case 12: _t->s_paste(); break;
+        case 13: _t->s_fill(); break;
+        case 14: _t->s_blend(); break;
+        case 15: _t->s_copylayer(); break;
+        case 16: _t->s_resetall(); break;
+        case 17: _t->s_cropinput(); break;
+        case 18: _t->s_cropoutput(); break;
+        case 19: _t->s_zoomin(); break;
+        case 20: _t->s_zoomout(); break;
+        case 21: _t->s_showInputTab(); break;
+        case 22: _t->s_showOutputTab(); break;
+        case 23: _t->s_showPaletteTab(); break;
+        case 24: _t->s_showInfoTab(); break;
         default: ;
         }
     }
     Q_UNUSED(_a);
 }
 
-const QMetaObjectExtraData MainWindow::staticMetaObjectExtraData = {
+const QMetaObjectExtraData mainwindow::staticMetaObjectExtraData = {
     0,  qt_static_metacall 
 };
 
-const QMetaObject MainWindow::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainWindow,
-      qt_meta_data_MainWindow, &staticMetaObjectExtraData }
+const QMetaObject mainwindow::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_mainwindow,
+      qt_meta_data_mainwindow, &staticMetaObjectExtraData }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &MainWindow::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &mainwindow::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *MainWindow::metaObject() const
+const QMetaObject *mainwindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *MainWindow::qt_metacast(const char *_clname)
+void *mainwindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_MainWindow))
-        return static_cast<void*>(const_cast< MainWindow*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_mainwindow))
+        return static_cast<void*>(const_cast< mainwindow*>(this));
     return QMainWindow::qt_metacast(_clname);
 }
 
-int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int mainwindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 30)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 30;
+        _id -= 25;
     }
     return _id;
 }

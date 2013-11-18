@@ -1,128 +1,135 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include <QtGui>
+#include <QWidget>
+#include "TesseraParameters.h"
+#include "ControlPanel.h"
+#include "ImageWindow.h"
 
-class QAction;
-class QActionGroup;
-class QLabel;
-class QMenu;
-class QSlider;
-class QTreeWidget;
-class QWidget;
-class QVBoxLayout;
-
-class MainWindow : public QMainWindow
-{
+class mainwindow : public QMainWindow {
 	Q_OBJECT
-	public:
-    	MainWindow();
-		~MainWindow();
 
- 	protected:
-     	void contextMenuEvent(QContextMenuEvent *event);
+public:
+	mainwindow();
 
- 	private slots:
-        //File Slots
-     	void newFile();
-     	void open();
-     	void load();
-    	void save();
-        void saveAs();
-        void savePalette();
-        void loadPalette();
-        void exportImage();
-        void close();
-        //Edit Slots
-        void undo();
-        void redo();
-        void cut();
-        void copy();
-        void paste();
-        void fill();
-        void blend();
-        void copylayer();
-        void resetall();
-        void cropinput();
-        void cropoutput();
-        //View Slots
-        void zoomin();
-    	void zoomout();
-        void fitwindow();
-    	void fullscreen();
-        void togglesections();
-        void showlayermanager();
-        void input();
-        void output();
-        void palette();
-        void info();
-        
- 	private:
-    	void createActions();
-    	void createMenus();
-		void createToolBars();
-		void createTrees(QTreeWidget *treeWidget);
-		void updateActions();
-		void createLayout(QWidget *widget);
+	TesseraParameters&	parameters		();
+	void			updateInputFrame	();
 
-    	QActionGroup *alignmentGroup;
+	~mainwindow();
 
-    	QMenu   *fileMenu;
-    	QMenu   *editMenu;
-    	QMenu   *viewMenu;
-    	//File Actions
-    	QAction *newAct;
-    	QAction *openAct;
-    	QAction *loadAct;
-    	QAction *saveAct;
- 		QAction *saveasAct;
-    	QAction *printAct;
-    	QAction *savepaletteAct;
-    	QAction *loadpaletteAct;
-    	QAction *exportAct;
-    	QAction *exitAct;
-		//Edit Actions
-    	QAction *undoAct;
-    	QAction *redoAct;
-    	QAction *cutAct;
-    	QAction *copyAct;
-    	QAction *pasteAct;
-    	QAction *fillselectionAct;
-    	QAction *blendtoolAct;
-    	QAction *copycurrlayerAct;
-    	QAction *resetallAct;
-    	QAction *cropinputAct;
-    	QAction *cropoutputAct;
-		//View Actions
-    	QAction *zoominAct;
-    	QAction *zoomoutAct;
-    	QAction *fitwindowAct;
-    	QAction *fullscreenAct;
-    	QAction *togglesectionsAct;
-    	QAction *showlayermanagerAct;
-    	QAction *inputAct;
-    	QAction *outputAct;
-    	QAction *paletteAct;
-    	QAction *infoAct;
-		//Toolbar actions
-		QAction *pencilAct;
-		QAction *eraserAct;
-		QAction *fuzzyselectAct;
-		QAction *colorselectAct;
-		QAction *bucketfillAct;
-		QAction *colorpickerAct;
-		QAction *rectselectAct;
-		QAction *noneAct;
+public slots:
+	void s_newProject		();
+	void s_loadProject		();
+	void s_saveProject		();
+	void s_saveAs 			();
+	void s_savePalette 		();
+	void s_loadPalette 		();
+	void s_exportImage 		();
+	void s_close 			();
+	void s_undo				();
+	void s_redo				();
+	void s_cut 				();
+	void s_copy 			();
+	void s_paste 			();
+	void s_fill 			();
+	void s_blend 			();
+	void s_copylayer 		();
+	void s_resetall 		();
+	void s_cropinput 		();
+	void s_cropoutput 		();
+	void s_zoomin			();
+	void s_zoomout			();
+	void s_showInputTab		();
+	void s_showOutputTab	();
+	void s_showPaletteTab	();
+	void s_showInfoTab		();
 
-    	QLabel  *infoLabel;
-    	QToolBar*fileToolBar;
-    	QToolBar*viewToolBar;
-    	QToolBar*editToolBar;
-		QLabel  *imageLabel;
-		QVBoxLayout *imageLayout;
-		QSlider *slider;
-		QPixmap image;
-		QWidget *widget;	
+private:
+	void	createWidgets		();
+	void	createActions		();
+	void	createActionsFile	();
+	void	createActionsEdit	();
+	void	createActionsView	();
+	void	createMenus			();
+	void	createMenuFile		();
+	void	createMenuEdit		();
+	void	createMenuView		();
+	void 	createToolBars 		();
+	void 	createToolBarFile 	();
+	void 	createToolBarEdit 	();
+	void 	createToolBarView 	();
+	
+	QMenu   *fileMenu;
+    QMenu   *editMenu;
+    QMenu   *viewMenu;
+
+	QAction *newAct;
+    QAction *openAct;
+    QAction *loadAct;
+    QAction *saveAct;
+ 	QAction *saveasAct;
+    QAction *printAct;
+    QAction *savepaletteAct;
+    QAction *loadpaletteAct;
+    QAction *exportAct;
+    QAction *exitAct;
+	//Edit Actions
+    QAction *undoAct;
+    QAction *redoAct;
+    QAction *cutAct;
+    QAction *copyAct;
+    QAction *pasteAct;
+    QAction *fillselectionAct;
+	QAction *blendtoolAct;
+	QAction *copycurrlayerAct;
+	QAction *resetallAct;
+	QAction *cropinputAct;
+    QAction *cropoutputAct;
+	//View Actions
+    QAction *zoominAct;
+    QAction *zoomoutAct;
+    QAction *fitwindowAct;
+    QAction *fullscreenAct;
+    QAction *togglesectionsAct;
+    QAction *showlayermanagerAct;
+    QAction *inputAct;
+    QAction *outputAct;
+    QAction *paletteAct;
+	QAction *infoAct;
+	//Toolbar actions
+	QAction *pencilAct;
+	QAction *eraserAct;
+	QAction *fuzzyselectAct;
+	QAction *colorselectAct;
+	QAction *bucketfillAct;
+	QAction *colorpickerAct;
+	QAction *rectselectAct;
+	QAction *noneAct;
+
+	QToolBar*fileToolBar;
+    QToolBar*viewToolBar;
+    QToolBar*editToolBar;
+
+	QHBoxLayout     *imageLayout;
+    QTabWidget      *tabWidget;
+    QWidget         *centralWindow;
+    QWidget         *inputTab;
+    QWidget         *outputTab;
+    QWidget         *paletteTab;
+    QWidget         *infoTab;
+    ControlPanel    *controlPanel;	
+	
+	ImageWindow		*m_frameInput;
+	QWidget			*m_frameOutput;
+	QWidget			*m_framePalette;
+	QWidget			*m_frameInfo;
+	ControlPanel	*m_controlPanel;
+	QTabWidget		*m_tabPreview;
+
+	QString		  	m_currentInDir;
+	TesseraParameters m_params;
 };
 
-#endif
+#endif // MAINWINDOW_H
+

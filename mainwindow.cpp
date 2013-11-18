@@ -1,281 +1,71 @@
-// Sean Vinas, Enmanuel Almanzar, and Daniel Sodkiewicz Mosaic software 
-
-#include <QtGui>
-#include <QString>
-#include <QFile>
-#include <QImage>
-#include <QPixmap>
 #include "mainwindow.h"
+#include "Globals.h"
 
-#include <QPushButton>
-#include <QComboBox>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QWidget>
-#include <QRadioButton>
-#include <QSlider>
 using namespace std;
 
-MainWindow	*g_mainWindow = NULL;
+mainwindow	*g_mainWindow = NULL;
 
-MainWindow::MainWindow()
-	:  QMainWindow	 ()
-	   //m_frameInput	 (NULL),
-	   //m_frameOutput (NULL),
-	   //m_framePalette(NULL),
-	   //m_frameInfo	 (NULL),
-	   //m_controlPanel(NULL),
-	   //m_tabPreview	 (NULL)
+mainwindow::mainwindow	 ()
+	:QMainWindow	( 	 ),
+	m_frameInput	(NULL),
+	m_frameOutput 	(NULL),
+	m_framePalette 	(NULL),
+	m_frameInfo	 	(NULL),
+	m_controlPanel 	(NULL),
+	m_tabPreview	(NULL)
 {
-	// set g_mainWindow
-	g_mainWindow = this;
-
-    QWidget *widget = new QWidget;
-    setCentralWidget(widget);
-    createActions();
-	createMenus();
-    createToolBars();
-	createLayout(widget);
-    setWindowTitle(tr("Tessera Grid V1.0"));
-    setMinimumSize(160, 160);
-    resize(980, 620);
+	g_mainWindow = this;	
+	createActions();	
+	createMenus  ();	
+	createWidgets();
+	createToolBars();
+	setWindowTitle(tr("Tessera Grid V1.0"));
+	setMinimumSize(600, 600);
+	resize	      (800, 600);
+	setCentralWidget(centralWindow);
+	
 }
 
-MainWindow::~MainWindow()
+mainwindow::~mainwindow() 
 {
-	//save setting and image output
-	//This is the destructor, add this functionality when appropriate
+
 }
 
 void
-MainWindow::contextMenuEvent(QContextMenuEvent *event)
+mainwindow::createActions()
 {
-    QMenu menu(this);
-    menu.addAction(zoominAct);
-    menu.addAction(zoomoutAct);
-    //menu.addAction(pasteAct);
-    menu.exec(event->globalPos());
+	createActionsFile();
+	createActionsEdit();
+	createActionsView();
 }
 
 void
-MainWindow::newFile()
+mainwindow::createMenus()
 {
-    
+	createMenuFile();
+	createMenuEdit();
+	createMenuView();
+}
+void
+mainwindow::createToolBars()
+{
+	createToolBarFile();
+	createToolBarEdit();
+	createToolBarView();
 }
 
 void
-MainWindow::open()
+mainwindow::createActionsFile()
 {
-	QString fileName = QFileDialog::getOpenFileName(this,
-			tr("Open File"),QDir::currentPath());
-	if(!fileName.isEmpty())
-	 {
-		QImage image(fileName);
-		if(image.isNull())
-		{
-             QMessageBox::information(this, tr("Image Viewer"),
-                                      tr("Cannot load %1.").arg(fileName));
-             return;
-        }
-		//imageLabel->setPixmap(image);
-		imageLabel->setPixmap(QPixmap::fromImage(image));
-        //widget->setLayout(imageLayout); 
-		//scaleFactor = 1.0;
-
-        //printAct->setEnabled(true);
-        //fitToWindowAct->setEnabled(true);
-        //updateActions();
-
-        //if (!fitToWindowAct->isChecked())
-        //    imageLabel->adjustSize();
-	 }
-}
-
-void
-MainWindow::load()
-{
-    
-}
-
-void
-MainWindow::save()
-{
-    
-}
-
-void
-MainWindow::saveAs()
-{
-    
-}
-
-void
-MainWindow::savePalette()
-{
-   
-}
-
-void
-MainWindow::loadPalette()
-{
-   
-}
-
-void
-MainWindow::exportImage()
-{
-    
-}
-
-void
-MainWindow::close()
-{
-    
-}
-
-void
-MainWindow::undo()
-{
-    
-}
-
-void
-MainWindow::redo()
-{
-   
-}
-
-void
-MainWindow::cut()
-{
-    
-}
-
-void
-MainWindow::copy()
-{
-    
-}
-
-void
-MainWindow::paste()
-{
-    
-}
-
-void
-MainWindow::fill()
-{
-    
-}
-
-void
-MainWindow::blend()
-{
-    
-}
-
-void
-MainWindow::copylayer()
-{
-    
-}
-
-void
-MainWindow::resetall()
-{
-    
-}
-
-void
-MainWindow::cropinput()
-{
-    
-}
-
-void
-MainWindow::cropoutput()
-{
-    
-}
-
-void
-MainWindow::zoomin()
-{
-    
-}
-
-void
-MainWindow::zoomout()
-{
-    
-}
-
-void
-MainWindow::fitwindow()
-{
-	bool fitwindow = fitwindowAct->isChecked();
-     //scrollArea->setWidgetResizable(fitwindow);
-     if (!fitwindow) {
-         fullscreen();
-     }
-     updateActions();
-}
-
-void
-MainWindow::fullscreen()
-{
-    
-}
-
-void
-MainWindow::togglesections()
-{
-    
-}
-
-void
-MainWindow::showlayermanager()
-{
-    
-}
-
-void
-MainWindow::input()
-{
-    
-}
-
-void
-MainWindow::output()
-{
-    
-}
-
-void
-MainWindow::palette()
-{
-    
-}
-
-void
-MainWindow::info()
-{
-    
-}
-void 
-MainWindow::createActions()
-{
-    //File Actions
-    newAct = new QAction(QIcon("icons/file-new.png"),tr("&New"), this);
+	newAct = new QAction(QIcon("icons/file-new.png"),tr("&New"), this);
     newAct->setShortcut(QKeySequence(tr("Ctrl+N")));
     newAct->setStatusTip(tr("Create a new file"));
-    connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
+    connect(newAct, SIGNAL(triggered()), this, SLOT(s_newProject()));
 
     openAct = new QAction(QIcon("icons/file-load.png"),tr("&Open"), this);
     openAct->setShortcut(QKeySequence(tr("Ctrl+O")));
     openAct->setStatusTip(tr("Open an existing file"));
-    connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
+    connect(openAct, SIGNAL(triggered()), this, SLOT(s_loadProject()));
 
     loadAct = new QAction(tr("&Load..."), this);
     loadAct->setShortcut(QKeySequence(tr("Ctrl+L")));
@@ -285,7 +75,7 @@ MainWindow::createActions()
     saveAct = new QAction(QIcon("icons/file-save.png"),tr("&Save"), this);
     saveAct->setShortcut(QKeySequence(tr("Ctrl+S")));
     saveAct->setStatusTip(tr("Save the image"));
-    connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
+    connect(saveAct, SIGNAL(triggered()), this, SLOT(s_saveProject()));
 
     saveasAct = new QAction(tr("&Save As..."), this);
     saveasAct->setShortcut(QKeySequence(tr("Ctrl+Shift+S")));
@@ -311,9 +101,12 @@ MainWindow::createActions()
     exitAct->setShortcut(QKeySequence(tr("Ctrl+Q")));
     exitAct->setStatusTip(tr("Exit the application"));
     connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
+}
 
-    //Edit Actions
-    undoAct = new QAction(tr("&Undo"), this);
+void
+mainwindow::createActionsEdit()
+{
+	undoAct = new QAction(tr("&Undo"), this);
     undoAct->setShortcut(QKeySequence(tr("Ctrl+Z")));
     undoAct->setStatusTip(tr("Undo the last operation"));
     connect(undoAct, SIGNAL(triggered()), this, SLOT(undo()));
@@ -368,9 +161,12 @@ MainWindow::createActions()
     cropoutputAct->setShortcut(QKeySequence(tr("Ctrl+T")));
     cropoutputAct->setStatusTip(tr("Crop Output"));
     connect(cropoutputAct, SIGNAL(triggered()), this, SLOT(cropoutput()));
+}
 
-    //View Actions
-    zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("&Zoom In"), this);
+void
+mainwindow::createActionsView()
+{
+	zoominAct = new QAction(QIcon("icons/view-zoomin.png"),tr("&Zoom In"), this);
     zoominAct->setShortcut(QKeySequence(tr("Ctrl+Shift+V")));
     zoominAct->setStatusTip(tr("Zoom in"));
 	zoominAct->setEnabled(false);
@@ -448,11 +244,10 @@ MainWindow::createActions()
     infoAct->setShortcut(QKeySequence(tr("4")));
     infoAct->setStatusTip(tr("Info"));
     connect(infoAct, SIGNAL(triggered()), this, SLOT(info()));
-
 }
 
-void 
-MainWindow::createMenus()
+void
+mainwindow::createMenuFile()
 {
 	fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(newAct);
@@ -468,8 +263,12 @@ MainWindow::createMenus()
     fileMenu->addAction(exportAct);
     fileMenu->addSeparator();
     fileMenu->addAction(exitAct);
+}
 
-    editMenu = menuBar()->addMenu(tr("&Edit"));
+void
+mainwindow::createMenuEdit()
+{
+	editMenu = menuBar()->addMenu(tr("&Edit"));
     editMenu->addAction(undoAct);
     editMenu->addAction(redoAct);
     editMenu->addSeparator();
@@ -484,7 +283,44 @@ MainWindow::createMenus()
     editMenu->addSeparator();
     editMenu->addAction(cropinputAct);
     editMenu->addAction(cropoutputAct);
+}
 
+void
+mainwindow::createToolBarView()
+{
+	viewToolBar = addToolBar(tr("View"));
+    viewToolBar->addAction(zoominAct);
+    viewToolBar->addAction(zoomoutAct);
+    viewToolBar->addAction(showlayermanagerAct);
+}
+
+void
+mainwindow::createToolBarFile()
+{
+	fileToolBar = addToolBar(tr("File"));
+    fileToolBar->addAction(newAct);
+    fileToolBar->addAction(openAct);
+    fileToolBar->addAction(saveAct);
+}
+
+void
+mainwindow::createToolBarEdit()
+{
+	editToolBar = addToolBar(tr("Edit"));
+    editToolBar->addAction(pencilAct);
+    editToolBar->addAction(eraserAct);
+	editToolBar->addAction(fuzzyselectAct);
+	editToolBar->addAction(colorselectAct);
+	editToolBar->addAction(bucketfillAct);
+	editToolBar->addAction(colorpickerAct);
+	editToolBar->addAction(rectselectAct);
+	editToolBar->addSeparator();
+	editToolBar->addAction(noneAct);
+}
+
+void
+mainwindow::createMenuView()
+{
 	viewMenu = menuBar()->addMenu(tr("&View"));
     viewMenu->addAction(zoominAct);
     viewMenu->addAction(zoomoutAct);
@@ -501,162 +337,116 @@ MainWindow::createMenus()
 }
 
 void
-MainWindow::createToolBars()
+mainwindow::createWidgets()
 {
-	fileToolBar = addToolBar(tr("File"));
-    fileToolBar->addAction(newAct);
-    fileToolBar->addAction(openAct);
-    fileToolBar->addAction(saveAct);
+	centralWindow   = new QWidget;
+    tabWidget   	= new QTabWidget(this);
 
-    viewToolBar = addToolBar(tr("View"));
-    viewToolBar->addAction(zoominAct);
-    viewToolBar->addAction(zoomoutAct);
-    viewToolBar->addAction(showlayermanagerAct);
+    inputTab 		= new ImageWindow(this);
+    outputTab   	= new QWidget();
+    paletteTab  	= new QWidget();
+    infoTab     	= new QWidget();
 
-    editToolBar = addToolBar(tr("Edit"));
-    editToolBar->addAction(pencilAct);
-    editToolBar->addAction(eraserAct);
-	editToolBar->addAction(fuzzyselectAct);
-	editToolBar->addAction(colorselectAct);
-	editToolBar->addAction(bucketfillAct);
-	editToolBar->addAction(colorpickerAct);
-	editToolBar->addAction(rectselectAct);
-	editToolBar->addSeparator();
-	editToolBar->addAction(noneAct);
-        
+    tabWidget->setMinimumSize(QSize(300,200));
+    tabWidget->addTab(inputTab, tr("Input"));
+    tabWidget->addTab(outputTab,tr("Output"));
+    tabWidget->addTab(paletteTab,tr("Palette"));
+    tabWidget->addTab(infoTab,tr("Info"));
+
+    //Create contro panel
+    controlPanel = new ControlPanel;
+    controlPanel-> setMinimumSize(350, QSizePolicy::Expanding);
+
+    imageLayout = new QHBoxLayout;
+    imageLayout->addWidget(tabWidget);
+    imageLayout->addWidget(controlPanel);
+    centralWindow->setLayout(imageLayout);
+    centralWindow->show();
 }
 
 void
-MainWindow::createTrees(QTreeWidget *treeWidget)
+mainwindow::updateInputFrame()
 {
-    treeWidget->header()->hide();
-
-    QTreeWidgetItem *treeItemOne   = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *itemOne 	   = new QTreeWidgetItem(treeItemOne);
-	QTreeWidgetItem *treeItemTwo   = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *itemTwo 	   = new QTreeWidgetItem(treeItemTwo);
-	QTreeWidgetItem *treeItemThree = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *itemThree 	   = new QTreeWidgetItem(treeItemThree);
-	QTreeWidgetItem *treeItemFour  = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *itemFour 	   = new QTreeWidgetItem(treeItemFour);
-	QTreeWidgetItem *treeItemFive  = new QTreeWidgetItem(treeWidget);
-	QTreeWidgetItem *itemFive 	   = new QTreeWidgetItem(treeItemFive);
-
-	QComboBox *comboTreeItemTwo    = new QComboBox();
-	
-	QLabel *label1 			 = new QLabel("Brightness");
-	QLabel *label2 			 = new QLabel("Contrast");
-	QLabel *labelDitherTitle = new QLabel("Dither");
-	QLabel *labelStyle 		 = new QLabel("Style");
-	QLabel *labelDitherValue = new QLabel("0%");
-	QLabel *labelValue1 	 = new QLabel("0");
-	QLabel *labelValue2 	 = new QLabel("0");
-	
-	QSlider *sliderDither 	 = new QSlider(Qt::Horizontal, this);
-    QSlider *slider1 		 = new QSlider(Qt::Horizontal, this);
-	QSlider *slider2 		 = new QSlider(Qt::Horizontal, this);
-
-	QRadioButton* button1 = new QRadioButton("Brightness-Con");
-	QRadioButton* button2 = new QRadioButton("Hue-Saturation");
-
-	QPushButton* buttonBrightReset     = new QPushButton("Reset");
-	QPushButton* buttonContrastReset   = new QPushButton("Reset");
-	QPushButton* buttonRevertInSetting = new QPushButton("Revert to original");
-
-	QWidget *widgetSettingButtons =new QWidget;
-	QWidget *widgetMosaicRend 	  =new QWidget;
-
-	QGridLayout *layoutTreeItemOne = new QGridLayout;
-	QGridLayout *layoutTreeItemTwo = new QGridLayout;
-	
-	layoutTreeItemOne->addWidget(button1, 0, 0);
-	layoutTreeItemOne->addWidget(button2, 0, 1);
-	layoutTreeItemOne->addWidget(slider1, 1, 1);
-	layoutTreeItemOne->addWidget(slider2, 2, 1);
-	layoutTreeItemOne->addWidget(label1, 1, 0);
-	layoutTreeItemOne->addWidget(label2, 2, 0);
-	layoutTreeItemOne->addWidget(labelValue1, 1, 2);
-	layoutTreeItemOne->addWidget(labelValue2, 2, 2);
-	layoutTreeItemOne->addWidget(buttonBrightReset, 1, 3);
-	layoutTreeItemOne->addWidget(buttonContrastReset, 2, 3);
-	layoutTreeItemOne->addWidget(buttonRevertInSetting, 3, 0);
-
-	comboTreeItemTwo->addItem("Standard"  );
-	comboTreeItemTwo->addItem("Standard 2");
-	comboTreeItemTwo->addItem("Standard 3");
-	
-	layoutTreeItemTwo->addWidget(labelStyle, 0, 0      );
-	layoutTreeItemTwo->addWidget(comboTreeItemTwo, 0, 1);
-	layoutTreeItemTwo->addWidget(labelDitherTitle, 1, 0);
-	layoutTreeItemTwo->addWidget(labelDitherValue, 1, 2);
-    layoutTreeItemTwo->addWidget(sliderDither, 1, 1   );
-
-	widgetSettingButtons->setLayout(layoutTreeItemOne);
- 	widgetMosaicRend    ->setLayout(layoutTreeItemTwo); 
-
-	treeWidget->setItemWidget(itemOne, 0, widgetSettingButtons);
-    treeWidget->setItemWidget(itemTwo, 0, widgetMosaicRend    );
-    
-	treeItemOne  ->setText(0, tr("Input Settings"  ));
-    treeItemTwo  ->setText(0, tr("Mosaic Rendering"));
-    treeItemThree->setText(0, tr("Mosaic Size"     ));
-    treeItemFour ->setText(0, tr("Title Palette"   )); 
-	treeItemFive ->setText(0, tr("Grout"           ));
-
-	itemThree->setText(0,"Mosaic Size Go Here"  );
-	itemFour ->setText(0,"Title Palette Go Here");
-	itemFive ->setText(0,"Grout Go Here"        );
-
-	treeWidget->insertTopLevelItem(0, itemOne  );
-	treeWidget->insertTopLevelItem(0, itemTwo  );
-	treeWidget->insertTopLevelItem(0, itemThree);
-    treeWidget->insertTopLevelItem(0, itemFour );
-    treeWidget->insertTopLevelItem(0, itemFive );
+	m_frameInput->setImage(m_params.image());
 }
 
-void 
-MainWindow::createLayout(QWidget *widget)
+TesseraParameters&
+mainwindow::parameters()
 {
-	QHBoxLayout *layout 		  = new QHBoxLayout;
-	QHBoxLayout *tabButtonslayout = new QHBoxLayout;
-	QVBoxLayout *tabLayout 		  = new QVBoxLayout;
-	QVBoxLayout *imageLayout 	  = new QVBoxLayout;
-	QVBoxLayout *inTabLayout 	  = new QVBoxLayout;
-	QTabWidget  *tabWidget        = new QTabWidget;  
-	QTabWidget  *inputTabWidget   = new QTabWidget;
-	QTreeWidget *treeWidget  	  = new QTreeWidget;
-	QLabel 		*imageLabel 	  = new QLabel();
-	QLabel 		*sliderLabel  	  = new QLabel("100%");
-	
-	createTrees(treeWidget);
+	return m_params;
+}
 
-	//image  			= QPixmap("starrynight.png");
-	//imageLabel 		->setPixmap(image);
-	imageLayout 	->addWidget(imageLabel);
-	tabButtonslayout->addWidget(new QPushButton("Full Screen"));
-	tabButtonslayout->addWidget(new QPushButton("Fit Window"));
-	slider  		= new QSlider(Qt::Horizontal);
-    slider 			->setTickPosition(QSlider::TicksBelow);
-    slider 			->setTickInterval(5);
-    slider 			->setSingleStep(1);
-	tabButtonslayout->addWidget(slider);	
-	tabButtonslayout->addWidget(sliderLabel);
-	inTabLayout   	->addLayout(imageLayout);
-	inTabLayout   	->addLayout(tabButtonslayout);
-	inputTabWidget 	->setLayout(inTabLayout);
-	tabWidget 		->addTab(inputTabWidget,   "Input");
-    tabWidget 		->addTab(new QTabWidget(), "Output");
-    tabWidget 		->addTab(new QTabWidget(), "Palette");
-    tabWidget 		->addTab(new QTabWidget(), "Info");
-    tabLayout 		->addWidget(tabWidget);
-	layout  		->addLayout(tabLayout);
-    layout 			->addWidget(treeWidget);
-    widget 			->setLayout(layout);
-}
-void 
-MainWindow::updateActions()
+void
+mainwindow::s_newProject()
 {
-     zoominAct    ->setEnabled(!fitwindowAct->isChecked());
-     zoomoutAct   ->setEnabled(!fitwindowAct->isChecked());
-     fullscreenAct->setEnabled(!fitwindowAct->isChecked());
+	// prompt for input filename
+	QFileDialog dialog(this);
+
+	// open the last known working directory
+	if(!m_currentInDir.isEmpty())
+		dialog.setDirectory(m_currentInDir);
+
+	// display existing files and directories
+	dialog.setFileMode(QFileDialog::ExistingFile);
+
+	// invoke native file browser to select file
+	QString sel("Images");
+	QString file =  dialog.getOpenFileName(this,
+			     "Open File", m_currentInDir,
+			     "Images (*.jpg *.jpeg *.png *.bmp *.tiff *.tif);;"
+			      "All files (*)", &sel);
+
+	// no file selected.. return
+	if(file.isNull())
+		return;
+
+	// update location of current directory
+	m_currentInDir = QFileInfo(file).dir().absolutePath();
+
+	// load input image
+	QImage image = QImage(file);
+
+	// check whether image could be read
+	if(image.isNull()) {
+		QMessageBox::critical(this,"Error", "Image Read Error",QMessageBox::Ok);
+		return;
+	}
+	m_params.reset();
+	m_params.setOriginalImage(image);
+	m_params.setImage(image);
+	m_controlPanel->resetControls();
+	updateInputFrame();
 }
+void mainwindow::s_loadProject(){}
+void mainwindow::s_saveProject(){}
+void mainwindow::s_saveAs() 	{}
+void mainwindow::s_savePalette(){}
+void mainwindow::s_loadPalette(){}
+void mainwindow::s_exportImage(){}
+void mainwindow::s_close() 		{}
+void mainwindow::s_undo() 		{}
+void mainwindow::s_redo() 		{}
+void mainwindow::s_cut() 		{}
+void mainwindow::s_copy() 		{}
+void mainwindow::s_paste() 		{}
+void mainwindow::s_fill() 		{}
+void mainwindow::s_blend() 		{}
+void mainwindow::s_copylayer() 	{}
+void mainwindow::s_resetall() 	{}
+void mainwindow::s_cropinput() 	{}
+void mainwindow::s_cropoutput() {}
+void mainwindow::s_zoomin() 	{}
+void mainwindow::s_zoomout() 	{}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// mainwindow::showInputTab:
+// mainwindow::showOutputTab:
+// mainwindow::showPaletteTab:
+// mainwindow::showInfoTab:
+//
+// Make the input/output/palette/info page current in the tab widget
+void mainwindow::s_showInputTab()  {m_tabPreview->setCurrentIndex(0);}
+void mainwindow::s_showOutputTab() {m_tabPreview->setCurrentIndex(1);}
+void mainwindow::s_showPaletteTab(){m_tabPreview->setCurrentIndex(2);}
+void mainwindow::s_showInfoTab()   {m_tabPreview->setCurrentIndex(3);}
+
+
