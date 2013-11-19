@@ -260,15 +260,16 @@ MainWindow::createCentralWidget()
 	
 	fullScreenButton = new QPushButton("Full Screen");
 	fitWindowButton  = new QPushButton("Fit Window");
-	imageButtons->addWidget(fullScreenButton);
-	imageButtons->addWidget(fitWindowButton);
 
 	slider = new QSlider(Qt::Horizontal);
 	slider->setTickPosition(QSlider::TicksBelow);
 	slider->setTickInterval(5);
 	slider->setSingleStep(1);
-	imageButtons->addWidget(slider);
 	sliderLabel = new QLabel("100%");
+
+	imageButtons->addWidget(fullScreenButton);
+	imageButtons->addWidget(fitWindowButton);
+	imageButtons->addWidget(slider);
 	imageButtons->addWidget(sliderLabel);
 	
 	imageTabLayout->addWidget(m_frameInput);
