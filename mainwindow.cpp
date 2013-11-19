@@ -33,12 +33,12 @@ MainWindow::~MainWindow()
 void 
 MainWindow::createActions()
 { 
-	a_blendTool = new QAction(tr("&Blend"),this);
-    a_blendTool ->setShortcut(QKeySequence("Ctrl+D"));
-	a_blendTool ->setStatusTip(tr("Blend tool"));
+	a_blendTool 	= new QAction(tr("&Blend"),this);
+    a_blendTool 	->setShortcut(QKeySequence("Ctrl+D"));
+	a_blendTool 	->setStatusTip(tr("Blend tool"));
 
 	a_bucketFill 	= new QAction(QIcon("icons/tool-bucket-fill-22.png"),
-			                   tr("Bucket Fill"),this);
+			                      tr("Bucket Fill"),this);
 
 	a_byColorSelect = new QAction(QIcon("icons/tool-by-color-select-22.png"), 
 								  tr("By Color Selection Tool"),this);
@@ -46,126 +46,133 @@ MainWindow::createActions()
 	a_colorPicker 	= new QAction(QIcon("icons/tool-color-picker-22.png"), 
 								  tr("Color Picker"),this);
 
-	a_colorSelection = new QAction(QIcon("icons/tool-by-color-select-22.png"),
+	a_colorSelection= new QAction(QIcon("icons/tool-by-color-select-22.png"),
 								   tr("By Color Selection Tool"), this);
 
-	a_copy = new QAction(tr("&Copy"),this);
-    a_copy->setShortcut(QKeySequence::Copy);
+	a_copy 			= new QAction(tr("&Copy"),this);
+    a_copy 			->setShortcut(QKeySequence::Copy);
 
-	a_copyCurrentLayer = new QAction(tr("Cop&y Current Layer"),this);
+	a_copyCurrentLayer= new QAction(tr("Cop&y Current Layer"),this);
     a_copyCurrentLayer->setShortcut(QKeySequence("Ctrl+Shift+C"));
 
-	a_cropInput = new QAction(tr("&Crop Input"),this);
-    a_cropInput->setShortcut(QKeySequence("Ctrl+Shift+R"));
+	a_cropInput  	= new QAction(tr("&Crop Input"),this);
+    a_cropInput 	->setShortcut(QKeySequence("Ctrl+Shift+R"));
 
-    a_cropOutput = new QAction(tr("&Crop Output"),this);
-    a_cropOutput->setShortcut(QKeySequence("Ctrl+Shift+T"));
+    a_cropOutput 	= new QAction(tr("&Crop Output"),this);
+    a_cropOutput 	->setShortcut(QKeySequence("Ctrl+Shift+T"));
 
-	a_cut = new QAction(tr("&Cut"),this);
-    a_cut->setShortcut(QKeySequence::Cut);
+	a_cut 			= new QAction(tr("&Cut"),this);
+    a_cut 			->setShortcut(QKeySequence::Cut);
 
-	a_eraser = new QAction(QIcon("icons/tool-eraser-22.png"), 
-						   tr("Eraser"),this);
+	a_eraser  		= new QAction(QIcon("icons/tool-eraser-22.png"), 
+						          tr("Eraser"),this);
 
 	a_exportPalette = new QAction(tr("&Export"),this);
-    a_exportPalette->setShortcut(QKeySequence("Ctrl+E"));
+    a_exportPalette ->setShortcut(QKeySequence("Ctrl+E"));
 
 	a_fillSelection = new QAction(QIcon("icons/tool-bucket-fill-22.png"), 
 								  tr("F&ill Selection"),this);
-    a_fillSelection->setShortcut(QKeySequence("Ctrl+I"));
+    a_fillSelection ->setShortcut(QKeySequence("Ctrl+I"));
 
-	a_fitWindow = new QAction(tr("Fit &Window"),this);
-    a_fitWindow->setShortcut(QKeySequence("Ctrl+W"));
+	a_fitWindow 	= new QAction(tr("Fit &Window"),this);
+    a_fitWindow 	->setShortcut(QKeySequence("Ctrl+W"));
 
-    a_fullscreen = new QAction(tr("&Fullscreen"),this);
-    a_fullscreen->setShortcut(QKeySequence("Ctrl+F"));
+    a_fullscreen 	= new QAction(tr("&Fullscreen"),this);
+    a_fullscreen 	->setShortcut(QKeySequence("Ctrl+F"));
 
-	a_fuzzySelect = new QAction(QIcon("icons/tool-fuzzy-select-22.png"), 
-								tr("Fuzzy Selection Tool"),this);
+	a_fuzzySelect  	= new QAction(QIcon("icons/tool-fuzzy-select-22.png"), 
+								  tr("Fuzzy Selection Tool"),this);
 
-	a_info = new QAction(tr("I&nfo"),this);
-    a_info->setShortcut(QKeySequence("4"));
+	a_info 			= new QAction(tr("I&nfo"),this);
+    a_info 			->setShortcut(QKeySequence("4"));
 
-	a_input = new QAction(tr("&Input"),this);
-    a_input->setShortcut(QKeySequence("1"));
+	a_input 		= new QAction(tr("&Input"),this);
+    a_input 		->setShortcut(QKeySequence("1"));
 
-	a_load = new QAction(QIcon("icons/file-load.png"),tr("&Load..."), this);
-    a_load->setShortcut(QKeySequence(tr("Ctrl+L")));
-    a_load->setStatusTip(tr("Load image"));
-    //connect(a_load, SIGNAL(triggered()), this, SLOT(s_load()));
+	a_load 			= new QAction(QIcon("icons/file-load.png"),
+								  tr("&Load..."), this);
+    a_load 			->setShortcut(QKeySequence(tr("Ctrl+L")));
+    a_load 			->setStatusTip(tr("Load image"));
+     				//connect(a_load, SIGNAL(triggered()), 
+					//this, SLOT(s_load()));
 
-	a_loadPalette = new QAction(tr("&Load Palette"),this);
-    a_loadPalette->setShortcut(QKeySequence("Ctrl+Shift+L"));
+	a_loadPalette 	= new QAction(tr("&Load Palette"),this);
+    a_loadPalette 	->setShortcut(QKeySequence("Ctrl+Shift+L"));
 
-	a_new = new QAction(QIcon("icons/file-new.png"),tr("&New"), this);
-    a_new->setShortcut(QKeySequence(tr("Ctrl+N")));
-    a_new->setStatusTip(tr("Create A New Image"));
-    connect(a_new, SIGNAL(triggered()), this, SLOT(s_newProject()));
+	a_new  			= new QAction(QIcon("icons/file-new.png"),
+								  tr("&New"), this);
+    a_new 			->setShortcut(QKeySequence(tr("Ctrl+N")));
+    a_new 			->setStatusTip(tr("Create A New Image"));
+     				connect(a_new, SIGNAL(triggered()), 
+							this,  SLOT(s_newProject()));
 
 
-	a_none = new QAction(QIcon("icons/tool-none-icon.png"), 
-			 			 tr("None"),this);
+	a_none 			= new QAction(QIcon("icons/tool-none-icon.png"), 
+			 			  		  tr("None"),this);
 
-	a_open = new QAction(QIcon("icons/file-load.png"),tr("&Open"), this);
-    a_open->setShortcut(QKeySequence(tr("Ctrl+O")));
-    a_open->setStatusTip(tr("Open Image"));
-    //connect(a_open, SIGNAL(triggered()), this, SLOT(s_loadProject()));
+	a_open  		= new QAction(QIcon("icons/file-load.png"),
+								  tr("&Open"), this);
+    a_open 			->setShortcut(QKeySequence(tr("Ctrl+O")));
+    a_open 			->setStatusTip(tr("Open Image"));
+     				//connect(a_open, SIGNAL(triggered()), 
+					            //this,  SLOT(s_loadProject()));
 	
-	a_output = new QAction(tr("O&utput"),this);
-    a_output->setShortcut(QKeySequence("2"));
+	a_output 		= new QAction(tr("O&utput"),this);
+    a_output 		->setShortcut(QKeySequence("2"));
 
-	a_palette = new QAction(tr("&Palette"),this);
-    a_palette->setShortcut(QKeySequence("3"));
+	a_palette  		= new QAction(tr("&Palette"),this);
+    a_palette 		->setShortcut(QKeySequence("3"));
 
-	a_paste = new QAction(tr("&Paste"),this);
-    a_paste->setShortcut(QKeySequence::Paste);
+	a_paste 		= new QAction(tr("&Paste"),this);
+    a_paste 		->setShortcut(QKeySequence::Paste);
 
-    a_pencil = new QAction(QIcon("icons/tool-pencil-22.png"), 
-						   tr("Pencil"),this);
+    a_pencil  		= new QAction(QIcon("icons/tool-pencil-22.png"), 
+						     	  tr("Pencil"),this);
 
-	a_quit = new QAction(tr("&Quit"),this);
-    a_quit->setShortcut(QKeySequence("Ctrl+Q"));
-    connect(a_quit, SIGNAL(triggered()), this, SLOT(close()));
+	a_quit 			= new QAction(tr("&Quit"),this);
+    a_quit 			->setShortcut(QKeySequence("Ctrl+Q"));
+     				connect(a_quit, SIGNAL(triggered()), 
+							this,   SLOT(close()));
 
-	a_rectSelect = new QAction(QIcon("icons/tool-rect-select-22.png"), 
-							   tr("Rectangle Selection"),this);
+	a_rectSelect 	= new QAction(QIcon("icons/tool-rect-select-22.png"), 
+							      tr("Rectangle Selection"),this);
 
-	a_redo = new QAction(tr("&Redo"),this);
-    a_redo->setShortcut(QKeySequence::Redo);
+	a_redo  		= new QAction(tr("&Redo"),this);
+    a_redo 			->setShortcut(QKeySequence::Redo);
 
-	a_resetAll = new QAction(tr("Reset &All Parameters"),this);
-    a_resetAll->setShortcut(QKeySequence("Ctrl+Shift+A"));
+	a_resetAll 		= new QAction(tr("Reset &All Parameters"),this);
+    a_resetAll 		->setShortcut(QKeySequence("Ctrl+Shift+A"));
 
     a_saveAsProject = new QAction(tr("Save &As"),this);
-    a_saveAsProject->setShortcut(QKeySequence("Ctrl+Shift+S"));
-    a_saveAsProject->setStatusTip(tr("Save As"));
+    a_saveAsProject ->setShortcut(QKeySequence("Ctrl+Shift+S"));
+    a_saveAsProject ->setStatusTip(tr("Save As"));
 
-    a_savePalette = new QAction(tr("Save &Palette"),this);
-    a_savePalette->setShortcut(QKeySequence("Ctrl+Shift+P"));
-	a_savePalette ->setStatusTip(tr("Save Palette"));
+    a_savePalette 	= new QAction(tr("Save &Palette"),this);
+    a_savePalette 	->setShortcut(QKeySequence("Ctrl+Shift+P"));
+	a_savePalette 	->setStatusTip(tr("Save Palette"));
 
-	a_saveProject = new QAction(QIcon("icons/file-save.png"), 
-								tr("&Save"),this);
-    a_saveProject ->setShortcut(QKeySequence(tr("Ctrl+S")));
-    a_saveProject ->setStatusTip(tr("Save"));
+	a_saveProject 	= new QAction(QIcon("icons/file-save.png"), 
+								  tr("&Save"),this);
+    a_saveProject 	->setShortcut(QKeySequence(tr("Ctrl+S")));
+    a_saveProject 	->setStatusTip(tr("Save"));
 
-	a_showLayerManager = new QAction(QIcon("icons/view-layer-manager.png"), 
-									 tr("Show Layer &Manager"),this);
+	a_showLayerManager= new QAction(QIcon("icons/view-layer-manager.png"), 
+									tr("Show Layer &Manager"),this);
     a_showLayerManager->setShortcut(QKeySequence("Ctrl+M"));
 
-	a_toggleSections = new QAction(tr("Toggle &Sections"),this);
+	a_toggleSections= new QAction(tr("Toggle &Sections"),this);
     a_toggleSections->setShortcut(QKeySequence("Ctrl+B"));
 
-    a_undo = new QAction(tr("&Undo"),this);
-    a_undo->setShortcut(QKeySequence::Undo);
+    a_undo 			= new QAction(tr("&Undo"),this);
+    a_undo 			->setShortcut(QKeySequence::Undo);
 
-    a_zoomIn = new QAction(QIcon("icons/view-zoomin.png"), 
-						   tr("&Zoom In"),this);
-    a_zoomIn->setShortcut(QKeySequence("Ctrl+="));
+    a_zoomIn  		= new QAction(QIcon("icons/view-zoomin.png"), 
+						   		  tr("&Zoom In"),this);
+    a_zoomIn 		->setShortcut(QKeySequence("Ctrl+="));
 
-    a_zoomOut = new QAction(QIcon("icons/view-zoomout.png"), 
-			  				tr("Zoom &Out"),this);
-    a_zoomOut->setShortcut(QKeySequence("Ctrl+-"));
+    a_zoomOut 		= new QAction(QIcon("icons/view-zoomout.png"), 
+			  					  tr("Zoom &Out"),this);
+    a_zoomOut 		->setShortcut(QKeySequence("Ctrl+-"));
 }
 void
 MainWindow::createMenus()
