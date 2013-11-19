@@ -48,6 +48,7 @@ private:
     void createCentralWidget();
     void createToolBars 	();
     void createFileToolBar 	();
+	void createViewToolBar   ();
 	void createEditToolBar 	();
 
 	QHBoxLayout *mainLayout;
@@ -61,6 +62,7 @@ private:
     QMenu 		*toolsMenu;
 
     QToolBar 	*fileToolBar;
+	QToolBar 	*viewToolBar;
     QToolBar 	*editToolBar;
 
     QTabWidget  *windowTabs;

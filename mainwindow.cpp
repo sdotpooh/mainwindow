@@ -81,7 +81,7 @@ MainWindow::createActions()
     a_fullscreen->setShortcut(QKeySequence("Ctrl+F"));
 
 	a_fuzzySelect = new QAction(QIcon("icons/tool-fuzzy-select-22.png"), 
-								tr("Fuzze Selection Tool"),this);
+								tr("Fuzzy Selection Tool"),this);
 
 	a_info = new QAction(tr("I&nfo"),this);
     a_info->setShortcut(QKeySequence("4"));
@@ -300,6 +300,7 @@ MainWindow::createCentralWidget()
 void MainWindow::createToolBars()
 {
 	createFileToolBar();
+	createViewToolBar();
 	createEditToolBar();
 }
 
@@ -310,10 +311,15 @@ MainWindow::createFileToolBar()
     fileToolBar->addAction(a_new);
     fileToolBar->addAction(a_load);
     fileToolBar->addAction(a_saveProject);
-    fileToolBar = addToolBar(tr("Zooming Tools"));
-    fileToolBar->addAction(a_zoomIn);
-    fileToolBar->addAction(a_zoomOut);
-    fileToolBar->addAction(a_showLayerManager);
+}
+
+void 
+MainWindow::createViewToolBar()
+{
+	viewToolBar = addToolBar(tr("View"));
+    viewToolBar->addAction(a_zoomIn);
+    viewToolBar->addAction(a_zoomOut);
+    viewToolBar->addAction(a_showLayerManager);
 }
 
 void 
