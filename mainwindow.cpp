@@ -257,9 +257,12 @@ MainWindow::createCentralWidget()
 	QTabWidget  *inputTabWidget = new QTabWidget;
 	QVBoxLayout *imageTabLayout = new QVBoxLayout;
 	QHBoxLayout *imageButtons   = new QHBoxLayout;
+	
+	fullScreenButton = new QPushButton("Full Screen");
+	fitWindowButton  = new QPushButton("Fit Window");
+	imageButtons->addWidget(fullScreenButton);
+	imageButtons->addWidget(fitWindowButton);
 
-	imageButtons->addWidget(new QPushButton("Full Screen"));
-	imageButtons->addWidget(new QPushButton("Fit Window"));
 	slider = new QSlider(Qt::Horizontal);
 	slider->setTickPosition(QSlider::TicksBelow);
 	slider->setTickInterval(5);

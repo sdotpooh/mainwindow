@@ -119,6 +119,9 @@ private:
 
     QString     m_currentInDir;
 
+	QPushButton *fullScreenButton;
+	QPushButton *fitWindowButton;
+
     TesseraParameters m_params;
 };
 
