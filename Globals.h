@@ -4,7 +4,7 @@
 #include <QtGui>
 #include <QWidget>
 
-class mainwindow;
+class MainWindow;
 
 // macros
 #define CEILING(A)	((A)==(int)(A) ? (int)(A) : (A)>0 ? (int)(A)+1:(int)(A))
@@ -18,7 +18,7 @@ class mainwindow;
 #define EPSILON2	1E-12
 
 // global variables
-extern mainwindow	*g_mainWindow;
+extern MainWindow	*g_mainWindow;
 
 #endif	// GLOBALS_H
 
