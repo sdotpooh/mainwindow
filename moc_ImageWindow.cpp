@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ImageWindow.h'
 **
-** Created: Mon Nov 18 00:16:55 2013
+** Created: Tue Nov 19 17:58:02 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

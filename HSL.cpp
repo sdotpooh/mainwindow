@@ -1,5 +1,7 @@
-// The code for HSL computation and adjustments has been taken from GIMP
-
+// Group Members: Sean Vinas, Enmanuel Almanzar, Daniel Sodkiewicz
+// Mosaic Tile Software Project
+// CSC221 Section R: Software Design Lab
+// Professor Wolberg
 #include "HSL.h"
 
 HSL::HSL()

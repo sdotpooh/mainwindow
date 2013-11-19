@@ -1,3 +1,7 @@
+// Group Members: Sean Vinas, Enmanuel Almanzar, Daniel Sodkiewicz
+// Mosaic Tile Software Project
+// CSC221 Section R: Software Design Lab
+// Professor Wolberg
 #include "mainwindow.h"
 #include "Globals.h"
 
@@ -302,7 +306,6 @@ MainWindow::createCentralWidget()
     centralWindow->setLayout(mainLayout);
     centralWindow->show();
 }
-
 
 void MainWindow::createToolBars()
 {

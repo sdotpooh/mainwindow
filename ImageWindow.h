@@ -1,3 +1,7 @@
+// Group Members: Sean Vinas, Enmanuel Almanzar, Daniel Sodkiewicz
+// Mosaic Tile Software Project
+// CSC221 Section R: Software Design Lab
+// Professor Wolberg
 #ifndef IMAGEWINDOW_H
 #define IMAGEWINDOW_H
 
