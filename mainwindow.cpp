@@ -31,7 +31,7 @@ MainWindow::MainWindow()
 
 MainWindow::~MainWindow() 
 {
-
+	delete centralWindow;
 }
 
 void 
@@ -173,10 +173,14 @@ MainWindow::createActions()
     a_zoomIn  		= new QAction(QIcon("icons/view-zoomin.png"), 
 						   		  tr("&Zoom In"),this);
     a_zoomIn 		->setShortcut(QKeySequence("Ctrl+="));
+					connect(a_zoomIn, SIGNAL(triggered()), 
+							this,   SLOT(s_zoomIn()));
 
     a_zoomOut 		= new QAction(QIcon("icons/view-zoomout.png"), 
 			  					  tr("Zoom &Out"),this);
     a_zoomOut 		->setShortcut(QKeySequence("Ctrl+-"));
+					connect(a_zoomOut, SIGNAL(triggered()), 
+							this,   SLOT(s_zoomOut()));
 }
 void
 MainWindow::createMenus()
@@ -397,8 +401,40 @@ void MainWindow::s_loadProject 	 ()	{}
 void MainWindow::s_saveProject 	 ()	{}
 void MainWindow::s_undo 		 ()	{}
 void MainWindow::s_redo 		 ()	{}
-void MainWindow::s_zoomIn 		 ()	{}
-void MainWindow::s_zoomOut 		 ()	{}
+
+void 
+MainWindow::s_zoomIn()	
+{
+	zoom(0.8);
+}
+
+void 
+MainWindow::s_zoomOut()	
+{
+	zoom(1.25);
+}
+
+void 
+MainWindow::zoom(double factor)
+{
+	TesseraParameters &params = g_mainWindow->parameters();
+	//Get the current image
+	const QImage &curImage = params.image();
+	QImage zoomInImage = curImage;
+	//Get the current zoomFactor
+	double zoomFactor = params.zoomFactor();
+	zoomFactor = zoomFactor*factor;
+	params.setZoomFactor(zoomFactor);
+	double w = zoomInImage.width();
+	double h = zoomInImage.height();
+	zoomInImage = zoomInImage.copy(0, 
+								   0, 
+								   w*zoomFactor, 
+							   	   h*zoomFactor);
+
+	params.setImage(zoomInImage);
+	g_mainWindow->updateInputFrame();
+}
 void MainWindow::s_showInputTab  () {m_tabPreview->setCurrentIndex(0);}
 void MainWindow::s_showOutputTab () {m_tabPreview->setCurrentIndex(1);}
 void MainWindow::s_showPaletteTab() {m_tabPreview->setCurrentIndex(2);}

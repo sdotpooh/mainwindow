@@ -13,7 +13,8 @@ TesseraParameters::TesseraParameters(const TesseraParameters &params)
 	  m_hue			(params.m_hue),
 	  m_saturation	(params.m_saturation),
 	  m_lightness	(params.m_lightness),
-	  m_colorMode	(params.m_colorMode)
+	  m_colorMode	(params.m_colorMode),
+	  m_zoomFactor  (params.m_zoomFactor)
 {
 
 }
@@ -33,6 +34,7 @@ TesseraParameters::operator=(const TesseraParameters &params)
 	m_saturation	= params.m_saturation;
 	m_lightness		= params.m_lightness;
 	m_colorMode		= params.m_colorMode;
+	m_zoomFactor 	= params.m_zoomFactor;
 
 	return *this;
 }
@@ -49,6 +51,7 @@ TesseraParameters::reset()
 	m_saturation	= 0;
 	m_lightness		= 0;
 	m_colorMode		= RGB;
+	m_zoomFactor 	= 1;
 }
 
 void
@@ -99,6 +102,12 @@ TesseraParameters::setColorMode(ColorMode val)
 	m_colorMode = val;
 }
 
+void
+TesseraParameters::setZoomFactor(double val)
+{
+	m_zoomFactor = val;
+}
+
 const QImage&
 TesseraParameters::originalImage() const
 {
@@ -139,6 +148,12 @@ int
 TesseraParameters::lightness() const
 {
     return m_lightness;
+}
+
+double
+TesseraParameters::zoomFactor() const
+{
+	return m_zoomFactor;
 }
 
 TesseraParameters::ColorMode

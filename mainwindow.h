@@ -8,6 +8,7 @@
 //#include <QMainWindow>
 #include <QtGui>
 #include <QWidget>
+#include <QPainter>
 #include "ControlPanel.h"
 #include "ImageWindow.h"
 #include "TesseraParameters.h"
@@ -37,6 +38,7 @@ private slots:
     void s_redo				();
     void s_zoomIn			();
     void s_zoomOut			();
+	void zoom 				(double);
     void s_showInputTab		();
     void s_showOutputTab	();
     void s_showPaletteTab	();

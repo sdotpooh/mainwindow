@@ -21,6 +21,7 @@ public:
 	void		setSaturation			(int);
 	void		setLightness			(int);
 	void		setColorMode			(ColorMode);
+	void 		setZoomFactor 			(double);
 	const 		QImage&	originalImage	() const;
 	const 		QImage&	image			() const;
 	int			brightness				() const;
@@ -28,6 +29,7 @@ public:
 	int			hue						() const;
 	int			saturation				() const;
 	int			lightness				() const;
+	double 		zoomFactor 				() const;
 	ColorMode	colorMode				() const;
 protected:
 	// input settings
@@ -38,6 +40,7 @@ protected:
 	int			m_hue;
 	int			m_saturation;
 	int			m_lightness;
+	double 		m_zoomFactor;
 	ColorMode	m_colorMode;
 };
 #endif	// TESSERAPARAMETERS_H
