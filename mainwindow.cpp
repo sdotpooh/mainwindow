@@ -427,8 +427,8 @@ MainWindow::zoom(double factor)
 	params.setZoomFactor(zoomFactor);
 	double w = zoomInImage.width();
 	double h = zoomInImage.height();
-	zoomInImage = zoomInImage.copy(0, 
-								   0, 
+	zoomInImage = zoomInImage.copy(w/4, 
+								   h/4, 
 								   w*zoomFactor, 
 							   	   h*zoomFactor);
 

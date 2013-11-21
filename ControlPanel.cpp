@@ -394,6 +394,7 @@ ControlPanel::revertOriginal()
     g_mainWindow->parameters().setHue       (0);
     g_mainWindow->parameters().setSaturation(0);
     g_mainWindow->parameters().setLightness	(0);
+	g_mainWindow->parameters().setZoomFactor(1);
     resetInputControls();
     m_image = origImage;
     params.setImage(m_image);
