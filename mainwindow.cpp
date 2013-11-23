@@ -175,10 +175,10 @@ MainWindow::createActions()
     a_zoomIn  		= new QAction(QIcon("icons/view-zoomin.png"), 
 						   		  tr("&Zoom In"),this);
     a_zoomIn 		->setShortcut(QKeySequence("Ctrl+="));
-					//connect(a_zoomIn, SIGNAL(triggered()), 
-					//		this,   SLOT(s_zoomIn()));
 					connect(a_zoomIn, SIGNAL(triggered()), 
-							this,   SLOT(s_sliderValue()));
+						this,   SLOT(s_zoomIn()));
+					//connect(a_zoomIn, SIGNAL(triggered()), 
+					//		this,   SLOT(s_sliderValue()));
 
     a_zoomOut 		= new QAction(QIcon("icons/view-zoomout.png"), 
 			  					  tr("Zoom &Out"),this);
