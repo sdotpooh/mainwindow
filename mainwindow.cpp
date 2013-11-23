@@ -4,7 +4,7 @@
 // Professor Wolberg
 #include "mainwindow.h"
 #include "Globals.h"
-
+#include <iostream>
 using namespace std;
 
 MainWindow	*g_mainWindow = NULL;
@@ -164,6 +164,8 @@ MainWindow::createActions()
 									tr("Show Layer &Manager"),this);
     a_showLayerManager->setShortcut(QKeySequence("Ctrl+M"));
 
+	
+
 	a_toggleSections= new QAction(tr("Toggle &Sections"),this);
     a_toggleSections->setShortcut(QKeySequence("Ctrl+B"));
 
@@ -173,14 +175,17 @@ MainWindow::createActions()
     a_zoomIn  		= new QAction(QIcon("icons/view-zoomin.png"), 
 						   		  tr("&Zoom In"),this);
     a_zoomIn 		->setShortcut(QKeySequence("Ctrl+="));
+					//connect(a_zoomIn, SIGNAL(triggered()), 
+					//		this,   SLOT(s_zoomIn()));
 					connect(a_zoomIn, SIGNAL(triggered()), 
-							this,   SLOT(s_zoomIn()));
+							this,   SLOT(s_sliderValue()));
 
     a_zoomOut 		= new QAction(QIcon("icons/view-zoomout.png"), 
 			  					  tr("Zoom &Out"),this);
     a_zoomOut 		->setShortcut(QKeySequence("Ctrl+-"));
 					connect(a_zoomOut, SIGNAL(triggered()), 
 							this,   SLOT(s_zoomOut()));
+	
 }
 void
 MainWindow::createMenus()
@@ -278,9 +283,14 @@ MainWindow::createCentralWidget()
 
 	slider = new QSlider(Qt::Horizontal);
 	slider->setTickPosition(QSlider::TicksBelow);
-	slider->setTickInterval(5);
+	slider->setMinimum(1);
+	slider->setMaximum(45);
+	slider->setTickInterval(1);
 	slider->setSingleStep(1);
 	sliderLabel = new QLabel("100%");
+	connect(slider, SIGNAL(valueChanged(int)),
+            this,     SLOT(s_sliderZoom(int)));
+	
 
 	imageButtons->addWidget(fullScreenButton);
 	imageButtons->addWidget(fitWindowButton);
@@ -310,6 +320,7 @@ MainWindow::createCentralWidget()
     centralWindow->setLayout(mainLayout);
     centralWindow->show();
 }
+
 
 void MainWindow::createToolBars()
 {
@@ -402,36 +413,81 @@ void MainWindow::s_saveProject 	 ()	{}
 void MainWindow::s_undo 		 ()	{}
 void MainWindow::s_redo 		 ()	{}
 
+void MainWindow::s_sliderValue()
+{
+	s_zoomIn();
+	TesseraParameters &params   = g_mainWindow->parameters();
+	
+	slider->setValue(params.zoomFactor());
+}
+
+void MainWindow::s_sliderZoom(int zf)
+{
+	double zoomFactor;
+	TesseraParameters &params   = g_mainWindow->parameters();
+	const QImage &originalImage = params.originalImage();
+	QImage zoomInImage = originalImage;
+	//Determine if zoom in or out
+	if (zf < params.zoomFactor())
+		zoomFactor = -(double(zf)/2);
+	else
+		zoomFactor = double(zf)/2;
+	
+	if (zoomFactor < 1)
+		zoomFactor = 1;
+	if (zoomFactor > 45)
+		zoomFactor = 45;
+	
+	params.setZoomFactor(zoomFactor);
+	double w = zoomInImage.width();
+	double h = zoomInImage.height();
+	double zw = w/zoomFactor;
+	double zh = h/zoomFactor;
+	double xi = (w - zw)/2;
+	double yi = (h - zh)/2;
+	zoomInImage = zoomInImage.copy(xi, yi, zw, zh);
+	
+	//Display the image
+	params.setImage(zoomInImage);
+	g_mainWindow->updateInputFrame();
+}
 void 
 MainWindow::s_zoomIn()	
 {
-	zoom(0.8);
+	zoom(0.5);
 }
 
 void 
 MainWindow::s_zoomOut()	
 {
-	zoom(1.25);
+	zoom(-0.5);
 }
 
 void 
 MainWindow::zoom(double factor)
 {
 	TesseraParameters &params = g_mainWindow->parameters();
-	//Get the current image
-	const QImage &curImage = params.image();
-	QImage zoomInImage = curImage;
+	//Get the original image
+	const QImage &originalImage = params.originalImage();
+	QImage zoomInImage = originalImage;
 	//Get the current zoomFactor
 	double zoomFactor = params.zoomFactor();
-	zoomFactor = zoomFactor*factor;
+	zoomFactor = zoomFactor + factor;
+	//Make sure it doesn't zoom too close/far!
+	if (zoomFactor < 1)
+		zoomFactor = 1;
+	if (zoomFactor > 45)
+		zoomFactor = 45;
 	params.setZoomFactor(zoomFactor);
 	double w = zoomInImage.width();
 	double h = zoomInImage.height();
-	zoomInImage = zoomInImage.copy(w/4, 
-								   h/4, 
-								   w*zoomFactor, 
-							   	   h*zoomFactor);
-
+	double zw = w/zoomFactor;
+	double zh = h/zoomFactor;
+	double xi = (w - zw)/2;
+	double yi = (h - zh)/2;
+	zoomInImage = zoomInImage.copy(xi, yi, zw, zh);
+	
+	//Display the image
 	params.setImage(zoomInImage);
 	g_mainWindow->updateInputFrame();
 }
@@ -439,4 +495,5 @@ void MainWindow::s_showInputTab  () {m_tabPreview->setCurrentIndex(0);}
 void MainWindow::s_showOutputTab () {m_tabPreview->setCurrentIndex(1);}
 void MainWindow::s_showPaletteTab() {m_tabPreview->setCurrentIndex(2);}
 void MainWindow::s_showInfoTab 	 () {m_tabPreview->setCurrentIndex(3);}
+
 

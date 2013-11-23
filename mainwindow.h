@@ -39,10 +39,12 @@ private slots:
     void s_zoomIn			();
     void s_zoomOut			();
 	void zoom 				(double);
+	void s_sliderZoom 		(int);
     void s_showInputTab		();
     void s_showOutputTab	();
     void s_showPaletteTab	();
     void s_showInfoTab		();
+	void s_sliderValue 		();
 
 private:
     void createActions 		();
@@ -117,6 +119,7 @@ private:
 	QAction 	*a_savePalette;
 	QAction 	*a_saveProject;
 	QAction 	*a_showLayerManager;
+	QAction 	*a_slider;
 	QAction 	*a_toggleSections;
     QAction 	*a_undo;
     QAction 	*a_zoomIn;
@@ -134,5 +137,6 @@ private:
 };
 
 #endif // MAINWINDOW_H
+
 
 

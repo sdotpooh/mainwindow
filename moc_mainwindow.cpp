@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Wed Nov 20 16:58:48 2013
+** Created: Sat Nov 23 01:41:52 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -40,9 +40,11 @@ static const uint qt_meta_data_MainWindow[] = {
       88,   11,   11,   11, 0x08,
      100,   11,   11,   11, 0x08,
      113,   11,   11,   11, 0x08,
-     130,   11,   11,   11, 0x08,
+     131,   11,   11,   11, 0x08,
      148,   11,   11,   11, 0x08,
-     167,   11,   11,   11, 0x08,
+     166,   11,   11,   11, 0x08,
+     185,   11,   11,   11, 0x08,
+     201,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -51,8 +53,9 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0s_newProject()\0s_loadProject()\0"
     "s_saveProject()\0s_undo()\0s_redo()\0"
     "s_zoomIn()\0s_zoomOut()\0zoom(double)\0"
-    "s_showInputTab()\0s_showOutputTab()\0"
-    "s_showPaletteTab()\0s_showInfoTab()\0"
+    "s_sliderZoom(int)\0s_showInputTab()\0"
+    "s_showOutputTab()\0s_showPaletteTab()\0"
+    "s_showInfoTab()\0s_sliderValue()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -69,10 +72,12 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->s_zoomIn(); break;
         case 6: _t->s_zoomOut(); break;
         case 7: _t->zoom((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 8: _t->s_showInputTab(); break;
-        case 9: _t->s_showOutputTab(); break;
-        case 10: _t->s_showPaletteTab(); break;
-        case 11: _t->s_showInfoTab(); break;
+        case 8: _t->s_sliderZoom((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->s_showInputTab(); break;
+        case 10: _t->s_showOutputTab(); break;
+        case 11: _t->s_showPaletteTab(); break;
+        case 12: _t->s_showInfoTab(); break;
+        case 13: _t->s_sliderValue(); break;
         default: ;
         }
     }
@@ -110,9 +115,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }
