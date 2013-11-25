@@ -177,8 +177,6 @@ MainWindow::createActions()
     a_zoomIn 		->setShortcut(QKeySequence("Ctrl+="));
 					connect(a_zoomIn, SIGNAL(triggered()), 
 						this,   SLOT(s_zoomIn()));
-					//connect(a_zoomIn, SIGNAL(triggered()), 
-					//		this,   SLOT(s_sliderValue()));
 
     a_zoomOut 		= new QAction(QIcon("icons/view-zoomout.png"), 
 			  					  tr("Zoom &Out"),this);
@@ -283,7 +281,7 @@ MainWindow::createCentralWidget()
 
 	slider = new QSlider(Qt::Horizontal);
 	slider->setTickPosition(QSlider::TicksBelow);
-	slider->setMinimum(1);
+	slider->setMinimum(2);
 	slider->setMaximum(45);
 	slider->setTickInterval(1);
 	slider->setSingleStep(1);
@@ -413,14 +411,6 @@ void MainWindow::s_saveProject 	 ()	{}
 void MainWindow::s_undo 		 ()	{}
 void MainWindow::s_redo 		 ()	{}
 
-void MainWindow::s_sliderValue()
-{
-	s_zoomIn();
-	TesseraParameters &params   = g_mainWindow->parameters();
-	
-	slider->setValue(params.zoomFactor());
-}
-
 void MainWindow::s_sliderZoom(int zf)
 {
 	double zoomFactor;
@@ -445,51 +435,29 @@ void MainWindow::s_sliderZoom(int zf)
 	double zh = h/zoomFactor;
 	double xi = (w - zw)/2;
 	double yi = (h - zh)/2;
+	//Copy a sub image or the original image, 
+	//which in effect zooms
 	zoomInImage = zoomInImage.copy(xi, yi, zw, zh);
-	
-	//Display the image
+	//Display the zoom image
 	params.setImage(zoomInImage);
 	g_mainWindow->updateInputFrame();
 }
 void 
 MainWindow::s_zoomIn()	
 {
-	zoom(0.5);
+	//The zoom in push button changes 
+	//the slider value, thus the slider function
+	//s_sliderZoom() changes the zoom image
+	slider->setValue(slider->value() + 1);
 }
 
 void 
 MainWindow::s_zoomOut()	
 {
-	zoom(-0.5);
-}
-
-void 
-MainWindow::zoom(double factor)
-{
-	TesseraParameters &params = g_mainWindow->parameters();
-	//Get the original image
-	const QImage &originalImage = params.originalImage();
-	QImage zoomInImage = originalImage;
-	//Get the current zoomFactor
-	double zoomFactor = params.zoomFactor();
-	zoomFactor = zoomFactor + factor;
-	//Make sure it doesn't zoom too close/far!
-	if (zoomFactor < 1)
-		zoomFactor = 1;
-	if (zoomFactor > 45)
-		zoomFactor = 45;
-	params.setZoomFactor(zoomFactor);
-	double w = zoomInImage.width();
-	double h = zoomInImage.height();
-	double zw = w/zoomFactor;
-	double zh = h/zoomFactor;
-	double xi = (w - zw)/2;
-	double yi = (h - zh)/2;
-	zoomInImage = zoomInImage.copy(xi, yi, zw, zh);
-	
-	//Display the image
-	params.setImage(zoomInImage);
-	g_mainWindow->updateInputFrame();
+	//The zoom out push button changes 
+	//the slider value, thus the slider 
+	//s_sliderZoom() changes the zoom image
+	slider->setValue(slider->value() - 1);
 }
 void MainWindow::s_showInputTab  () {m_tabPreview->setCurrentIndex(0);}
 void MainWindow::s_showOutputTab () {m_tabPreview->setCurrentIndex(1);}
