@@ -29,6 +29,7 @@ public:
     void			    updateInputFrame();
 
     ~MainWindow();
+	friend class Tree;
 
 private slots:
     void s_newProject		();

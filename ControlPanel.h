@@ -14,6 +14,7 @@ class ControlPanel : public QWidget {
 public:
 	ControlPanel	(QWidget *parent=0, Qt::WindowFlags f=0);
 	void			resetImage		();
+	friend class Tree;
 
 public slots:
 	void			expandPanels		();
