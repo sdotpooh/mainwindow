@@ -27,6 +27,7 @@ public:
 
     TesseraParameters&	parameters		();
     void			    updateInputFrame();
+	void			    updateOutputFrame();
 
     ~MainWindow();
 	friend class Tree;
@@ -60,6 +61,7 @@ private:
 
 	QHBoxLayout *mainLayout;
     ImageWindow	*m_frameInput;
+	ImageWindow *m_frameOutput;
 	ControlPanel*m_controlPanel;
 
     QMenuBar 	*mainMenu;
@@ -79,7 +81,7 @@ private:
     QWidget     *outputTab;
     QWidget     *paletteTab;
     QWidget     *infoTab;
-	QWidget     *m_frameOutput;
+	//QWidget     *m_frameOutput;
     QWidget     *m_framePalette;
     QWidget     *m_frameInfo;
     

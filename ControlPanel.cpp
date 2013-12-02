@@ -234,8 +234,12 @@ ControlPanel::createGroupRender()
 {
     QGroupBox *groupBox = new QGroupBox;
     QVBoxLayout *vbox   = new QVBoxLayout;
-    vbox->addWidget(new QPushButton("Empty"));
+	TesseraParameters &params = g_mainWindow->parameters();
+	const QImage &origImage = params.originalImage();
+	const QImage &curImage = params.image();
+    vbox->addWidget(new QPushButton("Set Output Image"));
     groupBox->setLayout(vbox);
+	params.setOutImage(curImage);
     return groupBox;
 }
 

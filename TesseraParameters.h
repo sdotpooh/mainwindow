@@ -15,6 +15,8 @@ public:
 	void		reset					();
 	void		setOriginalImage 		(const QImage&);
 	void		setImage				(const QImage&);
+	void 		setOutOriginalImage 	(const QImage&);
+	void 		setOutImage 			(const QImage&);
 	void		setBrightness			(int);
 	void		setContrast				(int);
 	void		setHue					(int);
@@ -24,6 +26,8 @@ public:
 	void 		setZoomFactor 			(double);
 	const 		QImage&	originalImage	() const;
 	const 		QImage&	image			() const;
+	const 		QImage&	outOriginalImage() const;
+	const 		QImage&	outImage			() const;
 	int			brightness				() const;
 	int			contrast				() const;
 	int			hue						() const;
@@ -35,6 +39,9 @@ protected:
 	// input settings
 	QImage		m_origImage; // original uncropped input image
 	QImage		m_image;     // current cropped/color-correctd inp image
+	QImage 		m_outImage;
+	QImage 		m_outOrigImage;
+
 	int			m_brightness;
 	int			m_contrast;
 	int			m_hue;

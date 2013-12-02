@@ -45,6 +45,8 @@ TesseraParameters::reset()
 	// input settings
 	m_image			= QImage();
 	m_origImage		= QImage();
+	m_outImage 		= QImage();
+	m_outOrigImage 	= QImage();
 	m_brightness	= 0;
 	m_contrast		= 0;
 	m_hue			= 0;
@@ -65,6 +67,7 @@ TesseraParameters::setImage(const QImage &image)
 {
 	m_image = image;
 }
+
 
 void
 TesseraParameters::setBrightness(int val)
@@ -162,3 +165,27 @@ TesseraParameters::colorMode() const
     return m_colorMode;
 }
 
+//Output tab Image
+void
+TesseraParameters::setOutOriginalImage(const QImage &image)
+{
+	m_outOrigImage = image;
+}
+
+void
+TesseraParameters::setOutImage(const QImage &image)
+{
+	m_outImage = image;
+}
+
+const QImage&
+TesseraParameters::outOriginalImage() const
+{
+	return m_outOrigImage;
+}
+
+const QImage&
+TesseraParameters::outImage() const
+{
+	return m_outImage;
+}

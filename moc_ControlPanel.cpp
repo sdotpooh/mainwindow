@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ControlPanel.h'
 **
-** Created: Sun Dec 1 19:42:48 2013
+** Created: Sun Dec 1 20:43:52 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

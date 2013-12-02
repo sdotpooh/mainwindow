@@ -270,11 +270,14 @@ MainWindow::createCentralWidget()
     centralWindow= new QWidget;
     windowTabs   = new QTabWidget(this);
     m_frameInput = new ImageWindow(this);
+	m_frameOutput= new ImageWindow();
 
 	//Add Buttons to input Tab
 	QTabWidget  *inputTabWidget = new QTabWidget;
+	QTabWidget  *outputTabWidget = new QTabWidget;
 	QVBoxLayout *imageTabLayout = new QVBoxLayout;
 	QHBoxLayout *imageButtons   = new QHBoxLayout;
+	QVBoxLayout *outImageTabLayout = new QVBoxLayout;
 	
 	fullScreenButton = new QPushButton("Full Screen");
 	fitWindowButton  = new QPushButton("Fit Window");
@@ -298,14 +301,16 @@ MainWindow::createCentralWidget()
 	imageTabLayout->addWidget(m_frameInput);
 	imageTabLayout->addLayout(imageButtons);
 	inputTabWidget->setLayout(imageTabLayout);
+	outImageTabLayout->addWidget(m_frameOutput);
+	outputTabWidget->setLayout(outImageTabLayout);
 
-    outputTab    = new QWidget();
+    //outputTab    = new QWidget();
     paletteTab   = new QWidget();
     infoTab      = new QWidget();
 
     windowTabs->setMinimumSize(QSize(300,200)); 
 	windowTabs->addTab(inputTabWidget, tr("Input"));
-    windowTabs->addTab(outputTab,tr("Output"));
+    windowTabs->addTab(outputTabWidget,tr("Output"));
     windowTabs->addTab(paletteTab,tr("Palette"));
     windowTabs->addTab(infoTab,tr("Info"));
 
@@ -368,6 +373,16 @@ MainWindow::updateInputFrame()
 		return;
 	}
 	m_frameInput->setImage(m_params.image());
+}
+
+void
+MainWindow::updateOutputFrame()
+{
+	if(m_params.outImage().isNull()) {
+		qDebug() << "Error: NULL image.";
+		return;
+	}
+	m_frameOutput->setImage(m_params.outImage());
 }
 
 TesseraParameters&
