@@ -237,9 +237,12 @@ ControlPanel::createGroupRender()
 	TesseraParameters &params = g_mainWindow->parameters();
 	const QImage &origImage = params.originalImage();
 	const QImage &curImage = params.image();
-    vbox->addWidget(new QPushButton("Set Output Image"));
+	QPushButton *mosaicRenButton = new QPushButton("Set Output Image");
+    vbox->addWidget(mosaicRenButton);
+	connect(mosaicRenButton,    SIGNAL(clicked            ()),
+            this,               SLOT  (updateOutputImage  ()));
     groupBox->setLayout(vbox);
-	params.setOutImage(curImage);
+	//params.setOutImage(curImage);
     return groupBox;
 }
 
@@ -404,6 +407,17 @@ ControlPanel::revertOriginal()
     m_image = origImage;
     params.setImage(m_image);
     g_mainWindow->updateInputFrame();
+}
+
+void
+ControlPanel::updateOutputImage()
+{
+	TesseraParameters &params = g_mainWindow->parameters();
+    const QImage &origImage   = params.originalImage();
+    const QImage &curImage    = params.image();
+	params.setOutImage(curImage);
+	g_mainWindow->updateOutputFrame();
+	
 }
 
 int

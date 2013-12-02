@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ControlPanel.h'
 **
-** Created: Sun Dec 1 20:43:52 2013
+** Created: Sun Dec 1 22:19:41 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ControlPanel[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -45,6 +45,7 @@ static const uint qt_meta_data_ControlPanel[] = {
      209,   13,   13,   13, 0x0a,
      226,   13,   13,   13, 0x0a,
      247,   13,   13,   13, 0x0a,
+     263,   13,   13,   13, 0x0a,
 
        0        // eod
 };
@@ -57,7 +58,7 @@ static const char qt_meta_stringdata_ControlPanel[] = {
     "changeContrast(int)\0changeHue(int)\0"
     "changeSaturation(int)\0changeLightness(int)\0"
     "revertOriginal()\0resetInputControls()\0"
-    "resetControls()\0"
+    "resetControls()\0updateOutputImage()\0"
 };
 
 void ControlPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -80,6 +81,7 @@ void ControlPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 11: _t->revertOriginal(); break;
         case 12: _t->resetInputControls(); break;
         case 13: _t->resetControls(); break;
+        case 14: _t->updateOutputImage(); break;
         default: ;
         }
     }
@@ -117,9 +119,9 @@ int ControlPanel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }

@@ -31,6 +31,7 @@ public slots:
 	void			revertOriginal		();
 	void			resetInputControls	();
 	void			resetControls		();
+	void 			updateOutputImage   ();
 
 protected:
 	void			createPanelTree		();
