@@ -13,11 +13,11 @@ class Tree
             public:
                 double avg;
                 Node *left, *right;
-				//QImage image; 
+				string fileName;
 				//Store the image in the tree
 				//Use the find to return the image handle
-                Node(double d = 0) //constructor
-                    :avg(d), left(NULL), right(NULL) {}
+                Node(double d = 0, string s = "Empty") //constructor
+                    :avg(d), left(NULL), right(NULL), fileName(s){}
         };
  
         Node *root;
@@ -30,8 +30,8 @@ class Tree
     public:
         Tree(void); //constructor
         ~Tree(void); //destructor
-        double find(double);
-        void insert(double);
+        string find(double);
+        void insert(double, string);
         void remove(double);
         bool empty(void) const;
         Tree(const Tree &); //copy constructor

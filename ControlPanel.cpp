@@ -6,6 +6,7 @@
 #include "mainwindow.h"
 #include "Globals.h"
 #include "HSL.h"
+#include "Tree.h"
 
 ControlPanel::ControlPanel(QWidget *parent, Qt::WindowFlags f)
     : QWidget	(parent, f)
@@ -415,6 +416,34 @@ ControlPanel::updateOutputImage()
 	TesseraParameters &params = g_mainWindow->parameters();
     const QImage &origImage   = params.originalImage();
     const QImage &curImage    = params.image();
+	Tree halfInchTree;
+    //halfInchTree.insert(5.2);
+	//cout << halfInchTree << endl;
+	double avg, rAvg, gAvg, bAvg;
+	// init input dimensions
+	int w = curImage.width ();
+	int h = curImage.height();
+	// create output image using 3/8 VG and output 
+	// image of 70"
+	//outImage = QImage(w, h, QImage::Format_RGB32);
+	// apply lookup table to source image to make input image
+	for(int y = 0; y < h; y++) {
+		const QRgb *src = (const QRgb*) curImage.scanLine(y);
+		//QRgb *out  = (QRgb*) outImage.scanLine(y);
+		for(int x = 0; x < w; x++) {
+			rAvg = qRed(src[x]);
+			gAvg = qGreen(src[x]);
+			bAvg = qBlue(src[x]);
+			avg = (rAvg + gAvg + bAvg)/3;
+			//place the avg into a BST
+			//but first find the middle avg
+			//insert the median first
+			cout << avg << endl;
+			halfInchTree.insert(avg, "A-.375-VG-");
+		}
+	}
+	cout << halfInchTree <<endl<<endl;
+	cout << halfInchTree.find(146) << endl;
 	params.setOutImage(curImage);
 	g_mainWindow->updateOutputFrame();
 	

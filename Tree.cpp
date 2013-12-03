@@ -22,10 +22,6 @@ Tree::trav(double foo, Node * & par)
      while(curr && curr->avg != 0)
      {
          par = curr;
-		 //if (foo == curr->avg) {
-		//	 //cout << curr->avg << endl;
-		//	 return curr;
-		 //}
 		 if(foo <= curr->avg)
              curr = curr->left;
          else
@@ -34,7 +30,7 @@ Tree::trav(double foo, Node * & par)
      return curr;
 }
  
-double 
+string
 Tree::find(double foo)
 {
 	Node *par = NULL;
@@ -44,24 +40,23 @@ Tree::find(double foo)
      {
          par = curr;
 		 if (foo == curr->avg)	
-			 return curr->avg;
+			 return curr->fileName;
 		 else if(foo < curr->avg)
              curr = curr->left;
          else
              curr = curr->right;
      }
-     return -1;
-     
+     return curr->fileName;
 }
  
 void 
-Tree::insert(double foo)
+Tree::insert(double foo, string s)
 {
      Node * par = NULL;
      Node * curr = trav(foo, par);
      if(!curr)
      {
-         curr = new Node(foo);
+         curr = new Node(foo, s);
          if(!par)
              root = curr;
          else if(foo <= par->avg)
@@ -132,7 +127,7 @@ Tree::copy(Node * N)
 {
      if(N)
      {
-         insert(N->avg);
+         insert(N->avg, N->fileName);
          copy(N->left);
          copy(N->right);
      }

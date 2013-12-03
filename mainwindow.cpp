@@ -285,7 +285,7 @@ MainWindow::createCentralWidget()
 	slider = new QSlider(Qt::Horizontal);
 	slider->setTickPosition(QSlider::TicksBelow);
 	slider->setMinimum(2);
-	slider->setMaximum(45);
+	slider->setMaximum(175);
 	slider->setTickInterval(1);
 	slider->setSingleStep(1);
 	sliderLabel = new QLabel("100%");
@@ -440,8 +440,8 @@ void MainWindow::s_sliderZoom(int zf)
 	
 	if (zoomFactor < 1)
 		zoomFactor = 1;
-	if (zoomFactor > 45)
-		zoomFactor = 45;
+	if (zoomFactor > 175)
+		zoomFactor = 175;
 	
 	params.setZoomFactor(zoomFactor);
 	double w = zoomInImage.width();
