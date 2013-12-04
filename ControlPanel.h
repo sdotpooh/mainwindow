@@ -7,6 +7,8 @@
 
 #include <QtGui>
 #include <QWidget>
+#include <QDir>
+#include <QPainter>
 #include "TesseraParameters.h"
 
 class ControlPanel : public QWidget {
@@ -55,7 +57,10 @@ private:
 	QLabel						*m_labelIn [5];
 	QStackedWidget				*m_stackWidgetIn;
 	// other variables
-	QImage						m_image; 
+	QImage						m_image;
+	//QFileInfoList *list
+	//QFileInfo fi;
+	//QFileInfoListIterator *it;
 };
 
 #endif	// CONTROLPANEL_H

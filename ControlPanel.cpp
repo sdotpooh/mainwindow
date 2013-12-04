@@ -8,6 +8,7 @@
 #include "HSL.h"
 #include "Tree.h"
 
+
 ControlPanel::ControlPanel(QWidget *parent, Qt::WindowFlags f)
     : QWidget	(parent, f)
 {
@@ -413,40 +414,143 @@ ControlPanel::revertOriginal()
 void
 ControlPanel::updateOutputImage()
 {
+	QImage tileImage;
+	QString strFileName;
 	TesseraParameters &params = g_mainWindow->parameters();
-    const QImage &origImage   = params.originalImage();
+    //const QImage &origImage   = params.originalImage();
     const QImage &curImage    = params.image();
 	Tree halfInchTree;
-    //halfInchTree.insert(5.2);
-	//cout << halfInchTree << endl;
 	double avg, rAvg, gAvg, bAvg;
 	// init input dimensions
-	int w = curImage.width ();
-	int h = curImage.height();
 	// create output image using 3/8 VG and output 
 	// image of 70"
 	//outImage = QImage(w, h, QImage::Format_RGB32);
-	// apply lookup table to source image to make input image
-	for(int y = 0; y < h; y++) {
-		const QRgb *src = (const QRgb*) curImage.scanLine(y);
-		//QRgb *out  = (QRgb*) outImage.scanLine(y);
-		for(int x = 0; x < w; x++) {
-			rAvg = qRed(src[x]);
-			gAvg = qGreen(src[x]);
-			bAvg = qBlue(src[x]);
-			avg = (rAvg + gAvg + bAvg)/3;
-			//place the avg into a BST
-			//but first find the middle avg
-			//insert the median first
-			cout << avg << endl;
-			halfInchTree.insert(avg, "A-.375-VG-");
+	//Retrieve each image one by one to scan average 
+	QDir d( "/home/csc103/testArea/mainwindow/TileImages" );
+	if ( !d.exists() )
+        qWarning( "Cannot find the TileImage directory" );
+	d.setNameFilters(QStringList()<<"A-.375-VG-*");
+	const QList<QFileInfo> list =  d.entryInfoList();
+	QListIterator<QFileInfo> it( list );
+	//Insert this first to balance the BST
+	tileImage.load("/home/csc103/testArea/mainwindow/TileImages/A-.375-VG-M757.jpg");
+	int w = tileImage.width ();
+	int h = tileImage.height();
+	rAvg = 0;
+	gAvg = 0;
+	bAvg = 0;
+	int y = 0;
+	int x = 0;
+	for(y; y < h; y++) {
+		const QRgb *src = (const QRgb*) tileImage.scanLine(y);
+		for(x; x < w; x++) {
+			rAvg += qRed  (src[x]);
+			gAvg += qGreen(src[x]);
+			bAvg += qBlue (src[x]);
 		}
 	}
-	cout << halfInchTree <<endl<<endl;
-	cout << halfInchTree.find(146) << endl;
-	params.setOutImage(curImage);
+	avg = (((rAvg)/(x*y)) + (gAvg/(x*y)) + (bAvg/(x*y)))/3;
+	cout << avg << endl;
+	halfInchTree.insert(avg, "A-.375-VG-M757.jpg");
+	//Parse the rest of the tile images
+    for(int i = 0;i < list.size(); i++)
+	{		
+		QFileInfo strFileInfo = list.at(i);
+		strFileName = "/home/csc103/testArea/mainwindow/TileImages/"
+							  + strFileInfo.fileName();
+		string fileNameException = strFileInfo.fileName().toUtf8().constData();
+		if(fileNameException.compare("A-.375-VG-M757.jpg") == 0) {
+			//Already inserted into BST
+			//Using this file to balance BST
+			continue;
+		}
+		tileImage.load(strFileName);
+		rAvg = 0;
+		gAvg = 0;
+		bAvg = 0;
+		int y = 0;
+		int x = 0;
+		for(y; y < h; y++) {
+			const QRgb *src = (const QRgb*) tileImage.scanLine(y);
+			for(x; x < w; x++) {
+				rAvg += qRed  (src[x]);
+				cout << "qRed : " << qRed(src[x]) << endl;
+				gAvg += qGreen(src[x]);
+				bAvg += qBlue (src[x]);
+			}
+		}
+		avg = ((rAvg/(x*y)) + (gAvg/(x*y)) + (bAvg/(x*y)))/3;
+		cout << "x = " << x << " y = " << y << " rAvg = "<< rAvg <<endl;
+		//cout << avg << endl;
+		//cout << avg << " " << strFileInfo.fileName().toUtf8().constData() << endl;
+		halfInchTree.insert(avg, strFileInfo.fileName().toUtf8().constData());
+    }
+	cout << "Done building tile image BST" << endl;	
+	//cout << halfInchTree <<endl<<endl;
+	// Now parse through curr image to find matching tiles
+	// if Image size is 70"
+	int iw = curImage.width ();
+	int ih = curImage.height();
+	QImage mosaicImage(iw, ih, QImage::Format_RGB32);
+	QImage mosaicImagePartial;
+
+	//double tW = 0;
+	//double tH = 0;
+	//double tx = 0;
+	//double ty = 0;
+	double tileWidth = 2.4;
+	double tileHeight = 2.4;
+	//cout << "Tile width: " << tileWidth << endl;
+	//cout << "Tile height: " << tileHeight << endl;
+	QPainter painter;
+	painter.begin(&mosaicImage);
+	//Go through the input image
+	//copy a chunk the size of a tile
+	//find the avg of that chunk
+	//find a matching tile with a close avg
+	//paint the output image with the tiles
+	for(int iy = 0; iy < ih; iy +=tileHeight) {
+		for(int ix = 0; ix < iw; ix +=tileWidth) {
+			//cout << "x: " << x << " , y: " << y << endl; 
+			QImage imageChunk = curImage.copy(ix, iy, tileWidth, tileHeight);
+			int ich = imageChunk.height();
+			int icw = imageChunk.width();
+			rAvg = 0;
+			gAvg = 0;
+			bAvg = 0;
+			avg = 0;
+			int xx = 0;
+			int yy = 0;
+			for(yy; yy < ich; yy++) {
+				const QRgb *src = (const QRgb*) imageChunk.scanLine(yy);
+				for(xx; xx < icw; xx++) {
+					rAvg += qRed  (src[xx]);
+					//cout << "qRed : " << qRed(src[xx]) << endl;
+					gAvg += qGreen(src[xx]);
+					bAvg += qBlue (src[xx]);
+					//cout << "rAvg = " << rAvg << endl;
+				}
+			}	
+			avg = (rAvg/(xx*yy) + gAvg/(xx*yy) + bAvg/(xx*yy))/3;
+			//cout << "xx = " << xx << " yy = " << yy << " rAvg = "<< rAvg <<endl;
+			//cout << "Find " <<  avg << "= " << halfInchTree.find(avg) << endl;
+			//string mosaicImageFile = "/home/csc103/testArea/mainwindow/TileImages/"
+			//				  + halfInchTree.find(avg);
+			//cout << mosaicImageFile << endl;
+			mosaicImagePartial.load("/home/csc103/testArea/mainwindow/TileImages/A-.375-VG-M757.jpg");
+			//Don't overlap, use tile width & height	
+			painter.drawImage(ix, iy, mosaicImagePartial);
+			//tx += mosaicImagePartial.width();
+			//ty += mosaicImagePartial.height();
+			//cout << tx << " "<< ty << endl;
+		}
+		//ty += mosaicImagePartial.height();
+		//tx = 0;
+	}
+	cout << "Output image done" << endl;
+	painter.end();
+	params.setOutImage(mosaicImage);
 	g_mainWindow->updateOutputFrame();
-	
 }
 
 int

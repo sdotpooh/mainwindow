@@ -38,15 +38,32 @@ Tree::find(double foo)
      
      while(curr && curr->avg != 0)
      {
+		 //Find the closest avg, not exact
          par = curr;
 		 if (foo == curr->avg)	
+			 return curr->fileName;
+		 else if(foo < curr->avg && foo > curr->left->avg) {
+			 //Find the closer avg
+			 if((curr->avg - foo) < (foo - curr->left->avg))
+			 	return curr->fileName;
+			 return curr->left->fileName;
+		 }
+		 else if(foo > curr->avg && foo < curr->right->avg) {
+			 //Find the closer avg
+			 if((foo - curr->avg) < (curr->right->avg - foo))
+			 	return curr->fileName;
+			 return curr->right->fileName;
+		 }
+		 else if(foo < curr->avg && curr->left == NULL)
+			 return curr->fileName;
+		 else if(foo > curr->avg && curr->right == NULL) 
 			 return curr->fileName;
 		 else if(foo < curr->avg)
              curr = curr->left;
          else
              curr = curr->right;
      }
-     return curr->fileName;
+     //return " ";
 }
  
 void 
