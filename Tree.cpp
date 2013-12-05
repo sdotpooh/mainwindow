@@ -71,7 +71,8 @@ Tree::insert(double foo, string s)
 {
      Node * par = NULL;
      Node * curr = trav(foo, par);
-     if(!curr)
+     //Node * curr = root;
+	 if(!curr)
      {
          curr = new Node(foo, s);
          if(!par)
