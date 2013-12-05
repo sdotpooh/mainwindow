@@ -419,12 +419,10 @@ ControlPanel::updateOutputImage()
 	TesseraParameters &params = g_mainWindow->parameters();
     //const QImage &origImage   = params.originalImage();
     const QImage &curImage    = params.image();
+	//Store the 0.375 in the following tree, disregard
+	//misleading name 1/2 != 0.375
 	Tree halfInchTree;
 	double avg, rAvg, gAvg, bAvg;
-	// init input dimensions
-	// create output image using 3/8 VG and output 
-	// image of 70"
-	//outImage = QImage(w, h, QImage::Format_RGB32);
 	//Retrieve each image one by one to scan average 
 	QDir d( "/home/csc103/testArea/mainwindow/TileImages" );
 	if ( !d.exists() )
@@ -500,7 +498,6 @@ ControlPanel::updateOutputImage()
 	//paint the output image with the tiles
 	for(int iy = 0; iy < ih; iy +=tileHeight) {
 		for(int ix = 0; ix < iw; ix +=tileWidth) {
-			//cout << "x: " << x << " , y: " << y << endl; 
 			QImage imageChunk = curImage.copy(ix, iy, tileWidth, tileHeight);
 			int ich = imageChunk.height();
 			int icw = imageChunk.width();
@@ -530,6 +527,7 @@ ControlPanel::updateOutputImage()
 	}
 	cout << "Output Image Rendered" << endl;
 	painter.end();
+	mosaicImage.save("/home/csc103/testArea/mainwindow/images/outputImage.jpg");
 	params.setOutImage(mosaicImage);
 	g_mainWindow->updateOutputFrame();
 }
