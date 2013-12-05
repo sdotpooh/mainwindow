@@ -33,37 +33,34 @@ Tree::trav(double foo, Node * & par)
 string
 Tree::find(double foo)
 {
+	//If there's an exact match return the filename,
+	//else find the closest match to the avg and
+	//return the filename.
 	Node *par = NULL;
     Node * curr = root;
-     
-     while(curr && curr->avg != 0)
-     {
-		 //Find the closest avg, not exact
-         par = curr;
-		 if (foo == curr->avg)	
-			 return curr->fileName;
-		 else if(foo < curr->avg && foo > curr->left->avg) {
-			 //Find the closer avg
-			 if((curr->avg - foo) < (foo - curr->left->avg))
-			 	return curr->fileName;
-			 return curr->left->fileName;
-		 }
-		 else if(foo > curr->avg && foo < curr->right->avg) {
-			 //Find the closer avg
-			 if((foo - curr->avg) < (curr->right->avg - foo))
-			 	return curr->fileName;
-			 return curr->right->fileName;
-		 }
-		 else if(foo < curr->avg && curr->left == NULL)
-			 return curr->fileName;
-		 else if(foo > curr->avg && curr->right == NULL) 
-			 return curr->fileName;
-		 else if(foo < curr->avg)
+    string closest = " ";
+	double closestBy = 10000; 
+    while(curr && curr->avg != 0)
+    {
+        par = curr;
+		if (foo == curr->avg)	
+			return curr->fileName;
+		else if(foo < curr->avg) {
+			 if((curr->avg - foo) < closestBy) {
+				closest = curr->fileName;
+				closestBy = curr->avg - foo;
+			 }
              curr = curr->left;
-         else
-             curr = curr->right;
-     }
-     //return " ";
+		}
+        else {
+			if((foo - curr->avg) < closestBy) {
+				closest = curr->fileName;
+				closestBy = foo - curr->avg;
+			}
+            curr = curr->right;
+		}
+    } 
+	return closest;
 }
  
 void 

@@ -452,7 +452,6 @@ ControlPanel::updateOutputImage()
 		}
 	}
 	avg = (rAvg/count + gAvg/count + bAvg/count)/3;
-	cout << avg << endl;
 	halfInchTree.insert(avg, "A-.375-VG-725.jpg");
 	//Parse the rest of the tile images
     for(int i = 0; i < list.size(); i++) {		
@@ -476,22 +475,16 @@ ControlPanel::updateOutputImage()
 			const QRgb *src = (const QRgb*) tileImage.scanLine(y);
 			for(x = 0; x < tileImage.width(); x++) {
 				rAvg += qRed  (src[x]);
-				//cout << "qRed : " << qRed(src[x]) << endl;
 				gAvg += qGreen(src[x]);
 				bAvg += qBlue (src[x]);
 				count++;
 			}
 		}
 		avg = (rAvg/count + gAvg/count + bAvg/count)/3;
-		//cout << "x = " << x << " y = " << y << " rAvg = "<< rAvg <<endl;
-		//cout << avg << endl;
-		cout << avg << " " << strFileInfo.fileName().toUtf8().constData() << endl;
 		halfInchTree.insert(avg, strFileInfo.fileName().toUtf8().constData());
     }
 	cout << "Done building tile image BST" << endl;	
-	cout << halfInchTree <<endl<<endl;
 	// Now parse through curr image to find matching tiles
-	// if Image size is 70"
 	int iw = curImage.width ();
 	int ih = curImage.height();
 	QImage mosaicImage(iw, ih, QImage::Format_RGB32);
@@ -522,25 +515,20 @@ ControlPanel::updateOutputImage()
 				const QRgb *src = (const QRgb*) imageChunk.scanLine(yy);
 				for(xx = 0; xx < icw; xx++) {
 					rAvg += qRed  (src[xx]);
-					//cout << "qRed : " << qRed(src[xx]) << endl;
 					gAvg += qGreen(src[xx]);
 					bAvg += qBlue (src[xx]);
 					count++;
 				}
 			}	
 			avg = (rAvg/count + gAvg/count + bAvg/count)/3;
-			//cout << avg << endl;
-			//cout << "xx = " << xx << " yy = " << yy << " rAvg = "<< rAvg <<endl;
-			cout << "Find " <<  avg << " = " << halfInchTree.find(avg) << endl;
-			//string mosaicImageFile = "/home/csc103/testArea/mainwindow/TileImages/"
-			//				  + halfInchTree.find(avg);
-			//cout << mosaicImageFile << endl;
-			mosaicImagePartial.load("/home/csc103/testArea/mainwindow/TileImages/A-.375-VG-M757.jpg");
-			//Don't overlap, use tile width & height	
+			string mosaicImageFile = "/home/csc103/testArea/mainwindow/TileImages/"
+							  + halfInchTree.find(avg);
+			const char * c = mosaicImageFile.c_str();
+			mosaicImagePartial.load(c);
 			painter.drawImage(ix, iy, mosaicImagePartial);
 		}
 	}
-	cout << "Output image done" << endl;
+	cout << "Output Image Rendered" << endl;
 	painter.end();
 	params.setOutImage(mosaicImage);
 	g_mainWindow->updateOutputFrame();
